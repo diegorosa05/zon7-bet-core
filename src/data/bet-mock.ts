@@ -149,7 +149,9 @@ import capaPlinko from "@/assets/game-plinko.jpg";
 import capaRoleta from "@/assets/game-roleta.jpg";
 import capaTigre from "@/assets/game-tigre.jpg";
 
-export const jogos: JogoCassino[] = [
+import { jogosCatalogo } from "./game-catalog";
+
+const jogosBase: JogoCassino[] = [
   { id: "g-1", nome: "Crash", provedor: "Zon7 Originals", categoria: "Originais", rtp: "99%", quente: true, capa: capaCrash },
   { id: "g-2", nome: "Double", provedor: "Zon7 Originals", categoria: "Originais", rtp: "97%", capa: capaDouble },
   { id: "g-3", nome: "Mines", provedor: "Zon7 Originals", categoria: "Originais", rtp: "98%", quente: true, capa: capaMines },
@@ -163,3 +165,5 @@ export const jogos: JogoCassino[] = [
   { id: "g-15", nome: "Roleta Relâmpago", provedor: "Evolution", categoria: "Ao vivo", rtp: "97%", capa: capaRoleta },
   { id: "g-16", nome: "Blackjack Zon7", provedor: "Evolution", categoria: "Ao vivo", rtp: "99%", capa: capaBlackjack },
 ];
+
+export const jogos: JogoCassino[] = [...jogosBase, ...jogosCatalogo];
