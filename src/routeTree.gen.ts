@@ -12,6 +12,7 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as AccountRouteImport } from './routes/account'
 import { Route as AdminRouteImport } from './routes/admin'
+import { Route as CarteiraRouteImport } from './routes/carteira'
 import { Route as CassinoRouteImport } from './routes/cassino'
 import { Route as DesafiosRouteImport } from './routes/desafios'
 import { Route as EsportesRouteImport } from './routes/esportes'
@@ -35,6 +36,10 @@ import { Route as AdminIndexRouteImport } from './routes/admin.index'
 import { Route as AdminAuditRouteImport } from './routes/admin.audit'
 import { Route as AdminSettingsRouteImport } from './routes/admin.settings'
 import { Route as AdminUsersRouteImport } from './routes/admin.users'
+import { Route as CarteiraIndexRouteImport } from './routes/carteira.index'
+import { Route as CarteiraDepositoRouteImport } from './routes/carteira.deposito'
+import { Route as CarteiraSaqueRouteImport } from './routes/carteira.saque'
+import { Route as CarteiraTransacoesRouteImport } from './routes/carteira.transacoes'
 import { Route as CassinoIndexRouteImport } from './routes/cassino.index'
 import { Route as CassinoAoVivoRouteImport } from './routes/cassino.ao-vivo'
 import { Route as CassinoOriginaisRouteImport } from './routes/cassino.originais'
@@ -58,6 +63,11 @@ const AccountRoute = AccountRouteImport.update({
 const AdminRoute = AdminRouteImport.update({
   id: '/admin',
   path: '/admin',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CarteiraRoute = CarteiraRouteImport.update({
+  id: '/carteira',
+  path: '/carteira',
   getParentRoute: () => rootRouteImport,
 } as any)
 const CassinoRoute = CassinoRouteImport.update({
@@ -175,6 +185,26 @@ const AdminUsersRoute = AdminUsersRouteImport.update({
   path: '/users',
   getParentRoute: () => AdminRoute,
 } as any)
+const CarteiraIndexRoute = CarteiraIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => CarteiraRoute,
+} as any)
+const CarteiraDepositoRoute = CarteiraDepositoRouteImport.update({
+  id: '/deposito',
+  path: '/deposito',
+  getParentRoute: () => CarteiraRoute,
+} as any)
+const CarteiraSaqueRoute = CarteiraSaqueRouteImport.update({
+  id: '/saque',
+  path: '/saque',
+  getParentRoute: () => CarteiraRoute,
+} as any)
+const CarteiraTransacoesRoute = CarteiraTransacoesRouteImport.update({
+  id: '/transacoes',
+  path: '/transacoes',
+  getParentRoute: () => CarteiraRoute,
+} as any)
 const CassinoIndexRoute = CassinoIndexRouteImport.update({
   id: '/',
   path: '/',
@@ -225,6 +255,7 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/account': typeof AccountRouteWithChildren
   '/admin': typeof AdminRouteWithChildren
+  '/carteira': typeof CarteiraRouteWithChildren
   '/cassino': typeof CassinoRouteWithChildren
   '/desafios': typeof DesafiosRoute
   '/esportes': typeof EsportesRouteWithChildren
@@ -246,6 +277,9 @@ export interface FileRoutesByFullPath {
   '/admin/audit': typeof AdminAuditRoute
   '/admin/settings': typeof AdminSettingsRoute
   '/admin/users': typeof AdminUsersRoute
+  '/carteira/deposito': typeof CarteiraDepositoRoute
+  '/carteira/saque': typeof CarteiraSaqueRoute
+  '/carteira/transacoes': typeof CarteiraTransacoesRoute
   '/cassino/ao-vivo': typeof CassinoAoVivoRoute
   '/cassino/originais': typeof CassinoOriginaisRoute
   '/cassino/slots': typeof CassinoSlotsRoute
@@ -253,6 +287,7 @@ export interface FileRoutesByFullPath {
   '/esportes/proximos': typeof EsportesProximosRoute
   '/account/': typeof AccountIndexRoute
   '/admin/': typeof AdminIndexRoute
+  '/carteira/': typeof CarteiraIndexRoute
   '/cassino/': typeof CassinoIndexRoute
   '/esportes/': typeof EsportesIndexRoute
   '/admin/reviews/$id': typeof AdminReviewsIdRoute
@@ -279,6 +314,9 @@ export interface FileRoutesByTo {
   '/admin/audit': typeof AdminAuditRoute
   '/admin/settings': typeof AdminSettingsRoute
   '/admin/users': typeof AdminUsersRoute
+  '/carteira/deposito': typeof CarteiraDepositoRoute
+  '/carteira/saque': typeof CarteiraSaqueRoute
+  '/carteira/transacoes': typeof CarteiraTransacoesRoute
   '/cassino/ao-vivo': typeof CassinoAoVivoRoute
   '/cassino/originais': typeof CassinoOriginaisRoute
   '/cassino/slots': typeof CassinoSlotsRoute
@@ -286,6 +324,7 @@ export interface FileRoutesByTo {
   '/esportes/proximos': typeof EsportesProximosRoute
   '/account': typeof AccountIndexRoute
   '/admin': typeof AdminIndexRoute
+  '/carteira': typeof CarteiraIndexRoute
   '/cassino': typeof CassinoIndexRoute
   '/esportes': typeof EsportesIndexRoute
   '/admin/reviews/$id': typeof AdminReviewsIdRoute
@@ -296,6 +335,7 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/account': typeof AccountRouteWithChildren
   '/admin': typeof AdminRouteWithChildren
+  '/carteira': typeof CarteiraRouteWithChildren
   '/cassino': typeof CassinoRouteWithChildren
   '/desafios': typeof DesafiosRoute
   '/esportes': typeof EsportesRouteWithChildren
@@ -317,6 +357,9 @@ export interface FileRoutesById {
   '/admin/audit': typeof AdminAuditRoute
   '/admin/settings': typeof AdminSettingsRoute
   '/admin/users': typeof AdminUsersRoute
+  '/carteira/deposito': typeof CarteiraDepositoRoute
+  '/carteira/saque': typeof CarteiraSaqueRoute
+  '/carteira/transacoes': typeof CarteiraTransacoesRoute
   '/cassino/ao-vivo': typeof CassinoAoVivoRoute
   '/cassino/originais': typeof CassinoOriginaisRoute
   '/cassino/slots': typeof CassinoSlotsRoute
@@ -324,6 +367,7 @@ export interface FileRoutesById {
   '/esportes/proximos': typeof EsportesProximosRoute
   '/account/': typeof AccountIndexRoute
   '/admin/': typeof AdminIndexRoute
+  '/carteira/': typeof CarteiraIndexRoute
   '/cassino/': typeof CassinoIndexRoute
   '/esportes/': typeof EsportesIndexRoute
   '/admin/reviews/$id': typeof AdminReviewsIdRoute
@@ -335,6 +379,7 @@ export interface FileRouteTypes {
     | '/'
     | '/account'
     | '/admin'
+    | '/carteira'
     | '/cassino'
     | '/desafios'
     | '/esportes'
@@ -356,6 +401,9 @@ export interface FileRouteTypes {
     | '/admin/audit'
     | '/admin/settings'
     | '/admin/users'
+    | '/carteira/deposito'
+    | '/carteira/saque'
+    | '/carteira/transacoes'
     | '/cassino/ao-vivo'
     | '/cassino/originais'
     | '/cassino/slots'
@@ -363,6 +411,7 @@ export interface FileRouteTypes {
     | '/esportes/proximos'
     | '/account/'
     | '/admin/'
+    | '/carteira/'
     | '/cassino/'
     | '/esportes/'
     | '/admin/reviews/$id'
@@ -389,6 +438,9 @@ export interface FileRouteTypes {
     | '/admin/audit'
     | '/admin/settings'
     | '/admin/users'
+    | '/carteira/deposito'
+    | '/carteira/saque'
+    | '/carteira/transacoes'
     | '/cassino/ao-vivo'
     | '/cassino/originais'
     | '/cassino/slots'
@@ -396,6 +448,7 @@ export interface FileRouteTypes {
     | '/esportes/proximos'
     | '/account'
     | '/admin'
+    | '/carteira'
     | '/cassino'
     | '/esportes'
     | '/admin/reviews/$id'
@@ -405,6 +458,7 @@ export interface FileRouteTypes {
     | '/'
     | '/account'
     | '/admin'
+    | '/carteira'
     | '/cassino'
     | '/desafios'
     | '/esportes'
@@ -426,6 +480,9 @@ export interface FileRouteTypes {
     | '/admin/audit'
     | '/admin/settings'
     | '/admin/users'
+    | '/carteira/deposito'
+    | '/carteira/saque'
+    | '/carteira/transacoes'
     | '/cassino/ao-vivo'
     | '/cassino/originais'
     | '/cassino/slots'
@@ -433,6 +490,7 @@ export interface FileRouteTypes {
     | '/esportes/proximos'
     | '/account/'
     | '/admin/'
+    | '/carteira/'
     | '/cassino/'
     | '/esportes/'
     | '/admin/reviews/$id'
@@ -443,6 +501,7 @@ export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AccountRoute: typeof AccountRouteWithChildren
   AdminRoute: typeof AdminRouteWithChildren
+  CarteiraRoute: typeof CarteiraRouteWithChildren
   CassinoRoute: typeof CassinoRouteWithChildren
   DesafiosRoute: typeof DesafiosRoute
   EsportesRoute: typeof EsportesRouteWithChildren
@@ -479,6 +538,13 @@ declare module '@tanstack/react-router' {
       path: '/admin'
       fullPath: '/admin'
       preLoaderRoute: typeof AdminRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/carteira': {
+      id: '/carteira'
+      path: '/carteira'
+      fullPath: '/carteira'
+      preLoaderRoute: typeof CarteiraRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/cassino': {
@@ -642,6 +708,34 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AdminUsersRouteImport
       parentRoute: typeof AdminRoute
     }
+    '/carteira/': {
+      id: '/carteira/'
+      path: '/'
+      fullPath: '/carteira/'
+      preLoaderRoute: typeof CarteiraIndexRouteImport
+      parentRoute: typeof CarteiraRoute
+    }
+    '/carteira/deposito': {
+      id: '/carteira/deposito'
+      path: '/deposito'
+      fullPath: '/carteira/deposito'
+      preLoaderRoute: typeof CarteiraDepositoRouteImport
+      parentRoute: typeof CarteiraRoute
+    }
+    '/carteira/saque': {
+      id: '/carteira/saque'
+      path: '/saque'
+      fullPath: '/carteira/saque'
+      preLoaderRoute: typeof CarteiraSaqueRouteImport
+      parentRoute: typeof CarteiraRoute
+    }
+    '/carteira/transacoes': {
+      id: '/carteira/transacoes'
+      path: '/transacoes'
+      fullPath: '/carteira/transacoes'
+      preLoaderRoute: typeof CarteiraTransacoesRouteImport
+      parentRoute: typeof CarteiraRoute
+    }
     '/cassino/': {
       id: '/cassino/'
       path: '/'
@@ -749,6 +843,24 @@ const AdminRouteChildren: AdminRouteChildren = {
 
 const AdminRouteWithChildren = AdminRoute._addFileChildren(AdminRouteChildren)
 
+interface CarteiraRouteChildren {
+  CarteiraDepositoRoute: typeof CarteiraDepositoRoute
+  CarteiraSaqueRoute: typeof CarteiraSaqueRoute
+  CarteiraTransacoesRoute: typeof CarteiraTransacoesRoute
+  CarteiraIndexRoute: typeof CarteiraIndexRoute
+}
+
+const CarteiraRouteChildren: CarteiraRouteChildren = {
+  CarteiraDepositoRoute: CarteiraDepositoRoute,
+  CarteiraSaqueRoute: CarteiraSaqueRoute,
+  CarteiraTransacoesRoute: CarteiraTransacoesRoute,
+  CarteiraIndexRoute: CarteiraIndexRoute,
+}
+
+const CarteiraRouteWithChildren = CarteiraRoute._addFileChildren(
+  CarteiraRouteChildren,
+)
+
 interface CassinoRouteChildren {
   CassinoAoVivoRoute: typeof CassinoAoVivoRoute
   CassinoOriginaisRoute: typeof CassinoOriginaisRoute
@@ -786,6 +898,7 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AccountRoute: AccountRouteWithChildren,
   AdminRoute: AdminRouteWithChildren,
+  CarteiraRoute: CarteiraRouteWithChildren,
   CassinoRoute: CassinoRouteWithChildren,
   DesafiosRoute: DesafiosRoute,
   EsportesRoute: EsportesRouteWithChildren,

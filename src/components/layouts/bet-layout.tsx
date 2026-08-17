@@ -37,12 +37,22 @@ const topo = [
 ];
 
 const atalhosRapidos = [
-  { rotulo: "Recompensas", icone: Gift },
-  { rotulo: "Desafios", icone: Trophy },
-  { rotulo: "Roleta Grátis", icone: CircleDot },
+  { rotulo: "Recompensas", icone: Gift, to: "/recompensas" as const },
+  { rotulo: "Desafios", icone: Trophy, to: "/desafios" as const },
+  { rotulo: "Roleta Grátis", icone: CircleDot, to: "/roleta" as const },
 ];
 
 const grupos = [
+  {
+    titulo: "Minha conta",
+    itens: [
+      { rotulo: "Carteira", icone: Wallet, to: "/carteira" as const },
+      { rotulo: "Depositar", icone: ArrowDownToLine, to: "/carteira/deposito" as const },
+      { rotulo: "Sacar", icone: ArrowUpFromLine, to: "/carteira/saque" as const },
+      { rotulo: "Transações", icone: Receipt, to: "/carteira/transacoes" as const },
+      { rotulo: "Promoções", icone: Gift, to: "/promocoes" as const },
+    ],
+  },
   {
     titulo: "Originais da Zon7",
     itens: [
