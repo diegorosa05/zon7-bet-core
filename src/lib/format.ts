@@ -8,8 +8,13 @@ export function formatarData(iso: string, comHora = true) {
   });
 }
 
-export function formatarMoeda(valor: number) {
-  return valor.toLocaleString("pt-BR", { style: "currency", currency: "BRL", maximumFractionDigits: 0 });
+export function formatarMoeda(valor: number, casas = 2) {
+  return valor.toLocaleString("pt-BR", {
+    style: "currency",
+    currency: "BRL",
+    minimumFractionDigits: casas,
+    maximumFractionDigits: casas,
+  });
 }
 
 export function iniciais(nome: string) {
