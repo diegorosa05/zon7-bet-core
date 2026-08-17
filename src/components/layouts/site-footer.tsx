@@ -193,6 +193,7 @@ export function SiteFooter() {
         </div>
       </div>
 
+      <div className="mt-8 border-t border-border sm:mt-10 sm:pt-8">
       <Secao titulo="Contatos" rotuloNav="Canais de atendimento">
         <ul className="mx-auto grid max-w-7xl gap-5 text-xs sm:grid-cols-3 sm:text-center lg:grid-cols-7">
           {contatos.map((c) => (
@@ -210,6 +211,7 @@ export function SiteFooter() {
           ))}
         </ul>
       </Secao>
+      </div>
 
       <p className="mt-8 text-center text-[11px] text-muted-foreground">
         © {new Date().getFullYear()} Zon7 BET · Ambiente de demonstração, sem apostas reais.
