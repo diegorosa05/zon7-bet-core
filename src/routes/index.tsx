@@ -1,5 +1,5 @@
 import { Link, createFileRoute } from "@tanstack/react-router";
-import { Dot, Play, Ticket, Trash2 } from "lucide-react";
+import { ChevronRight, Play, Radio, Ticket, Trash2 } from "lucide-react";
 import { useMemo, useState } from "react";
 
 import bannerCassino from "@/assets/banner-cassino.jpg";
@@ -8,57 +8,66 @@ import bannerEsportes from "@/assets/banner-esportes.jpg";
 import { BetLayout } from "@/components/layouts/bet-layout";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { esportes, eventos, jogos, type EventoEsportivo, type JogoCassino } from "@/data/bet-mock";
 import { cn } from "@/lib/utils";
 
-const banners = [
-  { id: "b1", src: bannerEsportes, alt: "Apostas esportivas ao vivo na Zon7 BET" },
-  { id: "b2", src: bannerCassino, alt: "Cassino e mesas ao vivo na Zon7 BET" },
-  { id: "b3", src: bannerCrash, alt: "Jogos originais Crash na Zon7 BET" },
+const categorias = [
+  "Salão",
+  "Todos os jogos",
+  "Slots em destaque",
+  "Cassino ao vivo",
+  "Casual",
+  "Jogos ao vivo",
+  "Originais da Zon7",
 ];
 
-function CardJogo({ jogo, prioridade }: { jogo: JogoCassino; prioridade?: boolean }) {
+function CardJogo({ jogo }: { jogo: JogoCassino }) {
   return (
     <Link
       to="/login"
       aria-label={`Jogar ${jogo.nome}`}
-      className="group relative block overflow-hidden rounded-xl border border-border bg-card transition-transform hover:-translate-y-1 hover:border-primary/50"
+      className="group relative block w-[8.5rem] shrink-0 overflow-hidden rounded-lg bg-card transition-transform hover:-translate-y-1 sm:w-[9.5rem]"
     >
       <img
         src={jogo.capa}
         alt={jogo.nome}
         width={640}
         height={860}
-        loading={prioridade ? "eager" : "lazy"}
+        loading="lazy"
         className="aspect-[3/4] w-full object-cover"
       />
       <span className="absolute inset-0 grid place-items-center bg-background/70 opacity-0 transition-opacity group-hover:opacity-100">
-        <span className="grid h-11 w-11 place-items-center rounded-full bg-primary text-primary-foreground">
-          <Play className="h-5 w-5" />
+        <span className="grid h-10 w-10 place-items-center rounded-full bg-primary text-primary-foreground">
+          <Play className="h-4 w-4" />
         </span>
       </span>
-      <span className="block truncate px-2.5 py-2 text-xs font-medium">{jogo.nome}</span>
+      <span className="block truncate px-2 pt-2 text-xs font-semibold">{jogo.nome}</span>
+      <span className="block truncate px-2 pb-2 text-[11px] text-muted-foreground">{jogo.provedor}</span>
     </Link>
   );
 }
 
-function Secao({ titulo, jogos: lista }: { titulo: string; jogos: JogoCassino[] }) {
+function Carrossel({ id, titulo, lista }: { id?: string; titulo: string; lista: JogoCassino[] }) {
   return (
-    <section className="mt-10">
-      <h2 className="text-sm font-semibold tracking-wide uppercase">{titulo}</h2>
-      <div className="mt-3 grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-4">
+    <section id={id} className="mt-8">
+      <div className="flex items-center justify-between gap-3">
+        <h2 className="text-base font-semibold">{titulo}</h2>
+        <button type="button" className="flex items-center text-xs text-muted-foreground hover:text-foreground">
+          Ver todos <ChevronRight className="h-4 w-4" />
+        </button>
+      </div>
+      <div className="-mx-1 mt-3 flex gap-3 overflow-x-auto px-1 pb-2">
         {lista.map((j) => (
-          <CardJogo key={j.id} jogo={j} />
+          <CardJogo key={`${titulo}-${j.id}`} jogo={j} />
         ))}
       </div>
     </section>
   );
 }
 
-const TITULO = "Zon7 BET — apostas esportivas, cassino ao vivo e jogos originais";
+const TITULO = "Zon7 BET — cassino online, jogos originais e apostas esportivas";
 const DESCRICAO =
-  "Aposte em futebol, basquete e eSports ao vivo, jogue Crash, Mines e slots, e acompanhe suas seleções no boletim em tempo real.";
+  "Jogue Crash, Mines, Double e slots em destaque, aposte em futebol, basquete e eSports ao vivo e acompanhe seu cupom em tempo real na Zon7 BET.";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -67,6 +76,8 @@ export const Route = createFileRoute("/")({
       { name: "description", content: DESCRICAO },
       { property: "og:title", content: TITULO },
       { property: "og:description", content: DESCRICAO },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
     ],
   }),
   component: Index,
@@ -81,6 +92,7 @@ interface Selecao {
 
 function Index() {
   const [esporte, setEsporte] = useState<string>("Populares");
+  const [categoria, setCategoria] = useState<string>("Salão");
   const [selecoes, setSelecoes] = useState<Selecao[]>([]);
   const [valor, setValor] = useState("30");
 
@@ -105,7 +117,7 @@ function Index() {
     <div className="space-y-3">
       <div className="flex items-center gap-2">
         <Ticket className="h-4 w-4 text-primary" />
-        <h2 className="text-sm font-semibold">Boletim de apostas</h2>
+        <h2 className="text-sm font-semibold">Cupom</h2>
         <span className="tabular ml-auto rounded-full bg-primary/15 px-2 py-0.5 text-xs text-primary">
           {selecoes.length}
         </span>
@@ -156,16 +168,12 @@ function Index() {
             </div>
             <div className="flex items-center justify-between text-sm">
               <span className="text-muted-foreground">Retorno estimado</span>
-              <span className="tabular font-semibold text-primary">
-                R$ {retorno.toFixed(2).replace(".", ",")}
-              </span>
+              <span className="tabular font-semibold text-primary">R$ {retorno.toFixed(2).replace(".", ",")}</span>
             </div>
-            <Button asChild className="w-full glow-primary">
+            <Button asChild className="w-full rounded-full font-semibold">
               <Link to="/login">Apostar</Link>
             </Button>
-            <p className="text-[11px] text-muted-foreground">
-              Demonstração: nenhuma aposta real é registrada.
-            </p>
+            <p className="text-[11px] text-muted-foreground">Demonstração: nenhuma aposta real é registrada.</p>
           </div>
         </>
       )}
@@ -174,95 +182,151 @@ function Index() {
 
   return (
     <BetLayout aside={boletim}>
-      {/* Banners */}
-      <section className="space-y-3">
-        <Link to="/register" className="block overflow-hidden rounded-xl border border-border">
-          <img
-            src={banners[0]!.src}
-            alt={banners[0]!.alt}
-            width={1600}
-            height={500}
-            className="aspect-[16/5] w-full object-cover"
-          />
-        </Link>
-        <div className="grid gap-3 sm:grid-cols-2">
-          {banners.slice(1).map((b) => (
-            <Link key={b.id} to="/register" className="block overflow-hidden rounded-xl border border-border">
-              <img
-                src={b.src}
-                alt={b.alt}
-                width={1600}
-                height={640}
-                loading="lazy"
-                className="aspect-[16/6] w-full object-cover"
-              />
-            </Link>
-          ))}
+      {/* Hero */}
+      <section className="relative overflow-hidden rounded-xl">
+        <img
+          src={bannerEsportes}
+          alt="Boas-vindas à Zon7 BET"
+          width={1600}
+          height={500}
+          className="h-[19rem] w-full object-cover sm:h-[21rem]"
+        />
+        <div className="absolute inset-0 bg-gradient-to-r from-background via-background/85 to-transparent" />
+        <div className="absolute inset-0 flex flex-col justify-center gap-5 p-6 sm:p-10">
+          <div>
+            <h1 className="max-w-md text-3xl font-semibold sm:text-4xl">Bem-vindo à Zon7 BET!</h1>
+            <p className="mt-3 max-w-xs text-base text-muted-foreground">
+              Cadastre-se e desbloqueie sua experiência exclusiva
+            </p>
+          </div>
+          <ol className="flex flex-wrap items-center gap-x-2 gap-y-1 text-xs text-muted-foreground">
+            {["Cadastre-se", "Verifique", "Jogue", "Desbloqueie sua recompensa"].map((p, i) => (
+              <li key={p} className="flex items-center gap-2">
+                {i > 0 && <ChevronRight className="h-3.5 w-3.5" />}
+                <span>{p}</span>
+              </li>
+            ))}
+          </ol>
+          <Button asChild className="w-fit rounded-full px-7 font-semibold">
+            <Link to="/register">CADASTRE-SE</Link>
+          </Button>
         </div>
       </section>
 
-      {/* Slots */}
-      <Secao titulo="Slots" jogos={jogos.filter((j) => j.categoria === "Slots")} />
+      {/* Promos */}
+      <div className="mt-4 grid gap-4 md:grid-cols-2">
+        {[
+          {
+            titulo: "Recompensas únicas",
+            texto: "Ganhe recompensas exclusivas através de desafios especiais.",
+            img: bannerCassino,
+          },
+          {
+            titulo: "Indique um amigo",
+            texto: "Convide amigos e ganhe recompensa por cada indicação bem-sucedida.",
+            img: bannerCrash,
+          },
+        ].map((p) => (
+          <Link
+            key={p.titulo}
+            to="/register"
+            className="group relative overflow-hidden rounded-xl border border-border"
+          >
+            <img src={p.img} alt="" width={1200} height={600} loading="lazy" className="h-56 w-full object-cover" />
+            <div className="absolute inset-0 bg-gradient-to-r from-background via-background/80 to-transparent" />
+            <div className="absolute inset-0 flex flex-col justify-between p-6">
+              <div>
+                <h2 className="text-xl font-semibold">{p.titulo}</h2>
+                <p className="mt-2 max-w-[16rem] text-sm text-muted-foreground">{p.texto}</p>
+              </div>
+              <span className="grid h-10 w-10 place-items-center rounded-full bg-secondary text-foreground transition-colors group-hover:bg-primary group-hover:text-primary-foreground">
+                <ChevronRight className="h-5 w-5" />
+              </span>
+            </div>
+          </Link>
+        ))}
+      </div>
 
-      {/* Originais */}
-      <Secao titulo="Originais Zon7" jogos={jogos.filter((j) => j.categoria === "Originais")} />
+      {/* Categorias */}
+      <div id="cassino" className="-mx-1 mt-8 flex gap-2 overflow-x-auto px-1 pb-1">
+        {categorias.map((c) => (
+          <button
+            key={c}
+            type="button"
+            onClick={() => setCategoria(c)}
+            className={cn(
+              "shrink-0 rounded-lg px-4 py-2.5 text-sm font-medium transition-colors",
+              categoria === c
+                ? "bg-[var(--brand-blue)] text-primary-foreground"
+                : "bg-card text-muted-foreground hover:text-foreground",
+            )}
+          >
+            {c}
+          </button>
+        ))}
+      </div>
 
-      {/* Ao vivo */}
-      <Secao titulo="Cassino ao vivo" jogos={jogos.filter((j) => j.categoria === "Ao vivo")} />
+      <Carrossel titulo="Populares agora" lista={jogos.slice(0, 8)} />
+      <Carrossel id="originais" titulo="Originais da Zon7" lista={jogos.filter((j) => j.categoria === "Originais")} />
+      <Carrossel titulo="Slots em destaque" lista={jogos.filter((j) => j.categoria === "Slots")} />
+      <Carrossel titulo="Cassino ao vivo" lista={jogos.filter((j) => j.categoria === "Ao vivo")} />
 
       {/* Esportes */}
       <section id="esportes" className="mt-10 mb-6">
-        <div className="flex flex-wrap items-center gap-3">
-          <h2 className="text-sm font-semibold tracking-wide uppercase">Esportes</h2>
-          <Tabs value={esporte} onValueChange={setEsporte} className="ml-auto">
-            <TabsList className="flex-wrap bg-transparent">
-              {esportes.map((e) => (
-                <TabsTrigger key={e} value={e} className="text-xs">
-                  {e}
-                </TabsTrigger>
-              ))}
-            </TabsList>
-          </Tabs>
+        <h2 className="text-base font-semibold">Esportes</h2>
+
+        <div className="-mx-1 mt-3 flex gap-2 overflow-x-auto px-1 pb-1">
+          {esportes.map((e) => (
+            <button
+              key={e}
+              type="button"
+              onClick={() => setEsporte(e)}
+              className={cn(
+                "shrink-0 rounded-full px-4 py-2 text-sm font-medium transition-colors",
+                esporte === e ? "bg-primary text-primary-foreground" : "bg-card text-muted-foreground hover:text-foreground",
+              )}
+            >
+              {e}
+            </button>
+          ))}
         </div>
 
-        <div className="mt-3 overflow-hidden rounded-xl border border-border bg-card">
-          {lista.length === 0 ? (
-            <p className="p-8 text-center text-sm text-muted-foreground">
-              Nenhuma partida disponível em {esporte} agora.
-            </p>
-          ) : (
-            lista.map((ev) => (
-              <div
-                key={ev.id}
-                className="grid gap-3 border-b border-border px-4 py-3 last:border-b-0 lg:grid-cols-[minmax(0,1fr)_auto] lg:items-center"
-              >
-                <div className="min-w-0">
-                  <p className="flex items-center gap-1 text-[11px] text-muted-foreground">
-                    {ev.aoVivo ? (
-                      <span className="inline-flex items-center gap-1 font-medium text-primary">
-                        <Dot className="h-4 w-4 animate-pulse" /> {ev.minuto}
-                      </span>
-                    ) : (
-                      <span>{ev.inicio}</span>
-                    )}
-                    <span>·</span>
-                    <span className="truncate">{ev.competicao}</span>
-                  </p>
-                  <div className="mt-1 flex items-center gap-3">
-                    <div className="min-w-0">
-                      <p className="truncate text-sm">{ev.casa}</p>
-                      <p className="truncate text-sm">{ev.fora}</p>
+        {lista.length === 0 ? (
+          <p className="mt-4 rounded-xl border border-border bg-card p-8 text-center text-sm text-muted-foreground">
+            Nenhuma partida disponível em {esporte} agora.
+          </p>
+        ) : (
+          <div className="mt-4 grid gap-3 lg:grid-cols-2 2xl:grid-cols-3">
+            {lista.map((ev) => (
+              <article key={ev.id} className="rounded-xl border border-border bg-card p-4">
+                <p className="flex items-center gap-2 text-[11px] text-muted-foreground">
+                  <span className="truncate">
+                    {ev.pais} · {ev.competicao}
+                  </span>
+                  {ev.aoVivo && (
+                    <span className="ml-auto flex shrink-0 items-center gap-1 text-primary">
+                      <Radio className="h-3.5 w-3.5 animate-pulse" />
+                      {ev.minuto}
+                    </span>
+                  )}
+                </p>
+                <p className="mt-1 text-xs text-muted-foreground">{ev.aoVivo ? "Ao vivo" : ev.inicio}</p>
+
+                <div className="mt-3 space-y-1.5">
+                  {[0, 1].map((i) => (
+                    <div key={i} className="flex items-center gap-3">
+                      <span className="truncate text-sm">{i === 0 ? ev.casa : ev.fora}</span>
+                      {ev.placar && (
+                        <span className="tabular ml-auto grid h-6 w-6 place-items-center rounded bg-secondary text-xs font-semibold">
+                          {ev.placar[i]}
+                        </span>
+                      )}
                     </div>
-                    {ev.placar && (
-                      <div className="tabular ml-auto text-sm font-semibold text-primary lg:ml-6">
-                        <p>{ev.placar[0]}</p>
-                        <p>{ev.placar[1]}</p>
-                      </div>
-                    )}
-                  </div>
+                  ))}
                 </div>
 
-                <div className="grid grid-cols-3 gap-2 lg:w-[24rem]">
+                <p className="mt-4 text-[11px] text-muted-foreground">1x2</p>
+                <div className="mt-1.5 grid grid-cols-3 gap-2">
                   {ev.mercados.map((m) => {
                     const ativo = selecoes.some((s) => s.chave === `${ev.id}:${m.rotulo}`);
                     return (
@@ -272,22 +336,24 @@ function Index() {
                         onClick={() => alternar(ev, m.rotulo, m.odd)}
                         aria-pressed={ativo}
                         className={cn(
-                          "flex items-center justify-between rounded-lg border px-3 py-2 text-sm transition-colors",
+                          "flex items-center justify-between rounded-lg px-3 py-2.5 text-sm transition-colors",
                           ativo
-                            ? "border-primary bg-primary text-primary-foreground"
-                            : "border-border bg-secondary hover:border-primary/50",
+                            ? "bg-primary text-primary-foreground"
+                            : "bg-secondary hover:bg-accent",
                         )}
                       >
-                        <span className={cn("text-xs", ativo ? "" : "text-muted-foreground")}>{m.rotulo}</span>
+                        <span className={cn("text-xs", ativo ? "" : "text-muted-foreground")}>
+                          {m.rotulo === "X" ? "empate" : m.rotulo}
+                        </span>
                         <span className="tabular font-semibold">{m.odd.toFixed(2)}</span>
                       </button>
                     );
                   })}
                 </div>
-              </div>
-            ))
-          )}
-        </div>
+              </article>
+            ))}
+          </div>
+        )}
       </section>
     </BetLayout>
   );
