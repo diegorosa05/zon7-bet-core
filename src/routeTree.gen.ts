@@ -13,13 +13,17 @@ import { Route as IndexRouteImport } from './routes/index'
 import { Route as AccountRouteImport } from './routes/account'
 import { Route as AdminRouteImport } from './routes/admin'
 import { Route as CassinoRouteImport } from './routes/cassino'
+import { Route as DesafiosRouteImport } from './routes/desafios'
 import { Route as EsportesRouteImport } from './routes/esportes'
 import { Route as LoginRouteImport } from './routes/login'
 import { Route as OnboardingRouteImport } from './routes/onboarding'
 import { Route as PesquisaRouteImport } from './routes/pesquisa'
 import { Route as PrivacyRouteImport } from './routes/privacy'
+import { Route as PromocoesRouteImport } from './routes/promocoes'
+import { Route as RecompensasRouteImport } from './routes/recompensas'
 import { Route as RegisterRouteImport } from './routes/register'
 import { Route as ResponsibleGamblingRouteImport } from './routes/responsible-gambling'
+import { Route as RoletaRouteImport } from './routes/roleta'
 import { Route as TermsRouteImport } from './routes/terms'
 import { Route as AccountIndexRouteImport } from './routes/account.index'
 import { Route as AccountHistoryRouteImport } from './routes/account.history'
@@ -61,6 +65,11 @@ const CassinoRoute = CassinoRouteImport.update({
   path: '/cassino',
   getParentRoute: () => rootRouteImport,
 } as any)
+const DesafiosRoute = DesafiosRouteImport.update({
+  id: '/desafios',
+  path: '/desafios',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const EsportesRoute = EsportesRouteImport.update({
   id: '/esportes',
   path: '/esportes',
@@ -86,6 +95,16 @@ const PrivacyRoute = PrivacyRouteImport.update({
   path: '/privacy',
   getParentRoute: () => rootRouteImport,
 } as any)
+const PromocoesRoute = PromocoesRouteImport.update({
+  id: '/promocoes',
+  path: '/promocoes',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const RecompensasRoute = RecompensasRouteImport.update({
+  id: '/recompensas',
+  path: '/recompensas',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const RegisterRoute = RegisterRouteImport.update({
   id: '/register',
   path: '/register',
@@ -94,6 +113,11 @@ const RegisterRoute = RegisterRouteImport.update({
 const ResponsibleGamblingRoute = ResponsibleGamblingRouteImport.update({
   id: '/responsible-gambling',
   path: '/responsible-gambling',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const RoletaRoute = RoletaRouteImport.update({
+  id: '/roleta',
+  path: '/roleta',
   getParentRoute: () => rootRouteImport,
 } as any)
 const TermsRoute = TermsRouteImport.update({
@@ -202,13 +226,17 @@ export interface FileRoutesByFullPath {
   '/account': typeof AccountRouteWithChildren
   '/admin': typeof AdminRouteWithChildren
   '/cassino': typeof CassinoRouteWithChildren
+  '/desafios': typeof DesafiosRoute
   '/esportes': typeof EsportesRouteWithChildren
   '/login': typeof LoginRoute
   '/onboarding': typeof OnboardingRoute
   '/pesquisa': typeof PesquisaRoute
   '/privacy': typeof PrivacyRoute
+  '/promocoes': typeof PromocoesRoute
+  '/recompensas': typeof RecompensasRoute
   '/register': typeof RegisterRoute
   '/responsible-gambling': typeof ResponsibleGamblingRoute
+  '/roleta': typeof RoletaRoute
   '/terms': typeof TermsRoute
   '/account/history': typeof AccountHistoryRoute
   '/account/limits': typeof AccountLimitsRoute
@@ -232,12 +260,16 @@ export interface FileRoutesByFullPath {
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/desafios': typeof DesafiosRoute
   '/login': typeof LoginRoute
   '/onboarding': typeof OnboardingRoute
   '/pesquisa': typeof PesquisaRoute
   '/privacy': typeof PrivacyRoute
+  '/promocoes': typeof PromocoesRoute
+  '/recompensas': typeof RecompensasRoute
   '/register': typeof RegisterRoute
   '/responsible-gambling': typeof ResponsibleGamblingRoute
+  '/roleta': typeof RoletaRoute
   '/terms': typeof TermsRoute
   '/account/history': typeof AccountHistoryRoute
   '/account/limits': typeof AccountLimitsRoute
@@ -265,13 +297,17 @@ export interface FileRoutesById {
   '/account': typeof AccountRouteWithChildren
   '/admin': typeof AdminRouteWithChildren
   '/cassino': typeof CassinoRouteWithChildren
+  '/desafios': typeof DesafiosRoute
   '/esportes': typeof EsportesRouteWithChildren
   '/login': typeof LoginRoute
   '/onboarding': typeof OnboardingRoute
   '/pesquisa': typeof PesquisaRoute
   '/privacy': typeof PrivacyRoute
+  '/promocoes': typeof PromocoesRoute
+  '/recompensas': typeof RecompensasRoute
   '/register': typeof RegisterRoute
   '/responsible-gambling': typeof ResponsibleGamblingRoute
+  '/roleta': typeof RoletaRoute
   '/terms': typeof TermsRoute
   '/account/history': typeof AccountHistoryRoute
   '/account/limits': typeof AccountLimitsRoute
@@ -300,13 +336,17 @@ export interface FileRouteTypes {
     | '/account'
     | '/admin'
     | '/cassino'
+    | '/desafios'
     | '/esportes'
     | '/login'
     | '/onboarding'
     | '/pesquisa'
     | '/privacy'
+    | '/promocoes'
+    | '/recompensas'
     | '/register'
     | '/responsible-gambling'
+    | '/roleta'
     | '/terms'
     | '/account/history'
     | '/account/limits'
@@ -330,12 +370,16 @@ export interface FileRouteTypes {
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
+    | '/desafios'
     | '/login'
     | '/onboarding'
     | '/pesquisa'
     | '/privacy'
+    | '/promocoes'
+    | '/recompensas'
     | '/register'
     | '/responsible-gambling'
+    | '/roleta'
     | '/terms'
     | '/account/history'
     | '/account/limits'
@@ -362,13 +406,17 @@ export interface FileRouteTypes {
     | '/account'
     | '/admin'
     | '/cassino'
+    | '/desafios'
     | '/esportes'
     | '/login'
     | '/onboarding'
     | '/pesquisa'
     | '/privacy'
+    | '/promocoes'
+    | '/recompensas'
     | '/register'
     | '/responsible-gambling'
+    | '/roleta'
     | '/terms'
     | '/account/history'
     | '/account/limits'
@@ -396,13 +444,17 @@ export interface RootRouteChildren {
   AccountRoute: typeof AccountRouteWithChildren
   AdminRoute: typeof AdminRouteWithChildren
   CassinoRoute: typeof CassinoRouteWithChildren
+  DesafiosRoute: typeof DesafiosRoute
   EsportesRoute: typeof EsportesRouteWithChildren
   LoginRoute: typeof LoginRoute
   OnboardingRoute: typeof OnboardingRoute
   PesquisaRoute: typeof PesquisaRoute
   PrivacyRoute: typeof PrivacyRoute
+  PromocoesRoute: typeof PromocoesRoute
+  RecompensasRoute: typeof RecompensasRoute
   RegisterRoute: typeof RegisterRoute
   ResponsibleGamblingRoute: typeof ResponsibleGamblingRoute
+  RoletaRoute: typeof RoletaRoute
   TermsRoute: typeof TermsRoute
 }
 
@@ -434,6 +486,13 @@ declare module '@tanstack/react-router' {
       path: '/cassino'
       fullPath: '/cassino'
       preLoaderRoute: typeof CassinoRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/desafios': {
+      id: '/desafios'
+      path: '/desafios'
+      fullPath: '/desafios'
+      preLoaderRoute: typeof DesafiosRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/esportes': {
@@ -471,6 +530,20 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof PrivacyRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/promocoes': {
+      id: '/promocoes'
+      path: '/promocoes'
+      fullPath: '/promocoes'
+      preLoaderRoute: typeof PromocoesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/recompensas': {
+      id: '/recompensas'
+      path: '/recompensas'
+      fullPath: '/recompensas'
+      preLoaderRoute: typeof RecompensasRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/register': {
       id: '/register'
       path: '/register'
@@ -483,6 +556,13 @@ declare module '@tanstack/react-router' {
       path: '/responsible-gambling'
       fullPath: '/responsible-gambling'
       preLoaderRoute: typeof ResponsibleGamblingRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/roleta': {
+      id: '/roleta'
+      path: '/roleta'
+      fullPath: '/roleta'
+      preLoaderRoute: typeof RoletaRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/terms': {
@@ -707,13 +787,17 @@ const rootRouteChildren: RootRouteChildren = {
   AccountRoute: AccountRouteWithChildren,
   AdminRoute: AdminRouteWithChildren,
   CassinoRoute: CassinoRouteWithChildren,
+  DesafiosRoute: DesafiosRoute,
   EsportesRoute: EsportesRouteWithChildren,
   LoginRoute: LoginRoute,
   OnboardingRoute: OnboardingRoute,
   PesquisaRoute: PesquisaRoute,
   PrivacyRoute: PrivacyRoute,
+  PromocoesRoute: PromocoesRoute,
+  RecompensasRoute: RecompensasRoute,
   RegisterRoute: RegisterRoute,
   ResponsibleGamblingRoute: ResponsibleGamblingRoute,
+  RoletaRoute: RoletaRoute,
   TermsRoute: TermsRoute,
 }
 export const routeTree = rootRouteImport
