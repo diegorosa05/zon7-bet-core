@@ -7,6 +7,7 @@ const abas = [
   { rotulo: "Todos os jogos", to: "/cassino" as const, exact: true },
   { rotulo: "Originais da Zon7", to: "/cassino/originais" as const },
   { rotulo: "Slots em destaque", to: "/cassino/slots" as const },
+  { rotulo: "Crash games", to: "/cassino/crash" as const },
   { rotulo: "Cassino ao vivo", to: "/cassino/ao-vivo" as const },
 ];
 

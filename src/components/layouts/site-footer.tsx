@@ -11,17 +11,26 @@ import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/component
 import { useIsMobile } from "@/hooks/use-mobile";
 
 const linksUteis = [
-  { rotulo: "Crash", to: "/cassino/originais" },
-  { rotulo: "Double", to: "/cassino/originais" },
+  { rotulo: "Crash games", to: "/cassino/crash" },
+  { rotulo: "Slots", to: "/cassino/slots" },
   { rotulo: "Cassino ao vivo", to: "/cassino/ao-vivo" },
   { rotulo: "Esportes ao vivo", to: "/esportes/ao-vivo" },
+  { rotulo: "Promoções", to: "/promocoes" },
+  { rotulo: "Clube VIP", to: "/vip" },
   { rotulo: "Pesquisa", to: "/pesquisa" },
 ] as const;
 
 const sobreNos = [
+  { rotulo: "Sobre nós", to: "/sobre" },
+  { rotulo: "Contato", to: "/contato" },
+  { rotulo: "Central de Ajuda", to: "/suporte" },
+  { rotulo: "Perguntas frequentes", to: "/faq" },
   { rotulo: "Termos de Serviço", to: "/terms" },
   { rotulo: "Política de Privacidade", to: "/privacy" },
+  { rotulo: "Política de Cookies", to: "/cookies" },
   { rotulo: "Jogo Responsável", to: "/responsible-gambling" },
+  { rotulo: "Regras de Apostas", to: "/regras-apostas" },
+  { rotulo: "Política AML/PLD", to: "/aml" },
   { rotulo: "Verificação e KYC", to: "/account/verification" },
   { rotulo: "Limites e autoexclusão", to: "/account/limits" },
   { rotulo: "Central de compliance", to: "/admin" },

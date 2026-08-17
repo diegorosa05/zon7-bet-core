@@ -11,11 +11,14 @@ import { CabecalhoSecao, NavChips } from "@/components/bet/section";
 import { BetLayout } from "@/components/layouts/bet-layout";
 import { Button } from "@/components/ui/button";
 import { eventos, jogos } from "@/data/bet-mock";
+import { jogosCrash, provedores } from "@/data/bet-extra";
+import { promocoes } from "@/data/wallet-mock";
 
 const categorias = [
   { rotulo: "Salão", to: "/" as const },
   { rotulo: "Todos os jogos", to: "/cassino" as const },
   { rotulo: "Slots em destaque", to: "/cassino/slots" as const },
+  { rotulo: "Crash games", to: "/cassino/crash" as const },
   { rotulo: "Cassino ao vivo", to: "/cassino/ao-vivo" as const },
   { rotulo: "Originais da Zon7", to: "/cassino/originais" as const },
   { rotulo: "Jogos ao vivo", to: "/esportes/ao-vivo" as const },
@@ -119,7 +122,14 @@ function Index() {
         {/* Categorias */}
         <NavChips itens={categorias.map((c) => ({ ...c, exact: true }))} />
 
+        {/* Em destaque — esportes */}
+        <section className="space-y-3">
+          <CabecalhoSecao titulo="Em destaque" descricao="Principais partidas do dia" verTodos="/esportes" />
+          <GradeEventos lista={eventos.slice(0, 3)} vazio="Nenhuma partida disponível agora." />
+        </section>
+
         <Carrossel titulo="Populares agora" lista={jogos.slice(0, 8)} verTodos="/cassino" />
+        <Carrossel titulo="Crash games" lista={jogosCrash} verTodos="/cassino/crash" />
         <Carrossel
           titulo="Originais da Zon7"
           lista={jogos.filter((j) => j.categoria === "Originais")}
@@ -140,6 +150,40 @@ function Index() {
         <section className="space-y-3">
           <CabecalhoSecao titulo="Jogos ao vivo" verTodos="/esportes" />
           <GradeEventos lista={eventos.slice(0, 6)} vazio="Nenhuma partida disponível agora." />
+        </section>
+
+        {/* Provedores */}
+        <section className="space-y-3">
+          <CabecalhoSecao titulo="Provedores" descricao="Estúdios disponíveis na plataforma" verTodos="/cassino" />
+          <div className="-mx-1 flex gap-2 overflow-x-auto px-1 pb-1">
+            {provedores.map((p) => (
+              <Link
+                key={p}
+                to="/cassino"
+                className="grid h-16 min-w-[9.5rem] shrink-0 place-items-center rounded-xl border border-border bg-card px-4 text-xs font-semibold text-muted-foreground outline-none transition-colors hover:border-primary/40 hover:text-foreground focus-visible:ring-2 focus-visible:ring-ring"
+              >
+                {p}
+              </Link>
+            ))}
+          </div>
+        </section>
+
+        {/* Promoções */}
+        <section className="space-y-3">
+          <CabecalhoSecao titulo="Promoções" descricao="Bônus e ofertas ativas" verTodos="/promocoes" />
+          <div className="grid gap-3 sm:grid-cols-2 xl:grid-cols-4">
+            {promocoes.map((p) => (
+              <Link
+                key={p.id}
+                to="/promocoes/$id"
+                params={{ id: p.id }}
+                className="rounded-xl border border-border bg-card p-4 outline-none transition-colors hover:border-primary/40 focus-visible:ring-2 focus-visible:ring-ring"
+              >
+                <p className="text-sm font-semibold">{p.titulo}</p>
+                <p className="mt-1 text-xs text-muted-foreground">{p.chamada}</p>
+              </Link>
+            ))}
+          </div>
         </section>
       </div>
     </BetLayout>
