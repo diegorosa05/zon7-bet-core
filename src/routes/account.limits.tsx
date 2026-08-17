@@ -205,7 +205,14 @@ function ControleSlider({
         <Label className="min-w-0 truncate">{rotulo}</Label>
         <span className="tabular shrink-0 text-sm font-medium text-primary">{formatar(valor)}</span>
       </div>
-      <Slider className="mt-4" value={[valor]} min={min} max={max} step={passo} onValueChange={([v]) => onChange(v)} />
+      <Slider
+        className="mt-4"
+        value={[valor]}
+        min={min}
+        max={max}
+        step={passo}
+        onValueChange={(v) => onChange(v[0] ?? valor)}
+      />
       <div className="tabular mt-2 flex justify-between text-xs text-muted-foreground">
         <span>{formatar(min)}</span>
         <span>{formatar(max)}</span>
