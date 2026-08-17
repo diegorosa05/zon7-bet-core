@@ -108,7 +108,7 @@ export const perguntasFrequentes = [
 export const jogosAoVivo: JogoCassino[] = mesasAoVivo.map((m, i) => ({
   id: `lv-${m.id}`,
   nome: m.nome,
-  provedor: "Evolution",
+  provedor: jogoPorNome(m.nome)?.provedor ?? "Pragmatic Play",
   categoria: "Ao vivo",
   rtp: `${96 + (i % 3)}%`,
   quente: i === 0,
