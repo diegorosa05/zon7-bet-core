@@ -35,10 +35,10 @@ const SETORES: SetorRoleta[] = [
   { id: "s1", rotulo: "R$ 5", detalhe: "bônus", tipo: "premio" },
   { id: "s2", rotulo: "100", detalhe: "rodadas grátis", tipo: "jackpot" },
   { id: "s3", rotulo: "10", detalhe: "rodadas grátis", tipo: "premio" },
-  { id: "s4", rotulo: "Ø", detalhe: "tente amanhã", tipo: "vazio" },
+  { id: "s4", rotulo: "Ø", detalhe: "tente de novo", tipo: "vazio" },
   { id: "s5", rotulo: "R$ 20", detalhe: "bônus", tipo: "premio" },
   { id: "s6", rotulo: "5%", detalhe: "cashback", tipo: "premio" },
-  { id: "s7", rotulo: "Ø", detalhe: "tente amanhã", tipo: "vazio" },
+  { id: "s7", rotulo: "Ø", detalhe: "tente de novo", tipo: "vazio" },
   { id: "s8", rotulo: "R$ 10", detalhe: "aposta grátis", tipo: "premio" },
 ];
 
@@ -91,7 +91,7 @@ function Roleta() {
       setVencedor(indice);
       setAberto(true);
       setHistorico((h) => [textoPremio(setor), ...h].slice(0, 5));
-      if (setor.tipo === "vazio") toast("Não foi dessa vez — volte amanhã!");
+      if (setor.tipo === "vazio") toast("Não foi dessa vez — gire novamente!");
       else toast.success(`Você ganhou ${textoPremio(setor)} (demonstração)`);
     }, DURACAO + 120);
   }, [girando]);
@@ -197,7 +197,7 @@ function Roleta() {
             </DialogTitle>
             <DialogDescription className="text-center">
               {vencedor !== null && SETORES[vencedor]!.tipo === "vazio"
-                ? "Volte amanhã para um novo giro grátis."
+                ? "Gire novamente, os giros são ilimitados na demonstração."
                 : `Seu prêmio: ${vencedor !== null ? textoPremio(SETORES[vencedor]!) : ""}.`}
             </DialogDescription>
           </DialogHeader>
