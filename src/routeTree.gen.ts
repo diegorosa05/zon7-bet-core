@@ -25,6 +25,8 @@ import { Route as AccountSecurityRouteImport } from './routes/account.security'
 import { Route as AccountVerificationRouteImport } from './routes/account.verification'
 import { Route as AdminIndexRouteImport } from './routes/admin.index'
 import { Route as AdminUsersRouteImport } from './routes/admin.users'
+import { Route as AdminReviewsIndexRouteImport } from './routes/admin.reviews.index'
+import { Route as AdminReviewsIdRouteImport } from './routes/admin.reviews.$id'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -106,6 +108,16 @@ const AdminUsersRoute = AdminUsersRouteImport.update({
   path: '/users',
   getParentRoute: () => AdminRoute,
 } as any)
+const AdminReviewsIndexRoute = AdminReviewsIndexRouteImport.update({
+  id: '/reviews/',
+  path: '/reviews/',
+  getParentRoute: () => AdminRoute,
+} as any)
+const AdminReviewsIdRoute = AdminReviewsIdRouteImport.update({
+  id: '/reviews/$id',
+  path: '/reviews/$id',
+  getParentRoute: () => AdminRoute,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -124,6 +136,8 @@ export interface FileRoutesByFullPath {
   '/admin/users': typeof AdminUsersRoute
   '/account/': typeof AccountIndexRoute
   '/admin/': typeof AdminIndexRoute
+  '/admin/reviews/$id': typeof AdminReviewsIdRoute
+  '/admin/reviews/': typeof AdminReviewsIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -140,6 +154,8 @@ export interface FileRoutesByTo {
   '/admin/users': typeof AdminUsersRoute
   '/account': typeof AccountIndexRoute
   '/admin': typeof AdminIndexRoute
+  '/admin/reviews/$id': typeof AdminReviewsIdRoute
+  '/admin/reviews': typeof AdminReviewsIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -159,6 +175,8 @@ export interface FileRoutesById {
   '/admin/users': typeof AdminUsersRoute
   '/account/': typeof AccountIndexRoute
   '/admin/': typeof AdminIndexRoute
+  '/admin/reviews/$id': typeof AdminReviewsIdRoute
+  '/admin/reviews/': typeof AdminReviewsIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -179,6 +197,8 @@ export interface FileRouteTypes {
     | '/admin/users'
     | '/account/'
     | '/admin/'
+    | '/admin/reviews/$id'
+    | '/admin/reviews/'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -195,6 +215,8 @@ export interface FileRouteTypes {
     | '/admin/users'
     | '/account'
     | '/admin'
+    | '/admin/reviews/$id'
+    | '/admin/reviews'
   id:
     | '__root__'
     | '/'
@@ -213,6 +235,8 @@ export interface FileRouteTypes {
     | '/admin/users'
     | '/account/'
     | '/admin/'
+    | '/admin/reviews/$id'
+    | '/admin/reviews/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -340,6 +364,20 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AdminUsersRouteImport
       parentRoute: typeof AdminRoute
     }
+    '/admin/reviews/': {
+      id: '/admin/reviews/'
+      path: '/reviews'
+      fullPath: '/admin/reviews/'
+      preLoaderRoute: typeof AdminReviewsIndexRouteImport
+      parentRoute: typeof AdminRoute
+    }
+    '/admin/reviews/$id': {
+      id: '/admin/reviews/$id'
+      path: '/reviews/$id'
+      fullPath: '/admin/reviews/$id'
+      preLoaderRoute: typeof AdminReviewsIdRouteImport
+      parentRoute: typeof AdminRoute
+    }
   }
 }
 
@@ -367,11 +405,15 @@ const AccountRouteWithChildren =
 interface AdminRouteChildren {
   AdminUsersRoute: typeof AdminUsersRoute
   AdminIndexRoute: typeof AdminIndexRoute
+  AdminReviewsIdRoute: typeof AdminReviewsIdRoute
+  AdminReviewsIndexRoute: typeof AdminReviewsIndexRoute
 }
 
 const AdminRouteChildren: AdminRouteChildren = {
   AdminUsersRoute: AdminUsersRoute,
   AdminIndexRoute: AdminIndexRoute,
+  AdminReviewsIdRoute: AdminReviewsIdRoute,
+  AdminReviewsIndexRoute: AdminReviewsIndexRoute,
 }
 
 const AdminRouteWithChildren = AdminRoute._addFileChildren(AdminRouteChildren)
