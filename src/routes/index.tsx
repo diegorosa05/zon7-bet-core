@@ -1,13 +1,60 @@
 import { Link, createFileRoute } from "@tanstack/react-router";
-import { Dot, Flame, Radio, Ticket, Trash2, TrendingUp } from "lucide-react";
+import { Dot, Play, Ticket, Trash2 } from "lucide-react";
 import { useMemo, useState } from "react";
 
+import bannerCassino from "@/assets/banner-cassino.jpg";
+import bannerCrash from "@/assets/banner-crash.jpg";
+import bannerEsportes from "@/assets/banner-esportes.jpg";
 import { BetLayout } from "@/components/layouts/bet-layout";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { atalhos, esportes, eventos, jogos, promocoes, type EventoEsportivo } from "@/data/bet-mock";
+import { esportes, eventos, jogos, type EventoEsportivo, type JogoCassino } from "@/data/bet-mock";
 import { cn } from "@/lib/utils";
+
+const banners = [
+  { id: "b1", src: bannerEsportes, alt: "Apostas esportivas ao vivo na Zon7 BET" },
+  { id: "b2", src: bannerCassino, alt: "Cassino e mesas ao vivo na Zon7 BET" },
+  { id: "b3", src: bannerCrash, alt: "Jogos originais Crash na Zon7 BET" },
+];
+
+function CardJogo({ jogo, prioridade }: { jogo: JogoCassino; prioridade?: boolean }) {
+  return (
+    <Link
+      to="/login"
+      aria-label={`Jogar ${jogo.nome}`}
+      className="group relative block overflow-hidden rounded-xl border border-border bg-card transition-transform hover:-translate-y-1 hover:border-primary/50"
+    >
+      <img
+        src={jogo.capa}
+        alt={jogo.nome}
+        width={640}
+        height={860}
+        loading={prioridade ? "eager" : "lazy"}
+        className="aspect-[3/4] w-full object-cover"
+      />
+      <span className="absolute inset-0 grid place-items-center bg-background/70 opacity-0 transition-opacity group-hover:opacity-100">
+        <span className="grid h-11 w-11 place-items-center rounded-full bg-primary text-primary-foreground">
+          <Play className="h-5 w-5" />
+        </span>
+      </span>
+      <span className="block truncate px-2.5 py-2 text-xs font-medium">{jogo.nome}</span>
+    </Link>
+  );
+}
+
+function Secao({ titulo, jogos: lista }: { titulo: string; jogos: JogoCassino[] }) {
+  return (
+    <section className="mt-10">
+      <h2 className="text-sm font-semibold tracking-wide uppercase">{titulo}</h2>
+      <div className="mt-3 grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-4">
+        {lista.map((j) => (
+          <CardJogo key={j.id} jogo={j} />
+        ))}
+      </div>
+    </section>
+  );
+}
 
 const TITULO = "Zon7 BET — apostas esportivas, cassino ao vivo e jogos originais";
 const DESCRICAO =
