@@ -17,8 +17,10 @@ import { Route as RegisterRouteImport } from './routes/register'
 import { Route as ResponsibleGamblingRouteImport } from './routes/responsible-gambling'
 import { Route as TermsRouteImport } from './routes/terms'
 import { Route as AccountIndexRouteImport } from './routes/account.index'
+import { Route as AccountHistoryRouteImport } from './routes/account.history'
 import { Route as AccountLimitsRouteImport } from './routes/account.limits'
 import { Route as AccountProfileRouteImport } from './routes/account.profile'
+import { Route as AccountSecurityRouteImport } from './routes/account.security'
 import { Route as AccountVerificationRouteImport } from './routes/account.verification'
 
 const IndexRoute = IndexRouteImport.update({
@@ -61,6 +63,11 @@ const AccountIndexRoute = AccountIndexRouteImport.update({
   path: '/',
   getParentRoute: () => AccountRoute,
 } as any)
+const AccountHistoryRoute = AccountHistoryRouteImport.update({
+  id: '/history',
+  path: '/history',
+  getParentRoute: () => AccountRoute,
+} as any)
 const AccountLimitsRoute = AccountLimitsRouteImport.update({
   id: '/limits',
   path: '/limits',
@@ -69,6 +76,11 @@ const AccountLimitsRoute = AccountLimitsRouteImport.update({
 const AccountProfileRoute = AccountProfileRouteImport.update({
   id: '/profile',
   path: '/profile',
+  getParentRoute: () => AccountRoute,
+} as any)
+const AccountSecurityRoute = AccountSecurityRouteImport.update({
+  id: '/security',
+  path: '/security',
   getParentRoute: () => AccountRoute,
 } as any)
 const AccountVerificationRoute = AccountVerificationRouteImport.update({
@@ -85,8 +97,10 @@ export interface FileRoutesByFullPath {
   '/register': typeof RegisterRoute
   '/responsible-gambling': typeof ResponsibleGamblingRoute
   '/terms': typeof TermsRoute
+  '/account/history': typeof AccountHistoryRoute
   '/account/limits': typeof AccountLimitsRoute
   '/account/profile': typeof AccountProfileRoute
+  '/account/security': typeof AccountSecurityRoute
   '/account/verification': typeof AccountVerificationRoute
   '/account/': typeof AccountIndexRoute
 }
@@ -97,8 +111,10 @@ export interface FileRoutesByTo {
   '/register': typeof RegisterRoute
   '/responsible-gambling': typeof ResponsibleGamblingRoute
   '/terms': typeof TermsRoute
+  '/account/history': typeof AccountHistoryRoute
   '/account/limits': typeof AccountLimitsRoute
   '/account/profile': typeof AccountProfileRoute
+  '/account/security': typeof AccountSecurityRoute
   '/account/verification': typeof AccountVerificationRoute
   '/account': typeof AccountIndexRoute
 }
@@ -111,8 +127,10 @@ export interface FileRoutesById {
   '/register': typeof RegisterRoute
   '/responsible-gambling': typeof ResponsibleGamblingRoute
   '/terms': typeof TermsRoute
+  '/account/history': typeof AccountHistoryRoute
   '/account/limits': typeof AccountLimitsRoute
   '/account/profile': typeof AccountProfileRoute
+  '/account/security': typeof AccountSecurityRoute
   '/account/verification': typeof AccountVerificationRoute
   '/account/': typeof AccountIndexRoute
 }
@@ -126,8 +144,10 @@ export interface FileRouteTypes {
     | '/register'
     | '/responsible-gambling'
     | '/terms'
+    | '/account/history'
     | '/account/limits'
     | '/account/profile'
+    | '/account/security'
     | '/account/verification'
     | '/account/'
   fileRoutesByTo: FileRoutesByTo
@@ -138,8 +158,10 @@ export interface FileRouteTypes {
     | '/register'
     | '/responsible-gambling'
     | '/terms'
+    | '/account/history'
     | '/account/limits'
     | '/account/profile'
+    | '/account/security'
     | '/account/verification'
     | '/account'
   id:
@@ -151,8 +173,10 @@ export interface FileRouteTypes {
     | '/register'
     | '/responsible-gambling'
     | '/terms'
+    | '/account/history'
     | '/account/limits'
     | '/account/profile'
+    | '/account/security'
     | '/account/verification'
     | '/account/'
   fileRoutesById: FileRoutesById
@@ -225,6 +249,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AccountIndexRouteImport
       parentRoute: typeof AccountRoute
     }
+    '/account/history': {
+      id: '/account/history'
+      path: '/history'
+      fullPath: '/account/history'
+      preLoaderRoute: typeof AccountHistoryRouteImport
+      parentRoute: typeof AccountRoute
+    }
     '/account/limits': {
       id: '/account/limits'
       path: '/limits'
@@ -239,6 +270,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AccountProfileRouteImport
       parentRoute: typeof AccountRoute
     }
+    '/account/security': {
+      id: '/account/security'
+      path: '/security'
+      fullPath: '/account/security'
+      preLoaderRoute: typeof AccountSecurityRouteImport
+      parentRoute: typeof AccountRoute
+    }
     '/account/verification': {
       id: '/account/verification'
       path: '/verification'
@@ -250,15 +288,19 @@ declare module '@tanstack/react-router' {
 }
 
 interface AccountRouteChildren {
+  AccountHistoryRoute: typeof AccountHistoryRoute
   AccountLimitsRoute: typeof AccountLimitsRoute
   AccountProfileRoute: typeof AccountProfileRoute
+  AccountSecurityRoute: typeof AccountSecurityRoute
   AccountVerificationRoute: typeof AccountVerificationRoute
   AccountIndexRoute: typeof AccountIndexRoute
 }
 
 const AccountRouteChildren: AccountRouteChildren = {
+  AccountHistoryRoute: AccountHistoryRoute,
   AccountLimitsRoute: AccountLimitsRoute,
   AccountProfileRoute: AccountProfileRoute,
+  AccountSecurityRoute: AccountSecurityRoute,
   AccountVerificationRoute: AccountVerificationRoute,
   AccountIndexRoute: AccountIndexRoute,
 }
