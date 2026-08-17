@@ -1,6 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 
 import { GradeEventos } from "@/components/bet/event-card";
+import { CabecalhoSecao } from "@/components/bet/section";
 import { eventos } from "@/data/bet-mock";
 
 const TITULO = "Próximos jogos — agenda de partidas da Zon7 BET";
@@ -23,9 +24,8 @@ export const Route = createFileRoute("/esportes/proximos")({
 function EsportesProximos() {
   const lista = eventos.filter((e) => !e.aoVivo);
   return (
-    <section className="mt-6 mb-6">
-      <h1 className="text-xl font-semibold">Próximos jogos</h1>
-      <p className="mt-1 text-sm text-muted-foreground">Partidas que ainda vão começar.</p>
+    <section className="space-y-4">
+      <CabecalhoSecao nivel="h1" titulo="Próximos jogos" descricao="Partidas que ainda vão começar" />
       <GradeEventos lista={lista} vazio="Nenhuma partida agendada." />
     </section>
   );

@@ -2,6 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { useMemo, useState } from "react";
 
 import { GradeEventos } from "@/components/bet/event-card";
+import { CabecalhoSecao, FaixaChips, chipBase } from "@/components/bet/section";
 import { esportes as modalidades, eventos } from "@/data/bet-mock";
 import { cn } from "@/lib/utils";
 
@@ -31,23 +32,24 @@ function EsportesPopulares() {
   );
 
   return (
-    <section className="mt-6 mb-6">
-      <h1 className="text-xl font-semibold">Esportes</h1>
-      <div className="-mx-1 mt-3 flex gap-2 overflow-x-auto px-1 pb-1">
+    <section className="space-y-4">
+      <CabecalhoSecao nivel="h1" titulo="Esportes" descricao={`${lista.length} partidas`} />
+      <FaixaChips>
         {modalidades.map((e) => (
           <button
             key={e}
             type="button"
             onClick={() => setEsporte(e)}
+            aria-pressed={esporte === e}
             className={cn(
-              "shrink-0 rounded-full px-4 py-2 text-sm font-medium transition-colors",
-              esporte === e ? "bg-primary text-primary-foreground" : "bg-card text-muted-foreground hover:text-foreground",
+              chipBase,
+              esporte === e && "bg-primary text-primary-foreground hover:bg-primary hover:text-primary-foreground",
             )}
           >
             {e}
           </button>
         ))}
-      </div>
+      </FaixaChips>
       <GradeEventos lista={lista} vazio={`Nenhuma partida disponível em ${esporte} agora.`} />
     </section>
   );
