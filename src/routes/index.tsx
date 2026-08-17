@@ -175,26 +175,30 @@ function Index() {
   return (
     <BetLayout aside={boletim}>
       {/* Banners */}
-      <section className="grid gap-3 lg:grid-cols-3">
-        {banners.map((b, i) => (
-          <Link
-            key={b.id}
-            to="/register"
-            className={cn(
-              "overflow-hidden rounded-xl border border-border",
-              i === 0 && "lg:col-span-2",
-            )}
-          >
-            <img
-              src={b.src}
-              alt={b.alt}
-              width={1600}
-              height={640}
-              loading={i === 0 ? "eager" : "lazy"}
-              className={cn("w-full object-cover", i === 0 ? "aspect-[16/6]" : "aspect-[16/6] lg:aspect-[16/6]")}
-            />
-          </Link>
-        ))}
+      <section className="space-y-3">
+        <Link to="/register" className="block overflow-hidden rounded-xl border border-border">
+          <img
+            src={banners[0]!.src}
+            alt={banners[0]!.alt}
+            width={1600}
+            height={500}
+            className="aspect-[16/5] w-full object-cover"
+          />
+        </Link>
+        <div className="grid gap-3 sm:grid-cols-2">
+          {banners.slice(1).map((b) => (
+            <Link key={b.id} to="/register" className="block overflow-hidden rounded-xl border border-border">
+              <img
+                src={b.src}
+                alt={b.alt}
+                width={1600}
+                height={640}
+                loading="lazy"
+                className="aspect-[16/6] w-full object-cover"
+              />
+            </Link>
+          ))}
+        </div>
       </section>
 
       {/* Slots */}
