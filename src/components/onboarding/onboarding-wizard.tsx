@@ -80,7 +80,7 @@ const DOCUMENTOS = [
   { id: "endereco", titulo: "Comprovante de endereço", detalhe: "Emitido nos últimos 90 dias" },
 ];
 
-function CampoErro({ mensagem }: { mensagem?: string }) {
+function CampoErro({ mensagem }: { mensagem?: string | undefined }) {
   if (!mensagem) return null;
   return (
     <p className="flex items-center gap-1.5 text-xs text-destructive">
@@ -336,10 +336,10 @@ export function OnboardingWizard() {
                 <Input
                   id="ob-nome"
                   value={pessoais.nome}
-                  aria-invalid={!!errosCampos.nome}
+                  aria-invalid={!!errosCampos["nome"]}
                   onChange={(e) => setPessoais((p) => ({ ...p, nome: e.target.value }))}
                 />
-                <CampoErro mensagem={errosCampos.nome} />
+                <CampoErro mensagem={errosCampos["nome"]} />
               </div>
               <div className="space-y-2">
                 <Label htmlFor="ob-cpf">CPF</Label>
@@ -348,10 +348,10 @@ export function OnboardingWizard() {
                   inputMode="numeric"
                   placeholder="000.000.000-00"
                   value={pessoais.cpf}
-                  aria-invalid={!!errosCampos.cpf}
+                  aria-invalid={!!errosCampos["cpf"]}
                   onChange={(e) => setPessoais((p) => ({ ...p, cpf: formatarCpf(e.target.value) }))}
                 />
-                <CampoErro mensagem={errosCampos.cpf} />
+                <CampoErro mensagem={errosCampos["cpf"]} />
               </div>
               <div className="space-y-2">
                 <Label htmlFor="ob-nasc">Data de nascimento</Label>
@@ -359,13 +359,13 @@ export function OnboardingWizard() {
                   id="ob-nasc"
                   type="date"
                   value={pessoais.nascimento}
-                  aria-invalid={!!errosCampos.nascimento}
+                  aria-invalid={!!errosCampos["nascimento"]}
                   onChange={(e) => setPessoais((p) => ({ ...p, nascimento: e.target.value }))}
                 />
-                {pessoais.nascimento && idadeEm(pessoais.nascimento) >= 0 && !errosCampos.nascimento ? (
+                {pessoais.nascimento && idadeEm(pessoais.nascimento) >= 0 && !errosCampos["nascimento"] ? (
                   <p className="text-xs text-muted-foreground">{idadeEm(pessoais.nascimento)} anos</p>
                 ) : null}
-                <CampoErro mensagem={errosCampos.nascimento} />
+                <CampoErro mensagem={errosCampos["nascimento"]} />
               </div>
               <div className="space-y-2">
                 <Label htmlFor="ob-email">E-mail</Label>
@@ -373,10 +373,10 @@ export function OnboardingWizard() {
                   id="ob-email"
                   type="email"
                   value={pessoais.email}
-                  aria-invalid={!!errosCampos.email}
+                  aria-invalid={!!errosCampos["email"]}
                   onChange={(e) => setPessoais((p) => ({ ...p, email: e.target.value }))}
                 />
-                <CampoErro mensagem={errosCampos.email} />
+                <CampoErro mensagem={errosCampos["email"]} />
               </div>
               <div className="space-y-2">
                 <Label htmlFor="ob-tel">Telefone</Label>
@@ -385,10 +385,10 @@ export function OnboardingWizard() {
                   inputMode="tel"
                   placeholder="(11) 90000-0000"
                   value={pessoais.telefone}
-                  aria-invalid={!!errosCampos.telefone}
+                  aria-invalid={!!errosCampos["telefone"]}
                   onChange={(e) => setPessoais((p) => ({ ...p, telefone: formatarTelefone(e.target.value) }))}
                 />
-                <CampoErro mensagem={errosCampos.telefone} />
+                <CampoErro mensagem={errosCampos["telefone"]} />
               </div>
             </div>
             <Navegacao
@@ -423,30 +423,30 @@ export function OnboardingWizard() {
                   inputMode="numeric"
                   placeholder="00000-000"
                   value={endereco.cep}
-                  aria-invalid={!!errosCampos.cep}
+                  aria-invalid={!!errosCampos["cep"]}
                   onChange={(e) => setEndereco((p) => ({ ...p, cep: formatarCep(e.target.value) }))}
                 />
-                <CampoErro mensagem={errosCampos.cep} />
+                <CampoErro mensagem={errosCampos["cep"]} />
               </div>
               <div className="space-y-2 sm:col-span-4">
                 <Label htmlFor="ob-log">Logradouro</Label>
                 <Input
                   id="ob-log"
                   value={endereco.logradouro}
-                  aria-invalid={!!errosCampos.logradouro}
+                  aria-invalid={!!errosCampos["logradouro"]}
                   onChange={(e) => setEndereco((p) => ({ ...p, logradouro: e.target.value }))}
                 />
-                <CampoErro mensagem={errosCampos.logradouro} />
+                <CampoErro mensagem={errosCampos["logradouro"]} />
               </div>
               <div className="space-y-2 sm:col-span-2">
                 <Label htmlFor="ob-num">Número</Label>
                 <Input
                   id="ob-num"
                   value={endereco.numero}
-                  aria-invalid={!!errosCampos.numero}
+                  aria-invalid={!!errosCampos["numero"]}
                   onChange={(e) => setEndereco((p) => ({ ...p, numero: e.target.value }))}
                 />
-                <CampoErro mensagem={errosCampos.numero} />
+                <CampoErro mensagem={errosCampos["numero"]} />
               </div>
               <div className="space-y-2 sm:col-span-4">
                 <Label htmlFor="ob-comp">Complemento (opcional)</Label>
@@ -461,25 +461,25 @@ export function OnboardingWizard() {
                 <Input
                   id="ob-bairro"
                   value={endereco.bairro}
-                  aria-invalid={!!errosCampos.bairro}
+                  aria-invalid={!!errosCampos["bairro"]}
                   onChange={(e) => setEndereco((p) => ({ ...p, bairro: e.target.value }))}
                 />
-                <CampoErro mensagem={errosCampos.bairro} />
+                <CampoErro mensagem={errosCampos["bairro"]} />
               </div>
               <div className="space-y-2 sm:col-span-2">
                 <Label htmlFor="ob-cidade">Cidade</Label>
                 <Input
                   id="ob-cidade"
                   value={endereco.cidade}
-                  aria-invalid={!!errosCampos.cidade}
+                  aria-invalid={!!errosCampos["cidade"]}
                   onChange={(e) => setEndereco((p) => ({ ...p, cidade: e.target.value }))}
                 />
-                <CampoErro mensagem={errosCampos.cidade} />
+                <CampoErro mensagem={errosCampos["cidade"]} />
               </div>
               <div className="space-y-2 sm:col-span-1">
                 <Label htmlFor="ob-uf">UF</Label>
                 <Select value={endereco.uf} onValueChange={(v) => setEndereco((p) => ({ ...p, uf: v }))}>
-                  <SelectTrigger id="ob-uf" aria-invalid={!!errosCampos.uf}>
+                  <SelectTrigger id="ob-uf" aria-invalid={!!errosCampos["uf"]}>
                     <SelectValue placeholder="UF" />
                   </SelectTrigger>
                   <SelectContent className="max-h-64">
@@ -490,7 +490,7 @@ export function OnboardingWizard() {
                     ))}
                   </SelectContent>
                 </Select>
-                <CampoErro mensagem={errosCampos.uf} />
+                <CampoErro mensagem={errosCampos["uf"]} />
               </div>
             </div>
             <Navegacao
