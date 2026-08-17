@@ -100,3 +100,12 @@ export const jogosCatalogo: JogoCassino[] = [
   { id: "pg-55022", nome: "Piggy Bonanza", provedor: "Games Global", categoria: "Slots", rtp: "95%", capa: "/__l5e/assets-v1/a72dd38d-a4d7-44d4-9a45-47c53937229b/55022-games-global-piggy-bonanza.png" },
   { id: "pg-53117", nome: "3 Stellar Bonanza", provedor: "Games Global", categoria: "Slots", rtp: "96%", capa: "/__l5e/assets-v1/3d2dcbf4-3c90-476e-9056-6518fdcfa2a5/53117-games-global-3-stellar-bonanza.png" },
 ];
+
+/** Busca a capa oficial pelo slug (fallback: primeira capa do catálogo). */
+export function capaPorSlug(slug: string): string {
+  return (
+    jogosCatalogo.find((j) => j.id.includes(slug) || j.nome.toLowerCase().replace(/[^a-z0-9]+/g, "-") === slug)?.capa ??
+    jogosCatalogo.find((j) => j.nome.toLowerCase().includes(slug.split("-")[0]))?.capa ??
+    jogosCatalogo[0].capa
+  );
+}
