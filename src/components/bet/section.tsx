@@ -17,7 +17,7 @@ export function FaixaChips({ children }: { children: ReactNode }) {
 export function NavChips({
   itens,
 }: {
-  itens: readonly { rotulo: string; to: LinkProps["to"]; exact?: boolean }[];
+  itens: readonly { rotulo: string; to: NonNullable<LinkProps["to"]>; exact?: boolean }[];
 }) {
   return (
     <FaixaChips>
