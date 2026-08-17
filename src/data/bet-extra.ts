@@ -1,21 +1,14 @@
-import capaBlackjack from "@/assets/game-blackjack.jpg";
-import capaCrash from "@/assets/game-crash.jpg";
-import capaDouble from "@/assets/game-double.jpg";
-import capaGates from "@/assets/game-gates.jpg";
-import capaMines from "@/assets/game-mines.jpg";
-import capaPlinko from "@/assets/game-plinko.jpg";
-import capaRoleta from "@/assets/game-roleta.jpg";
-import capaTigre from "@/assets/game-tigre.jpg";
 import type { JogoCassino } from "@/data/bet-mock";
+import { capaPorSlug, jogosCatalogo } from "@/data/game-catalog";
 
 /** Crash games (categoria dedicada do lobby). */
 export const jogosCrash: JogoCassino[] = [
-  { id: "cr-1", nome: "Aviator", provedor: "Spribe", categoria: "Crash", rtp: "97%", quente: true, capa: capaCrash },
-  { id: "cr-2", nome: "JetX", provedor: "SmartSoft", categoria: "Crash", rtp: "97%", capa: capaPlinko },
-  { id: "cr-3", nome: "Spaceman", provedor: "Pragmatic", categoria: "Crash", rtp: "96%", quente: true, capa: capaDouble },
-  { id: "cr-4", nome: "Mines Turbo", provedor: "Zon7 Originals", categoria: "Crash", rtp: "98%", capa: capaMines },
-  { id: "cr-5", nome: "Rocket Zon", provedor: "Zon7 Originals", categoria: "Crash", rtp: "99%", capa: capaGates },
-  { id: "cr-6", nome: "Balloon", provedor: "SmartSoft", categoria: "Crash", rtp: "96%", capa: capaTigre },
+  { id: "cr-1", nome: "Aviator", provedor: "Spribe", categoria: "Crash", rtp: "97%", quente: true, capa: capaPorSlug("aviator-spribe") },
+  { id: "cr-2", nome: "JetX", provedor: "SmartSoft", categoria: "Crash", rtp: "97%", capa: capaPorSlug("jetx") },
+  { id: "cr-3", nome: "Spaceman", provedor: "Pragmatic", categoria: "Crash", rtp: "96%", quente: true, capa: capaPorSlug("spaceman") },
+  { id: "cr-4", nome: "Mines Turbo", provedor: "Zon7 Originals", categoria: "Crash", rtp: "98%", capa: capaPorSlug("mines") },
+  { id: "cr-5", nome: "Rocket Zon", provedor: "Zon7 Originals", categoria: "Crash", rtp: "99%", capa: capaPorSlug("sweet-bonanza") },
+  { id: "cr-6", nome: "Balloon", provedor: "SmartSoft", categoria: "Crash", rtp: "96%", capa: capaPorSlug("gems-bonanza") },
 ];
 
 export const provedores = [
@@ -39,10 +32,10 @@ export interface MesaAoVivo {
 }
 
 export const mesasAoVivo: MesaAoVivo[] = [
-  { id: "mv-1", nome: "Mega Roleta Brasil", dealer: "Camila", limites: "R$ 5 — R$ 10.000", jogadores: 1284, capa: capaRoleta },
-  { id: "mv-2", nome: "Blackjack VIP", dealer: "Rafael", limites: "R$ 25 — R$ 25.000", jogadores: 312, capa: capaBlackjack },
-  { id: "mv-3", nome: "Roleta Relâmpago", dealer: "Bruna", limites: "R$ 2 — R$ 5.000", jogadores: 897, capa: capaRoleta },
-  { id: "mv-4", nome: "Baccarat Speed", dealer: "Diego", limites: "R$ 10 — R$ 50.000", jogadores: 458, capa: capaBlackjack },
+  { id: "mv-1", nome: "Mega Roleta Brasil", dealer: "Camila", limites: "R$ 5 — R$ 10.000", jogadores: 1284, capa: capaPorSlug("sweet-magic") },
+  { id: "mv-2", nome: "Blackjack VIP", dealer: "Rafael", limites: "R$ 25 — R$ 25.000", jogadores: 312, capa: capaPorSlug("bonanza-billion") },
+  { id: "mv-3", nome: "Roleta Relâmpago", dealer: "Bruna", limites: "R$ 2 — R$ 5.000", jogadores: 897, capa: capaPorSlug("sweet-magic") },
+  { id: "mv-4", nome: "Baccarat Speed", dealer: "Diego", limites: "R$ 10 — R$ 50.000", jogadores: 458, capa: capaPorSlug("bonanza-billion") },
 ];
 
 /** Mercados extras exibidos na página de evento. */
@@ -106,3 +99,16 @@ export const perguntasFrequentes = [
   { p: "Como funciona o cashback?", r: "O cashback é calculado sobre a perda líquida semanal e creditado às segundas-feiras em saldo bônus." },
   { p: "Como falo com o suporte?", r: "Pelo chat 24/7 na Central de Ajuda ou pelo e-mail suporte@zon7.bet." },
 ];
+
+/** Mesas ao vivo expostas também como cards de jogo no lobby. */
+export const jogosAoVivo: JogoCassino[] = mesasAoVivo.map((m, i) => ({
+  id: `lv-${m.id}`,
+  nome: m.nome,
+  provedor: "Evolution",
+  categoria: "Ao vivo",
+  rtp: `${96 + (i % 3)}%`,
+  quente: i === 0,
+  capa: m.capa,
+}));
+
+void jogosCatalogo;
