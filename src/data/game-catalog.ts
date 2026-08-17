@@ -1,8 +1,26 @@
 // Catálogo de jogos com capas oficiais (mockup).
 import type { JogoCassino } from "./bet-mock";
 
+/** Jogos próprios da Zon7 (capas oficiais Zon7 Originals). */
+export const jogosZon7Originals: JogoCassino[] = [
+  { id: "zn-mines", nome: "Mines", provedor: "Zon7 Originals", categoria: "Originais", rtp: "97%", quente: true, capa: "/__l5e/assets-v1/929fc5a6-5ada-4161-8703-7f1fe47ccbce/zon7-mines.png" },
+  { id: "zn-crash", nome: "Crash", provedor: "Zon7 Originals", categoria: "Originais", rtp: "99%", quente: true, capa: "/__l5e/assets-v1/a34e62df-00b0-46ca-b182-e8cb8da0a1ba/zon7-crash.png" },
+  { id: "zn-double", nome: "Double", provedor: "Zon7 Originals", categoria: "Originais", rtp: "97%", quente: true, capa: "/__l5e/assets-v1/a49e80c7-103e-4513-bd52-9d03f3210138/zon7-double.png" },
+  { id: "zn-plinko", nome: "Plinko", provedor: "Zon7 Originals", categoria: "Originais", rtp: "98%", capa: "/__l5e/assets-v1/ec07549f-f604-4801-b306-b8d43ab4018e/zon7-plinko.png" },
+  { id: "zn-dice", nome: "Dice", provedor: "Zon7 Originals", categoria: "Originais", rtp: "99%", capa: "/__l5e/assets-v1/ce70139d-d771-4103-a03d-db0a97a99c27/zon7-dice.png" },
+  { id: "zn-limbo", nome: "Limbo", provedor: "Zon7 Originals", categoria: "Originais", rtp: "99%", capa: "/__l5e/assets-v1/7bfca56b-025d-4f54-86b9-030f81c38a65/zon7-limbo.png" },
+  { id: "zn-tower", nome: "Tower", provedor: "Zon7 Originals", categoria: "Originais", rtp: "96%", capa: "/__l5e/assets-v1/d9d4ae46-3173-4d40-80a9-5eb9fdb8ac2b/zon7-tower.png" },
+  { id: "zn-slide", nome: "Slide", provedor: "Zon7 Originals", categoria: "Originais", rtp: "97%", capa: "/__l5e/assets-v1/824170be-f6a8-4f58-8167-9221679867b3/zon7-slide.png" },
+  { id: "zn-coin-flip", nome: "Coin Flip", provedor: "Zon7 Originals", categoria: "Originais", rtp: "98%", capa: "/__l5e/assets-v1/47604ead-40e7-4a2e-a6e5-0b1bbce5863c/zon7-coin-flip.png" },
+  { id: "zn-fruit-slice", nome: "Fruit Slice", provedor: "Zon7 Originals", categoria: "Originais", rtp: "96%", capa: "/__l5e/assets-v1/8ab7c87d-405e-414d-8e6d-d58df5b8d009/zon7-fruit-slice.png" },
+  { id: "zn-fortune-double", nome: "Fortune Double", provedor: "Zon7 Originals", categoria: "Originais", rtp: "97%", capa: "/__l5e/assets-v1/8040a3a6-a962-4a3d-a3d7-2fabc023ce29/zon7-fortune-double.png" },
+  { id: "zn-fortune-wheel", nome: "Fortune Wheel", provedor: "Zon7 Originals", categoria: "Originais", rtp: "98%", capa: "/__l5e/assets-v1/e769a99d-6a2b-448d-84e2-d8fc557c9783/zon7-fortune-wheel.png" },
+  { id: "zn-crash-v2", nome: "Crash V2", provedor: "Zon7 Originals", categoria: "Originais", rtp: "99%", capa: "/__l5e/assets-v1/bfc25455-51c8-4af0-88d8-93a29a950f9d/zon7-crash-v2.png" },
+  { id: "zn-mines-classic", nome: "Mines Classic", provedor: "Zon7 Originals", categoria: "Originais", rtp: "96%", capa: "/__l5e/assets-v1/021c979d-3c9b-436d-9cf2-71f10650c617/zon7-mines-classic.png" },
+];
+
 export const jogosCatalogo: JogoCassino[] = [
-  { id: "pg-8000", nome: "Mines", provedor: "Jonbet Originals", categoria: "Originais", rtp: "95%", quente: true, capa: "/__l5e/assets-v1/4d82631f-be56-4dbe-bf06-bad4ad07ce06/mines-001.png" },
+  ...jogosZon7Originals,
   { id: "pg-63156", nome: "Mines Football", provedor: "Tada", categoria: "Originais", rtp: "96%", capa: "/__l5e/assets-v1/265ac4a5-33ce-400f-bbeb-d7372e3362a7/mines-football-002.png" },
   { id: "pg-62270", nome: "Sweet Magic", provedor: "Tada", categoria: "Slots", rtp: "97%", capa: "/__l5e/assets-v1/801dec98-5bdc-434a-997f-18223dc5ffe2/sweet-magic-003.png" },
   { id: "pg-54060", nome: "Spooktacular Bonanza", provedor: "Booming Games", categoria: "Slots", rtp: "98%", capa: "/__l5e/assets-v1/1ab06118-f7f4-4a66-88f5-7fa7a8348656/spooktacular-bonanza-004.png" },
