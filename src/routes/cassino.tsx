@@ -1,5 +1,6 @@
-import { Link, Outlet, createFileRoute } from "@tanstack/react-router";
+import { Outlet, createFileRoute } from "@tanstack/react-router";
 
+import { NavChips } from "@/components/bet/section";
 import { BetLayout } from "@/components/layouts/bet-layout";
 
 const abas = [
@@ -16,19 +17,10 @@ export const Route = createFileRoute("/cassino")({
 function CassinoLayout() {
   return (
     <BetLayout>
-      <div className="-mx-1 flex gap-2 overflow-x-auto px-1 pb-1">
-        {abas.map((a) => (
-          <Link
-            key={a.to + a.rotulo}
-            to={a.to}
-            activeOptions={{ exact: a.exact ?? false }}
-            className="shrink-0 rounded-lg bg-card px-4 py-2.5 text-sm font-medium text-muted-foreground transition-colors hover:text-foreground data-[status=active]:bg-[var(--brand-blue)] data-[status=active]:text-primary-foreground"
-          >
-            {a.rotulo}
-          </Link>
-        ))}
+      <div className="space-y-5">
+        <NavChips itens={abas} />
+        <Outlet />
       </div>
-      <Outlet />
     </BetLayout>
   );
 }
