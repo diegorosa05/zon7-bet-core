@@ -1,5 +1,5 @@
 import { Link } from "@tanstack/react-router";
-import { Home, Search, Spade, Trophy, User } from "lucide-react";
+import { Home, Search, Spade, Trophy, User, Wallet } from "lucide-react";
 
 import { useAuth } from "@/lib/auth";
 
@@ -10,7 +10,9 @@ export function MobileNav() {
     { to: "/" as const, rotulo: "Início", icone: Home, exato: true },
     { to: "/cassino" as const, rotulo: "Cassino", icone: Spade },
     { to: "/esportes" as const, rotulo: "Esportes", icone: Trophy },
-    { to: "/pesquisa" as const, rotulo: "Pesquisa", icone: Search },
+    user
+      ? { to: "/carteira" as const, rotulo: "Carteira", icone: Wallet }
+      : { to: "/pesquisa" as const, rotulo: "Pesquisa", icone: Search },
     user
       ? {
           to: (user.role === "compliance" ? "/admin" : "/account") as "/admin" | "/account",
