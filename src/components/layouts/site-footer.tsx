@@ -34,20 +34,19 @@ const contatos = [
 ];
 
 const selos = [
-  { src: govbr.url, alt: "gov.br", h: "h-5" },
+  { src: govbr.url, alt: "gov.br", h: "h-6" },
   { src: consumidor.url, alt: "consumidor.gov.br", h: "h-5" },
   { src: conar.url, alt: "CONAR", h: "h-6" },
-  { src: pix.url, alt: "Pix — powered by Banco Central", h: "h-7" },
 ];
 
 export function SiteFooter() {
   return (
-    <footer className="border-t border-border bg-sidebar px-4 pt-10 pb-8 text-sm sm:px-8">
-      <div className="mx-auto grid max-w-7xl gap-10 lg:grid-cols-[1.1fr_0.7fr_0.9fr_1.6fr]">
+    <footer className="border-t border-border bg-sidebar px-4 pt-12 pb-8 text-sm sm:px-8">
+      <div className="mx-auto grid max-w-6xl gap-10 lg:grid-cols-[1fr_0.6fr_0.9fr_1.8fr]">
         <div>
           <Logo />
-          <p className="mt-4 max-w-[16rem] text-xs leading-relaxed text-muted-foreground">
-            Zon7 BET — jogo 100% comprovadamente justo e transparente, com compliance, KYC e auditoria em cada etapa.
+          <p className="mt-5 max-w-[15rem] text-[13px] leading-relaxed text-muted-foreground">
+            Zon7 BET — jogo 100% comprovadamente justo e transparente.
           </p>
         </div>
 
@@ -78,12 +77,30 @@ export function SiteFooter() {
         </nav>
 
         <div>
-          <div className="flex flex-wrap items-center gap-x-6 gap-y-4">
+          <div className="flex flex-wrap items-center gap-x-7 gap-y-5">
             {selos.map((s) => (
-              <img key={s.alt} src={s.src} alt={s.alt} loading="lazy" className={`${s.h} w-auto opacity-90`} />
+              <img
+                key={s.alt}
+                src={s.src}
+                alt={s.alt}
+                loading="lazy"
+                className={`${s.h} w-auto brightness-0 invert`}
+              />
             ))}
-            <span className="grid h-8 w-8 place-items-center rounded-full border border-border text-[11px] font-semibold">
+          </div>
+          <div className="mt-5 flex flex-wrap items-center gap-x-6 gap-y-4">
+            <img src={pix.url} alt="Pix" loading="lazy" className="h-7 w-auto brightness-0 invert" />
+            <span className="grid h-8 w-8 place-items-center rounded-full border-2 border-foreground text-[10px] font-bold">
               +18
+            </span>
+            <span className="inline-flex items-center gap-2 rounded-md bg-secondary px-3 py-1.5 text-xs">
+              <span className="grid h-4 w-4 place-items-center rounded-full bg-primary text-[9px] font-bold text-primary-foreground">
+                ✓
+              </span>
+              <span className="leading-tight">
+                <span className="block text-[10px] text-muted-foreground">Verificada por</span>
+                <span className="block font-semibold">ReclameAQUI</span>
+              </span>
             </span>
           </div>
 
