@@ -26,8 +26,6 @@ const topo = [
   { rotulo: "Cassino", href: "#cassino" },
   { rotulo: "Esportes", href: "#esportes" },
   { rotulo: "Ao vivo", href: "#esportes" },
-  { rotulo: "Crash", href: "#originais" },
-  { rotulo: "Promoções", href: "#promocoes" },
 ];
 
 const grupos = [
