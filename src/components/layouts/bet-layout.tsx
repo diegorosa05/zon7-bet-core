@@ -1,5 +1,7 @@
 import { Link } from "@tanstack/react-router";
 import {
+  ArrowDownToLine,
+  ArrowUpFromLine,
   Bomb,
   CalendarClock,
   ChevronDown,
@@ -10,6 +12,7 @@ import {
   Gift,
   Menu,
   Radio,
+  Receipt,
   Rocket,
   Search,
   Spade,
@@ -17,6 +20,7 @@ import {
   Ticket,
   Trophy,
   Users,
+  Wallet,
 } from "lucide-react";
 import type { ReactNode } from "react";
 
@@ -97,14 +101,14 @@ function NavLateral() {
     <ScrollArea className="h-full">
       <div className="grid grid-cols-3 border-b border-sidebar-border py-3">
         {atalhosRapidos.map((a) => (
-          <button
+          <Link
             key={a.rotulo}
-            type="button"
-            className="flex flex-col items-center gap-1.5 px-1 text-[11px] text-muted-foreground transition-colors hover:text-foreground"
+            to={a.to}
+            className="flex flex-col items-center gap-1.5 px-1 text-[11px] text-muted-foreground outline-none transition-colors hover:text-foreground focus-visible:ring-2 focus-visible:ring-ring data-[status=active]:text-primary"
           >
             <a.icone className="h-5 w-5 text-primary" />
             {a.rotulo}
-          </button>
+          </Link>
         ))}
       </div>
 
@@ -188,15 +192,24 @@ export function BetLayout({ children, aside }: { children: ReactNode; aside?: Re
           <div className="ml-auto flex items-center gap-3">
             {ready && user ? (
               <>
-                <span className="tabular hidden rounded-full border border-border bg-card px-3 py-1.5 text-sm sm:inline">
-                  R$ 0,00
-                </span>
+                <Link
+                  to="/carteira"
+                  className="tabular hidden rounded-full border border-border bg-card px-3 py-1.5 text-sm outline-none hover:border-primary/40 focus-visible:ring-2 focus-visible:ring-ring sm:inline"
+                >
+                  R$ 1.284,50
+                </Link>
                 <Button asChild size="sm" className="rounded-full px-5 font-semibold">
+                  <Link to="/carteira/deposito">Depositar</Link>
+                </Button>
+                <Button asChild size="sm" variant="outline" className="rounded-full px-4">
                   <Link to={user.role === "compliance" ? "/admin" : "/account"}>Minha conta</Link>
                 </Button>
               </>
             ) : (
               <>
+                <Button asChild variant="ghost" size="sm" className="hidden sm:inline-flex">
+                  <Link to="/promocoes">Promoções</Link>
+                </Button>
                 <Button asChild variant="ghost" size="sm">
                   <Link to="/login">Entrar</Link>
                 </Button>
