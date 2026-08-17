@@ -50,8 +50,8 @@ function RegisterPage() {
     setEnviando(true);
     setTimeout(() => {
       entrar({ email: form.email, nome: form.nome, role: "apostador" });
-      toast.success("Conta criada. Conclua a verificação de identidade.");
-      navigate({ to: "/account/verification" });
+      toast.success("Conta criada. Conclua o onboarding.");
+      navigate({ to: "/onboarding" });
     }, 700);
   }
 
