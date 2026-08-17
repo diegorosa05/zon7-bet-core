@@ -1,4 +1,4 @@
-import { Link } from "@tanstack/react-router";
+import { Link, type LinkProps } from "@tanstack/react-router";
 import { ChevronRight, Play } from "lucide-react";
 
 import type { JogoCassino } from "@/data/bet-mock";
@@ -55,17 +55,14 @@ export function Carrossel({
 }: {
   titulo: string;
   lista: JogoCassino[];
-  verTodos?: { to: string };
+  verTodos?: LinkProps["to"];
 }) {
   return (
     <section className="mt-8">
       <div className="flex items-center justify-between gap-3">
         <h2 className="text-base font-semibold">{titulo}</h2>
         {verTodos && (
-          <Link
-            to={verTodos.to}
-            className="flex items-center text-xs text-muted-foreground hover:text-foreground"
-          >
+          <Link to={verTodos} className="flex items-center text-xs text-muted-foreground hover:text-foreground">
             Ver todos <ChevronRight className="h-4 w-4" />
           </Link>
         )}
