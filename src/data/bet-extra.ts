@@ -1,14 +1,7 @@
 import type { JogoCassino } from "@/data/bet-mock";
 import { capaPorNome, jogoPorNome } from "@/data/game-catalog";
 
-const crashNomes = [
-  "Mines",
-  "Mines+",
-  "Mystic Mines",
-  "Mines Gold",
-  "Mines Supreme",
-  "4 Bonuses Bonanza - Plinko Spin",
-];
+const crashNomes = ["Crash", "Crash V2", "Limbo", "Double", "Dice", "Plinko"];
 
 /** Jogos instantâneos / crash (categoria dedicada do lobby). */
 export const jogosCrash: JogoCassino[] = crashNomes.flatMap((nome, i) => {
