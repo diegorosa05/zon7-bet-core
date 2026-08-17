@@ -2,6 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { useMemo, useState } from "react";
 
 import { GradeJogos } from "@/components/bet/game-card";
+import { CabecalhoSecao } from "@/components/bet/section";
 import { Input } from "@/components/ui/input";
 import { jogos } from "@/data/bet-mock";
 
@@ -31,18 +32,21 @@ function CassinoTodos() {
   }, [busca]);
 
   return (
-    <section className="mt-6">
-      <div className="flex flex-wrap items-center justify-between gap-3">
-        <h1 className="text-xl font-semibold">Todos os jogos</h1>
-        <Input
-          value={busca}
-          onChange={(e) => setBusca(e.target.value)}
-          placeholder="Buscar jogo ou provedor"
-          aria-label="Buscar jogo ou provedor"
-          className="h-9 w-full sm:w-72"
-        />
-      </div>
-      <p className="mt-1 text-sm text-muted-foreground">{lista.length} jogos disponíveis</p>
+    <section className="space-y-4">
+      <CabecalhoSecao
+        nivel="h1"
+        titulo="Todos os jogos"
+        descricao={`${lista.length} jogos disponíveis`}
+        acao={
+          <Input
+            value={busca}
+            onChange={(e) => setBusca(e.target.value)}
+            placeholder="Buscar jogo ou provedor"
+            aria-label="Buscar jogo ou provedor"
+            className="h-9 w-44 sm:w-72"
+          />
+        }
+      />
       <GradeJogos lista={lista} />
     </section>
   );

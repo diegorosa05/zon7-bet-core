@@ -22,7 +22,9 @@ export function EmptyState({
         <Icone className="h-5 w-5" />
       </div>
       <p className="mt-4 text-sm font-medium">{titulo}</p>
-      {descricao ? <p className="mt-1 max-w-sm text-sm text-muted-foreground">{descricao}</p> : null}
+      {descricao ? (
+        <p className="mt-1 max-w-sm text-sm text-muted-foreground">{descricao}</p>
+      ) : null}
       {acao ? <div className="mt-5">{acao}</div> : null}
     </div>
   );

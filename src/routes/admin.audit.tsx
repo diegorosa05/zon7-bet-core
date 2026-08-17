@@ -13,7 +13,8 @@ import type { AuditEvent } from "@/data/types";
 import { formatarData } from "@/lib/format";
 
 const TITULO = "Trilha de auditoria — Zon7 BET Compliance";
-const DESCRICAO = "Registro imutável de acessos, decisões e alterações de configuração da plataforma.";
+const DESCRICAO =
+  "Registro imutável de acessos, decisões e alterações de configuração da plataforma.";
 
 export const Route = createFileRoute("/admin/audit")({
   head: () => ({
@@ -41,7 +42,9 @@ function AuditPage() {
     {
       chave: "em",
       titulo: "Data",
-      render: (a) => <span className="tabular text-sm whitespace-nowrap">{formatarData(a.em)}</span>,
+      render: (a) => (
+        <span className="tabular text-sm whitespace-nowrap">{formatarData(a.em)}</span>
+      ),
     },
     {
       chave: "ator",
@@ -73,7 +76,11 @@ function AuditPage() {
         titulo="Auditoria"
         descricao="Eventos encadeados por hash — nenhum registro pode ser editado ou removido."
         acoes={
-          <Button variant="outline" size="sm" onClick={() => toast.success("Exportação solicitada")}>
+          <Button
+            variant="outline"
+            size="sm"
+            onClick={() => toast.success("Exportação solicitada")}
+          >
             <Download className="h-4 w-4" />
             Exportar
           </Button>
@@ -83,7 +90,8 @@ function AuditPage() {
       <div className="flex items-start gap-3 rounded-xl border border-primary/25 bg-primary/5 p-4">
         <ShieldCheck className="mt-0.5 h-4 w-4 shrink-0 text-primary" />
         <p className="text-sm text-muted-foreground">
-          Retenção de 5 anos. Cada evento carrega o hash do anterior, permitindo verificação de integridade da cadeia.
+          Retenção de 5 anos. Cada evento carrega o hash do anterior, permitindo verificação de
+          integridade da cadeia.
         </p>
       </div>
 
@@ -110,7 +118,8 @@ function AuditPage() {
       )}
 
       <p className="text-xs text-muted-foreground">
-        <StatusBadge valor="aprovado" rotulo="Cadeia íntegra" /> Última verificação automática há 12 minutos.
+        <StatusBadge valor="aprovado" rotulo="Cadeia íntegra" /> Última verificação automática há 12
+        minutos.
       </p>
     </>
   );

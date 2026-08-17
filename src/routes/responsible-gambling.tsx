@@ -5,7 +5,8 @@ import { PublicLayout } from "@/components/layouts/public-layout";
 import { Button } from "@/components/ui/button";
 
 const TITULO = "Jogo Responsável — Zon7 BET";
-const DESCRICAO = "Ferramentas de limite, pausa e autoexclusão, sinais de alerta e canais de apoio ao apostador.";
+const DESCRICAO =
+  "Ferramentas de limite, pausa e autoexclusão, sinais de alerta e canais de apoio ao apostador.";
 
 export const Route = createFileRoute("/responsible-gambling")({
   head: () => ({
@@ -20,10 +21,26 @@ export const Route = createFileRoute("/responsible-gambling")({
 });
 
 const ferramentas = [
-  { icone: HandCoins, titulo: "Limite de depósito", texto: "Teto diário, semanal ou mensal definido por você. Reduções valem na hora." },
-  { icone: ShieldOff, titulo: "Limite de perda", texto: "Interrompe automaticamente a atividade ao atingir o valor configurado." },
-  { icone: Clock, titulo: "Tempo de sessão", texto: "Alertas periódicos e encerramento automático após o tempo escolhido." },
-  { icone: PauseCircle, titulo: "Pausa e autoexclusão", texto: "Pausas de 7 a 180 dias ou autoexclusão por prazo indeterminado." },
+  {
+    icone: HandCoins,
+    titulo: "Limite de depósito",
+    texto: "Teto diário, semanal ou mensal definido por você. Reduções valem na hora.",
+  },
+  {
+    icone: ShieldOff,
+    titulo: "Limite de perda",
+    texto: "Interrompe automaticamente a atividade ao atingir o valor configurado.",
+  },
+  {
+    icone: Clock,
+    titulo: "Tempo de sessão",
+    texto: "Alertas periódicos e encerramento automático após o tempo escolhido.",
+  },
+  {
+    icone: PauseCircle,
+    titulo: "Pausa e autoexclusão",
+    texto: "Pausas de 7 a 180 dias ou autoexclusão por prazo indeterminado.",
+  },
 ];
 
 const sinais = [
@@ -38,11 +55,14 @@ function ResponsibleGamblingPage() {
     <PublicLayout>
       <section className="border-b border-border">
         <div className="mx-auto w-full max-w-6xl px-4 py-16 sm:px-6">
-          <p className="text-xs tracking-wide text-muted-foreground uppercase">Proteção ao apostador</p>
+          <p className="text-xs tracking-wide text-muted-foreground uppercase">
+            Proteção ao apostador
+          </p>
           <h1 className="mt-3 max-w-2xl text-3xl font-semibold sm:text-4xl">Jogo responsável</h1>
           <p className="mt-5 max-w-2xl text-muted-foreground">
-            Apostar deve ser entretenimento, nunca fonte de renda. A Zon7 BET disponibiliza controles diretos na conta e
-            monitora sinais de comportamento de risco de forma contínua.
+            Apostar deve ser entretenimento, nunca fonte de renda. A Zon7 BET disponibiliza
+            controles diretos na conta e monitora sinais de comportamento de risco de forma
+            contínua.
           </p>
           <Button asChild className="mt-8">
             <Link to="/account/limits">Configurar meus limites</Link>
@@ -81,11 +101,13 @@ function ResponsibleGamblingPage() {
           <div className="min-w-0 rounded-2xl border border-border bg-card p-6">
             <h2 className="text-lg font-semibold">Onde buscar apoio</h2>
             <p className="mt-3 text-sm text-muted-foreground">
-              Se o jogo deixou de ser diversão, procure ajuda especializada. No Brasil, o CVV atende 24 horas pelo
-              telefone 188, e grupos de Jogadores Anônimos oferecem suporte gratuito e sigiloso.
+              Se o jogo deixou de ser diversão, procure ajuda especializada. No Brasil, o CVV atende
+              24 horas pelo telefone 188, e grupos de Jogadores Anônimos oferecem suporte gratuito e
+              sigiloso.
             </p>
             <p className="mt-3 text-sm text-muted-foreground">
-              Você também pode solicitar autoexclusão imediata pela sua conta, sem contato com atendimento.
+              Você também pode solicitar autoexclusão imediata pela sua conta, sem contato com
+              atendimento.
             </p>
             <Button asChild variant="outline" className="mt-6">
               <Link to="/account/limits">Solicitar autoexclusão</Link>

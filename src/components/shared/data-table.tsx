@@ -11,7 +11,14 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
+import {
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableRow,
+} from "@/components/ui/table";
 import { cn } from "@/lib/utils";
 
 export interface Coluna<T> {
@@ -165,7 +172,9 @@ export function DataTable<T>({
                   .filter((c) => !c.ocultarNoMobile)
                   .map((coluna) => (
                     <div key={coluna.chave} className="flex items-start justify-between gap-3 py-1">
-                      <span className="shrink-0 text-xs text-muted-foreground">{coluna.titulo}</span>
+                      <span className="shrink-0 text-xs text-muted-foreground">
+                        {coluna.titulo}
+                      </span>
                       <span className="min-w-0 text-right text-sm">{coluna.render(item)}</span>
                     </div>
                   ))}

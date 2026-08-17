@@ -1,6 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 
 import { GradeEventos } from "@/components/bet/event-card";
+import { CabecalhoSecao } from "@/components/bet/section";
 import { eventos } from "@/data/bet-mock";
 
 const TITULO = "Jogos ao vivo — odds em tempo real na Zon7 BET";
@@ -24,9 +25,12 @@ export const Route = createFileRoute("/esportes/ao-vivo")({
 function EsportesAoVivo() {
   const lista = eventos.filter((e) => e.aoVivo);
   return (
-    <section className="mt-6 mb-6">
-      <h1 className="text-xl font-semibold">Jogos ao vivo</h1>
-      <p className="mt-1 text-sm text-muted-foreground">{lista.length} partidas em andamento agora.</p>
+    <section className="space-y-4">
+      <CabecalhoSecao
+        nivel="h1"
+        titulo="Jogos ao vivo"
+        descricao={`${lista.length} partidas em andamento agora`}
+      />
       <GradeEventos lista={lista} vazio="Nenhuma partida ao vivo no momento." />
     </section>
   );

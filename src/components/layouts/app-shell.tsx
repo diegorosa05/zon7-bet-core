@@ -122,7 +122,9 @@ export function AppShell({
                 </DropdownMenuLabel>
                 <DropdownMenuSeparator />
                 <DropdownMenuItem
-                  onClick={() => trocarPapel(user.role === "compliance" ? "apostador" : "compliance")}
+                  onClick={() =>
+                    trocarPapel(user.role === "compliance" ? "apostador" : "compliance")
+                  }
                 >
                   <Repeat className="h-4 w-4" />
                   Alternar para {user.role === "compliance" ? "apostador" : "compliance"}
@@ -136,7 +138,9 @@ export function AppShell({
             </DropdownMenu>
           </header>
 
-          <main className="mx-auto w-full max-w-6xl flex-1 space-y-8 px-4 py-8 sm:px-6">{children}</main>
+          <main className="mx-auto w-full max-w-6xl flex-1 space-y-8 px-4 py-8 sm:px-6">
+            {children}
+          </main>
         </SidebarInset>
       </div>
     </SidebarProvider>

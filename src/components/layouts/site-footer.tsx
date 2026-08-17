@@ -38,23 +38,43 @@ const contatos = [
 ];
 
 const selos = [
-  { src: govbr.url, alt: "gov.br — portal do Governo Federal", href: "https://www.gov.br", h: "h-6" },
+  {
+    src: govbr.url,
+    alt: "gov.br — portal do Governo Federal",
+    href: "https://www.gov.br",
+    h: "h-6",
+  },
   {
     src: consumidor.url,
     alt: "consumidor.gov.br — plataforma de defesa do consumidor",
     href: "https://www.consumidor.gov.br",
     h: "h-5",
   },
-  { src: conar.url, alt: "CONAR — Conselho Nacional de Autorregulamentação Publicitária", href: "https://www.conar.org.br", h: "h-6" },
+  {
+    src: conar.url,
+    alt: "CONAR — Conselho Nacional de Autorregulamentação Publicitária",
+    href: "https://www.conar.org.br",
+    h: "h-6",
+  },
 ];
 
 const anelFoco =
   "rounded-sm outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-sidebar";
 
-function Secao({ titulo, children, rotuloNav }: { titulo: string; children: ReactNode; rotuloNav?: string }) {
+function Secao({
+  titulo,
+  children,
+  rotuloNav,
+}: {
+  titulo: string;
+  children: ReactNode;
+  rotuloNav?: string;
+}) {
   const isMobile = useIsMobile();
   const cabecalho = (
-    <h2 className="text-[11px] font-semibold tracking-widest text-foreground/90 uppercase">{titulo}</h2>
+    <h2 className="text-[11px] font-semibold tracking-widest text-foreground/90 uppercase">
+      {titulo}
+    </h2>
   );
 
   if (!isMobile) {
@@ -131,14 +151,24 @@ export function SiteFooter() {
                   rel="noreferrer noopener"
                   className={`inline-flex min-h-11 items-center ${anelFoco}`}
                 >
-                  <img src={s.src} alt={s.alt} loading="lazy" className={`${s.h} w-auto brightness-0 invert`} />
+                  <img
+                    src={s.src}
+                    alt={s.alt}
+                    loading="lazy"
+                    className={`${s.h} w-auto brightness-0 invert`}
+                  />
                 </a>
               </li>
             ))}
           </ul>
 
           <div className="mt-4 flex flex-wrap items-center gap-x-6 gap-y-4">
-            <img src={pix.url} alt="Pix — pagamento instantâneo" loading="lazy" className="h-7 w-auto brightness-0 invert" />
+            <img
+              src={pix.url}
+              alt="Pix — pagamento instantâneo"
+              loading="lazy"
+              className="h-7 w-auto brightness-0 invert"
+            />
             <span className="grid h-9 w-9 shrink-0 place-items-center rounded-full border-2 border-foreground text-[10px] font-bold text-foreground">
               <span aria-hidden="true">+18</span>
               <span className="sr-only">Proibido para menores de 18 anos</span>
@@ -159,13 +189,14 @@ export function SiteFooter() {
 
           <div className="mt-6 space-y-4 text-xs leading-relaxed break-words text-muted-foreground">
             <p>
-              Zon7 BET é uma marca e plataforma de titularidade da Zon7 Entertainment Ltda., operada com exclusividade
-              no Brasil, inscrita no CNPJ/MF sob o nº 56.431.248/0001-61, com endereço para correspondência: Avenida
-              Paulista, 726, Sala/Conjunto 1202, Bela Vista, São Paulo – SP, 01310-910.
+              Zon7 BET é uma marca e plataforma de titularidade da Zon7 Entertainment Ltda., operada
+              com exclusividade no Brasil, inscrita no CNPJ/MF sob o nº 56.431.248/0001-61, com
+              endereço para correspondência: Avenida Paulista, 726, Sala/Conjunto 1202, Bela Vista,
+              São Paulo – SP, 01310-910.
             </p>
             <p>
-              A Zon7 BET opera sob a Autorização SPA/MF nº 471, datada de 10 de março de 2025, uma licença oficial do
-              Governo Brasileiro.
+              A Zon7 BET opera sob a Autorização SPA/MF nº 471, datada de 10 de março de 2025, uma
+              licença oficial do Governo Brasileiro.
             </p>
             <p>
               A Zon7 BET se compromete com a proteção dos direitos do consumidor. Acesse aqui o{" "}
@@ -175,42 +206,52 @@ export function SiteFooter() {
               .
             </p>
             <p>
-              Jogue com responsabilidade. A participação frequente pode causar transtornos relacionados a jogos de
-              apostas, como dependência, endividamento e impactos à saúde. Para orientações e apoio, acesse nossa
-              página de{" "}
-              <Link to="/responsible-gambling" className={`font-semibold text-foreground underline ${anelFoco}`}>
+              Jogue com responsabilidade. A participação frequente pode causar transtornos
+              relacionados a jogos de apostas, como dependência, endividamento e impactos à saúde.
+              Para orientações e apoio, acesse nossa página de{" "}
+              <Link
+                to="/responsible-gambling"
+                className={`font-semibold text-foreground underline ${anelFoco}`}
+              >
                 Jogo Responsável
               </Link>
               .
             </p>
             <p>
-              É proibido utilizar recursos de programas assistenciais federais como Bolsa Família e Benefício de
-              Prestação Continuada (LOAS) para realizar apostas. Cumprindo a IN SPA/MF nº 22/2025 e a diretriz do STF,
-              impedimos o cadastro e o acesso de beneficiários.
+              É proibido utilizar recursos de programas assistenciais federais como Bolsa Família e
+              Benefício de Prestação Continuada (LOAS) para realizar apostas. Cumprindo a IN SPA/MF
+              nº 22/2025 e a diretriz do STF, impedimos o cadastro e o acesso de beneficiários.
             </p>
-            <p>Proibido para menores de 18 anos. Não compartilhe o conteúdo desta plataforma com menores de idade.</p>
+            <p>
+              Proibido para menores de 18 anos. Não compartilhe o conteúdo desta plataforma com
+              menores de idade.
+            </p>
           </div>
         </div>
       </div>
 
       <div className="mt-8 border-t border-border sm:mt-10 sm:pt-8">
-      <Secao titulo="Contatos" rotuloNav="Canais de atendimento">
-        <ul className="mx-auto grid max-w-7xl gap-5 text-xs sm:grid-cols-3 sm:text-center lg:grid-cols-7">
-          {contatos.map((c) => (
-            <li key={c.titulo} className="min-w-0">
-              <p className="text-muted-foreground">{c.titulo}</p>
-              {c.linhas.map((linha, i) => (
-                <p
-                  key={linha}
-                  className={i === 0 ? "mt-1 font-semibold break-words text-foreground" : "break-words text-muted-foreground"}
-                >
-                  {linha}
-                </p>
-              ))}
-            </li>
-          ))}
-        </ul>
-      </Secao>
+        <Secao titulo="Contatos" rotuloNav="Canais de atendimento">
+          <ul className="mx-auto grid max-w-7xl gap-5 text-xs sm:grid-cols-3 sm:text-center lg:grid-cols-7">
+            {contatos.map((c) => (
+              <li key={c.titulo} className="min-w-0">
+                <p className="text-muted-foreground">{c.titulo}</p>
+                {c.linhas.map((linha, i) => (
+                  <p
+                    key={linha}
+                    className={
+                      i === 0
+                        ? "mt-1 font-semibold break-words text-foreground"
+                        : "break-words text-muted-foreground"
+                    }
+                  >
+                    {linha}
+                  </p>
+                ))}
+              </li>
+            ))}
+          </ul>
+        </Secao>
       </div>
 
       <p className="mt-8 text-center text-[11px] text-muted-foreground">

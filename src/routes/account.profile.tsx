@@ -42,13 +42,18 @@ function ProfilePage() {
     setSalvando(true);
     setTimeout(() => {
       setSalvando(false);
-      toast.success("Dados atualizados", { description: "As alterações entram na trilha de auditoria." });
+      toast.success("Dados atualizados", {
+        description: "As alterações entram na trilha de auditoria.",
+      });
     }, 600);
   }
 
   return (
     <>
-      <PageHeader titulo="Perfil" descricao="Dados usados na verificação de identidade e nas comunicações oficiais." />
+      <PageHeader
+        titulo="Perfil"
+        descricao="Dados usados na verificação de identidade e nas comunicações oficiais."
+      />
 
       {isError ? (
         <ErrorState onRetry={() => refetch()} />
@@ -71,7 +76,12 @@ function ProfilePage() {
             <div className="mt-6 grid gap-5 sm:grid-cols-2">
               <Campo id="nome" rotulo="Nome completo" valor={form.nome} bloqueado />
               <Campo id="documento" rotulo="CPF" valor={form.documento} bloqueado />
-              <Campo id="nascimento" rotulo="Data de nascimento" valor={form.nascimento} bloqueado />
+              <Campo
+                id="nascimento"
+                rotulo="Data de nascimento"
+                valor={form.nascimento}
+                bloqueado
+              />
               <Campo
                 id="email"
                 rotulo="E-mail"
@@ -84,11 +94,36 @@ function ProfilePage() {
           <section className="rounded-xl border border-border bg-card p-6">
             <h2 className="text-base font-semibold">Contato e endereço</h2>
             <div className="mt-6 grid gap-5 sm:grid-cols-2">
-              <Campo id="telefone" rotulo="Telefone" valor={form.telefone} onChange={(v) => setForm({ ...form, telefone: v })} />
-              <Campo id="cep" rotulo="CEP" valor={form.cep} onChange={(v) => setForm({ ...form, cep: v })} />
-              <Campo id="endereco" rotulo="Endereço" valor={form.endereco} onChange={(v) => setForm({ ...form, endereco: v })} />
-              <Campo id="cidade" rotulo="Cidade" valor={form.cidade} onChange={(v) => setForm({ ...form, cidade: v })} />
-              <Campo id="uf" rotulo="UF" valor={form.uf} onChange={(v) => setForm({ ...form, uf: v })} />
+              <Campo
+                id="telefone"
+                rotulo="Telefone"
+                valor={form.telefone}
+                onChange={(v) => setForm({ ...form, telefone: v })}
+              />
+              <Campo
+                id="cep"
+                rotulo="CEP"
+                valor={form.cep}
+                onChange={(v) => setForm({ ...form, cep: v })}
+              />
+              <Campo
+                id="endereco"
+                rotulo="Endereço"
+                valor={form.endereco}
+                onChange={(v) => setForm({ ...form, endereco: v })}
+              />
+              <Campo
+                id="cidade"
+                rotulo="Cidade"
+                valor={form.cidade}
+                onChange={(v) => setForm({ ...form, cidade: v })}
+              />
+              <Campo
+                id="uf"
+                rotulo="UF"
+                valor={form.uf}
+                onChange={(v) => setForm({ ...form, uf: v })}
+              />
             </div>
           </section>
 
@@ -119,7 +154,13 @@ function Campo({
   return (
     <div className="space-y-2">
       <Label htmlFor={id}>{rotulo}</Label>
-      <Input id={id} value={valor} onChange={(e) => onChange?.(e.target.value)} disabled={bloqueado} readOnly={!onChange} />
+      <Input
+        id={id}
+        value={valor}
+        onChange={(e) => onChange?.(e.target.value)}
+        disabled={bloqueado}
+        readOnly={!onChange}
+      />
     </div>
   );
 }

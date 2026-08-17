@@ -1,5 +1,12 @@
 import { useRouterState } from "@tanstack/react-router";
-import { History, IdCard, LayoutDashboard, ShieldCheck, SlidersHorizontal, UserRound } from "lucide-react";
+import {
+  History,
+  IdCard,
+  LayoutDashboard,
+  ShieldCheck,
+  SlidersHorizontal,
+  UserRound,
+} from "lucide-react";
 import type { ReactNode } from "react";
 
 import { AppShell, type ItemNav } from "@/components/layouts/app-shell";

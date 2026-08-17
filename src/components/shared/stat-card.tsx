@@ -23,8 +23,14 @@ export function StatCard({
       )}
     >
       <div className="flex items-center justify-between gap-3">
-        <p className="truncate text-xs font-medium tracking-wide text-muted-foreground uppercase">{rotulo}</p>
-        {Icone ? <Icone className={cn("h-4 w-4 shrink-0 text-muted-foreground", destaque && "text-primary")} /> : null}
+        <p className="truncate text-xs font-medium tracking-wide text-muted-foreground uppercase">
+          {rotulo}
+        </p>
+        {Icone ? (
+          <Icone
+            className={cn("h-4 w-4 shrink-0 text-muted-foreground", destaque && "text-primary")}
+          />
+        ) : null}
       </div>
       <p className="tabular mt-3 text-2xl font-semibold">{valor}</p>
       {apoio ? <p className="mt-1 text-xs text-muted-foreground">{apoio}</p> : null}

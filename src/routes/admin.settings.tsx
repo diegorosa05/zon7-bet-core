@@ -28,9 +28,21 @@ export const Route = createFileRoute("/admin/settings")({
 });
 
 const integracoes = [
-  { nome: "Provedor de KYC", descricao: "Documentoscopia e prova de vida.", estado: "Não conectado" },
-  { nome: "FonteData", descricao: "Enriquecimento e validação cadastral.", estado: "Não conectado" },
-  { nome: "Lovable Cloud", descricao: "Banco de dados, autenticação e storage.", estado: "Não conectado" },
+  {
+    nome: "Provedor de KYC",
+    descricao: "Documentoscopia e prova de vida.",
+    estado: "Não conectado",
+  },
+  {
+    nome: "FonteData",
+    descricao: "Enriquecimento e validação cadastral.",
+    estado: "Não conectado",
+  },
+  {
+    nome: "Lovable Cloud",
+    descricao: "Banco de dados, autenticação e storage.",
+    estado: "Não conectado",
+  },
 ];
 
 function SettingsPage() {
@@ -39,7 +51,10 @@ function SettingsPage() {
 
   return (
     <>
-      <PageHeader titulo="Configurações" descricao="Parâmetros que afetam toda a operação — alterações são auditadas." />
+      <PageHeader
+        titulo="Configurações"
+        descricao="Parâmetros que afetam toda a operação — alterações são auditadas."
+      />
 
       <Tabs defaultValue="regras">
         <TabsList>
@@ -82,7 +97,9 @@ function SettingsPage() {
                   id="dep"
                   inputMode="numeric"
                   value={padroes.deposito}
-                  onChange={(e) => setPadroes((p) => ({ ...p, deposito: Number(e.target.value) || 0 }))}
+                  onChange={(e) =>
+                    setPadroes((p) => ({ ...p, deposito: Number(e.target.value) || 0 }))
+                  }
                 />
                 <p className="text-xs text-muted-foreground">{formatarMoeda(padroes.deposito)}</p>
               </div>
@@ -92,7 +109,9 @@ function SettingsPage() {
                   id="perda"
                   inputMode="numeric"
                   value={padroes.perda}
-                  onChange={(e) => setPadroes((p) => ({ ...p, perda: Number(e.target.value) || 0 }))}
+                  onChange={(e) =>
+                    setPadroes((p) => ({ ...p, perda: Number(e.target.value) || 0 }))
+                  }
                 />
                 <p className="text-xs text-muted-foreground">{formatarMoeda(padroes.perda)}</p>
               </div>
@@ -102,7 +121,9 @@ function SettingsPage() {
                   id="ses"
                   inputMode="numeric"
                   value={padroes.sessao}
-                  onChange={(e) => setPadroes((p) => ({ ...p, sessao: Number(e.target.value) || 0 }))}
+                  onChange={(e) =>
+                    setPadroes((p) => ({ ...p, sessao: Number(e.target.value) || 0 }))
+                  }
                 />
               </div>
             </div>

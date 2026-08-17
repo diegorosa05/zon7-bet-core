@@ -1,4 +1,12 @@
-import { createContext, useCallback, useContext, useEffect, useMemo, useState, type ReactNode } from "react";
+import {
+  createContext,
+  useCallback,
+  useContext,
+  useEffect,
+  useMemo,
+  useState,
+  type ReactNode,
+} from "react";
 
 export type Role = "apostador" | "compliance";
 
@@ -66,17 +74,15 @@ export function AuthProvider({ children }: { children: ReactNode }) {
 
   const sair = useCallback(() => persist(null), [persist]);
 
-  const trocarPapel = useCallback(
-    (role: Role) => {
-      setUser((atual) => {
-        if (!atual) return atual;
-        const next = { ...atual, role, id: role === "compliance" ? "op-001" : "usr-001" };
-        if (typeof window !== "undefined") window.localStorage.setItem(STORAGE_KEY, JSON.stringify(next));
-        return next;
-      });
-    },
-    [],
-  );
+  const trocarPapel = useCallback((role: Role) => {
+    setUser((atual) => {
+      if (!atual) return atual;
+      const next = { ...atual, role, id: role === "compliance" ? "op-001" : "usr-001" };
+      if (typeof window !== "undefined")
+        window.localStorage.setItem(STORAGE_KEY, JSON.stringify(next));
+      return next;
+    });
+  }, []);
 
   const value = useMemo(
     () => ({ user, ready, entrar, sair, trocarPapel }),

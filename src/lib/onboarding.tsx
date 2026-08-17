@@ -72,7 +72,15 @@ export const ESTADO_INICIAL: OnboardingState = {
   passo: 1,
   maioridade: null,
   pessoais: { nome: "", cpf: "", nascimento: "", email: "", telefone: "" },
-  endereco: { cep: "", logradouro: "", numero: "", complemento: "", bairro: "", cidade: "", uf: "" },
+  endereco: {
+    cep: "",
+    logradouro: "",
+    numero: "",
+    complemento: "",
+    bairro: "",
+    cidade: "",
+    uf: "",
+  },
   consentimentos: consentimentosIniciais(),
   kycEnviado: false,
   status: "pending",
@@ -119,19 +127,18 @@ export function OnboardingProvider({ children }: { children: ReactNode }) {
 
   const persistir = useCallback((next: OnboardingState) => {
     setEstado(next);
-    if (typeof window !== "undefined") window.localStorage.setItem(STORAGE_KEY, JSON.stringify(next));
+    if (typeof window !== "undefined")
+      window.localStorage.setItem(STORAGE_KEY, JSON.stringify(next));
   }, []);
 
-  const atualizar = useCallback<OnboardingContextValue["atualizar"]>(
-    (patch) => {
-      setEstado((atual) => {
-        const next = { ...atual, ...patch, atualizadoEm: new Date().toISOString() };
-        if (typeof window !== "undefined") window.localStorage.setItem(STORAGE_KEY, JSON.stringify(next));
-        return next;
-      });
-    },
-    [],
-  );
+  const atualizar = useCallback<OnboardingContextValue["atualizar"]>((patch) => {
+    setEstado((atual) => {
+      const next = { ...atual, ...patch, atualizadoEm: new Date().toISOString() };
+      if (typeof window !== "undefined")
+        window.localStorage.setItem(STORAGE_KEY, JSON.stringify(next));
+      return next;
+    });
+  }, []);
 
   const registrarConsentimento = useCallback<OnboardingContextValue["registrarConsentimento"]>(
     (chave, aceito) => {
@@ -149,7 +156,8 @@ export function OnboardingProvider({ children }: { children: ReactNode }) {
           },
           atualizadoEm: new Date().toISOString(),
         };
-        if (typeof window !== "undefined") window.localStorage.setItem(STORAGE_KEY, JSON.stringify(next));
+        if (typeof window !== "undefined")
+          window.localStorage.setItem(STORAGE_KEY, JSON.stringify(next));
         return next;
       });
     },

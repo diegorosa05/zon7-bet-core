@@ -31,7 +31,8 @@ import type { LimitesConta } from "@/data/types";
 import { formatarMoeda } from "@/lib/format";
 
 const TITULO = "Limites e autoexclusão — Zon7 BET";
-const DESCRICAO = "Defina limites de depósito, perda e tempo de sessão, ou solicite pausa e autoexclusão.";
+const DESCRICAO =
+  "Defina limites de depósito, perda e tempo de sessão, ou solicite pausa e autoexclusão.";
 
 export const Route = createFileRoute("/account/limits")({
   head: () => ({
@@ -71,7 +72,9 @@ function LimitsPage() {
 
   function confirmarAutoexclusao() {
     setConfirmando(false);
-    toast.success("Solicitação registrada", { description: "Um caso foi aberto para o time de compliance." });
+    toast.success("Solicitação registrada", {
+      description: "Um caso foi aberto para o time de compliance.",
+    });
   }
 
   return (
@@ -129,15 +132,17 @@ function LimitsPage() {
           <section className="rounded-xl border border-destructive/30 bg-destructive/5 p-6">
             <h2 className="text-base font-semibold">Pausa e autoexclusão</h2>
             <p className="mt-1 text-sm text-muted-foreground">
-              Durante o período escolhido a conta fica bloqueada para novas operações. A decisão é irreversível dentro do
-              prazo.
+              Durante o período escolhido a conta fica bloqueada para novas operações. A decisão é
+              irreversível dentro do prazo.
             </p>
             <div className="mt-6 grid gap-4 sm:grid-cols-[minmax(0,1fr)_auto] sm:items-end">
               <div className="space-y-2">
                 <Label>Período</Label>
                 <Select
                   value={form.autoexclusao}
-                  onValueChange={(v) => setForm({ ...form, autoexclusao: v as LimitesConta["autoexclusao"] })}
+                  onValueChange={(v) =>
+                    setForm({ ...form, autoexclusao: v as LimitesConta["autoexclusao"] })
+                  }
                 >
                   <SelectTrigger>
                     <SelectValue />
@@ -168,8 +173,8 @@ function LimitsPage() {
           <AlertDialogHeader>
             <AlertDialogTitle>Confirmar solicitação?</AlertDialogTitle>
             <AlertDialogDescription>
-              A conta será bloqueada para novas operações durante todo o período escolhido e não será possível reverter
-              antes do prazo.
+              A conta será bloqueada para novas operações durante todo o período escolhido e não
+              será possível reverter antes do prazo.
             </AlertDialogDescription>
           </AlertDialogHeader>
           <AlertDialogFooter>

@@ -55,7 +55,12 @@ function AdminDashboard() {
         <CardsSkeleton />
       ) : (
         <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
-          <StatCard rotulo="Fila total" valor={String(metricas.data!.filaTotal)} apoio="casos aguardando decisão" icone={Clock} />
+          <StatCard
+            rotulo="Fila total"
+            valor={String(metricas.data!.filaTotal)}
+            apoio="casos aguardando decisão"
+            icone={Clock}
+          />
           <StatCard
             rotulo="Casos críticos"
             valor={String(metricas.data!.filaCritica)}
@@ -63,7 +68,12 @@ function AdminDashboard() {
             icone={AlertTriangle}
             destaque
           />
-          <StatCard rotulo="SLA em risco" valor={String(metricas.data!.slaEmRisco)} apoio="menos de 6h restantes" icone={Timer} />
+          <StatCard
+            rotulo="SLA em risco"
+            valor={String(metricas.data!.slaEmRisco)}
+            apoio="menos de 6h restantes"
+            icone={Timer}
+          />
           <StatCard
             rotulo="Concluídos 24h"
             valor={String(metricas.data!.aprovadas24h)}
@@ -138,11 +148,15 @@ function AdminDashboard() {
         <div className="grid grid-cols-[minmax(0,1fr)_auto] items-center gap-4">
           <div className="min-w-0">
             <h2 className="truncate text-base font-semibold">Novos cadastros</h2>
-            <p className="mt-1 text-sm text-muted-foreground">Contas criadas nos últimos 7 dias aguardando KYC.</p>
+            <p className="mt-1 text-sm text-muted-foreground">
+              Contas criadas nos últimos 7 dias aguardando KYC.
+            </p>
           </div>
           <UserPlus className="h-5 w-5 shrink-0 text-muted-foreground" />
         </div>
-        <p className="tabular mt-4 text-3xl font-semibold">{metricas.data?.novosCadastros ?? "—"}</p>
+        <p className="tabular mt-4 text-3xl font-semibold">
+          {metricas.data?.novosCadastros ?? "—"}
+        </p>
         <Button asChild variant="outline" size="sm" className="mt-5">
           <Link to="/admin/users">Ver usuários</Link>
         </Button>
@@ -153,6 +167,8 @@ function AdminDashboard() {
 
 function StatCardMini({ valor }: { valor: string }) {
   return (
-    <span className="tabular rounded-full bg-primary/12 px-2.5 py-0.5 text-xs font-medium text-primary">{valor}</span>
+    <span className="tabular rounded-full bg-primary/12 px-2.5 py-0.5 text-xs font-medium text-primary">
+      {valor}
+    </span>
   );
 }

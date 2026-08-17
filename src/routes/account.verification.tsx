@@ -22,7 +22,8 @@ import type { EtapaKyc } from "@/data/types";
 import { cn } from "@/lib/utils";
 
 const TITULO = "Verificação de identidade — Zon7 BET";
-const DESCRICAO = "Acompanhe as etapas de KYC: documento, prova de vida, endereço e origem de recursos.";
+const DESCRICAO =
+  "Acompanhe as etapas de KYC: documento, prova de vida, endereço e origem de recursos.";
 
 export const Route = createFileRoute("/account/verification")({
   head: () => ({
@@ -111,7 +112,11 @@ function VerificationPage() {
                   onClick={() => setEtapaAtiva(etapa)}
                   className="w-full sm:w-auto"
                 >
-                  {etapa.status === "concluida" ? "Enviado" : etapa.status === "bloqueada" ? "Bloqueada" : "Enviar documento"}
+                  {etapa.status === "concluida"
+                    ? "Enviado"
+                    : etapa.status === "bloqueada"
+                      ? "Bloqueada"
+                      : "Enviar documento"}
                 </Button>
               </div>
             </li>
@@ -127,8 +132,12 @@ function VerificationPage() {
           </DialogHeader>
           <div className="rounded-xl border border-dashed border-border px-6 py-10 text-center">
             <CloudUpload className="mx-auto h-6 w-6 text-muted-foreground" />
-            <p className="mt-3 text-sm font-medium">Arraste o arquivo ou selecione do dispositivo</p>
-            <p className="mt-1 text-xs text-muted-foreground">PNG, JPG ou PDF até 10 MB · upload simulado</p>
+            <p className="mt-3 text-sm font-medium">
+              Arraste o arquivo ou selecione do dispositivo
+            </p>
+            <p className="mt-1 text-xs text-muted-foreground">
+              PNG, JPG ou PDF até 10 MB · upload simulado
+            </p>
           </div>
           <DialogFooter>
             <Button variant="outline" onClick={() => setEtapaAtiva(null)}>

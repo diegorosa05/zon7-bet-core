@@ -96,8 +96,8 @@ export function PublicLayout({ children }: { children: ReactNode }) {
           <div className="min-w-0">
             <Logo />
             <p className="mt-3 max-w-sm text-sm text-muted-foreground">
-              Plataforma de apostas construída em torno de compliance, verificação de identidade e proteção ao
-              apostador. Proibido para menores de 18 anos.
+              Plataforma de apostas construída em torno de compliance, verificação de identidade e
+              proteção ao apostador. Proibido para menores de 18 anos.
             </p>
           </div>
           <div>
@@ -142,7 +142,8 @@ export function PublicLayout({ children }: { children: ReactNode }) {
           </div>
         </div>
         <div className="border-t border-border px-4 py-5 text-center text-xs text-muted-foreground sm:px-6">
-          Zon7 BET · Ambiente de demonstração — nenhuma aposta real, jogo ou transação financeira está disponível.
+          Zon7 BET · Ambiente de demonstração — nenhuma aposta real, jogo ou transação financeira
+          está disponível.
         </div>
       </footer>
     </div>

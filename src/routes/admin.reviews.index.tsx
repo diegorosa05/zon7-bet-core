@@ -47,7 +47,9 @@ function ReviewsPage() {
       chave: "sla",
       titulo: "SLA",
       render: (c) => (
-        <span className={`tabular text-sm ${c.slaHoras > 0 && c.slaHoras <= 6 ? "text-destructive" : ""}`}>
+        <span
+          className={`tabular text-sm ${c.slaHoras > 0 && c.slaHoras <= 6 ? "text-destructive" : ""}`}
+        >
           {c.slaHoras > 0 ? `${c.slaHoras}h restantes` : "encerrado"}
         </span>
       ),
@@ -56,13 +58,18 @@ function ReviewsPage() {
       chave: "aberto",
       titulo: "Aberto em",
       ocultarNoMobile: true,
-      render: (c) => <span className="tabular text-sm whitespace-nowrap">{formatarData(c.abertoEm, false)}</span>,
+      render: (c) => (
+        <span className="tabular text-sm whitespace-nowrap">{formatarData(c.abertoEm, false)}</span>
+      ),
     },
   ];
 
   return (
     <>
-      <PageHeader titulo="Fila de análise" descricao="Selecione um caso para revisar evidências e registrar a decisão." />
+      <PageHeader
+        titulo="Fila de análise"
+        descricao="Selecione um caso para revisar evidências e registrar a decisão."
+      />
 
       {isError ? (
         <ErrorState onRetry={() => refetch()} />

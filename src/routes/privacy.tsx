@@ -3,7 +3,8 @@ import { createFileRoute } from "@tanstack/react-router";
 import { LegalPage } from "@/components/shared/legal-page";
 
 const TITULO = "Política de Privacidade — Zon7 BET";
-const DESCRICAO = "Como a Zon7 BET coleta, usa, compartilha e protege dados pessoais durante a verificação e o uso da plataforma.";
+const DESCRICAO =
+  "Como a Zon7 BET coleta, usa, compartilha e protege dados pessoais durante a verificação e o uso da plataforma.";
 
 export const Route = createFileRoute("/privacy")({
   head: () => ({
