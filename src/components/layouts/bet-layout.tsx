@@ -100,17 +100,17 @@ function NavLateral() {
       <nav className="pb-6">
         {grupos.map((g) => (
           <Collapsible key={g.titulo} defaultOpen className="border-b border-sidebar-border">
-            <CollapsibleTrigger className="group flex w-full items-center justify-between px-4 py-3.5 text-[11px] font-semibold tracking-widest text-muted-foreground uppercase">
+            <CollapsibleTrigger className="group flex w-full items-center justify-between px-3 py-3 text-[11px] font-semibold tracking-widest text-muted-foreground uppercase outline-none focus-visible:ring-2 focus-visible:ring-ring">
               {g.titulo}
               <ChevronDown className="h-4 w-4 transition-transform group-data-[state=open]:rotate-180" />
             </CollapsibleTrigger>
             <CollapsibleContent>
-              <ul className="pb-3">
+              <ul className="space-y-0.5 px-2 pb-3">
                 {g.itens.map((i) => (
                   <li key={`${g.titulo}-${i.rotulo}`}>
                     <Link
                       to={i.to}
-                      className="flex items-center gap-3 px-4 py-2 text-sm text-foreground/80 transition-colors hover:bg-sidebar-accent hover:text-foreground"
+                      className="flex items-center gap-3 rounded-lg px-2.5 py-2 text-[13px] text-foreground/80 outline-none transition-colors hover:bg-sidebar-accent hover:text-foreground focus-visible:ring-2 focus-visible:ring-ring data-[status=active]:bg-sidebar-accent data-[status=active]:text-primary"
                     >
                       <i.icone className="h-4 w-4 shrink-0 text-muted-foreground" />
                       <span className="truncate">{i.rotulo}</span>
@@ -122,7 +122,7 @@ function NavLateral() {
           </Collapsible>
         ))}
 
-        <p className="px-4 py-4 text-[11px] leading-relaxed text-muted-foreground">
+        <p className="px-3 py-4 text-[11px] leading-relaxed text-muted-foreground">
           Ambiente de demonstração. 18+. Jogue com responsabilidade —{" "}
           <Link to="/responsible-gambling" className="text-primary hover:underline">
             saiba mais
@@ -203,7 +203,7 @@ export function BetLayout({ children, aside }: { children: ReactNode; aside?: Re
         </aside>
 
         <div className="flex min-w-0 flex-1 flex-col">
-          <main className="min-w-0 flex-1 px-3 py-6 sm:px-8">{children}</main>
+          <main className="mx-auto w-full max-w-[105rem] min-w-0 flex-1 px-3 py-5 sm:px-6">{children}</main>
           <SiteFooter />
         </div>
 
