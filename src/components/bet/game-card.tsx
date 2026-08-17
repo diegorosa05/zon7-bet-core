@@ -7,7 +7,8 @@ import type { JogoCassino } from "@/data/bet-mock";
 export function CardJogo({ jogo, largo = false }: { jogo: JogoCassino; largo?: boolean }) {
   return (
     <Link
-      to="/login"
+      to="/cassino/jogo/$id"
+      params={{ id: jogo.id }}
       aria-label={`Jogar ${jogo.nome}`}
       className={`group relative block overflow-hidden rounded-xl border border-border bg-card outline-none transition-all hover:-translate-y-1 hover:border-primary/40 focus-visible:ring-2 focus-visible:ring-ring ${
         largo ? "w-full" : "w-[8.75rem] shrink-0 sm:w-[9.5rem]"

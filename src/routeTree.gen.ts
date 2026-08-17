@@ -12,20 +12,32 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as AccountRouteImport } from './routes/account'
 import { Route as AdminRouteImport } from './routes/admin'
+import { Route as AmlRouteImport } from './routes/aml'
+import { Route as ApostasRouteImport } from './routes/apostas'
+import { Route as BonusRouteImport } from './routes/bonus'
 import { Route as CarteiraRouteImport } from './routes/carteira'
 import { Route as CassinoRouteImport } from './routes/cassino'
+import { Route as ContatoRouteImport } from './routes/contato'
+import { Route as CookiesRouteImport } from './routes/cookies'
 import { Route as DesafiosRouteImport } from './routes/desafios'
 import { Route as EsportesRouteImport } from './routes/esportes'
+import { Route as FaqRouteImport } from './routes/faq'
+import { Route as FavoritosRouteImport } from './routes/favoritos'
 import { Route as LoginRouteImport } from './routes/login'
+import { Route as NotificacoesRouteImport } from './routes/notificacoes'
 import { Route as OnboardingRouteImport } from './routes/onboarding'
 import { Route as PesquisaRouteImport } from './routes/pesquisa'
 import { Route as PrivacyRouteImport } from './routes/privacy'
 import { Route as PromocoesRouteImport } from './routes/promocoes'
 import { Route as RecompensasRouteImport } from './routes/recompensas'
 import { Route as RegisterRouteImport } from './routes/register'
+import { Route as RegrasApostasRouteImport } from './routes/regras-apostas'
 import { Route as ResponsibleGamblingRouteImport } from './routes/responsible-gambling'
 import { Route as RoletaRouteImport } from './routes/roleta'
+import { Route as SobreRouteImport } from './routes/sobre'
+import { Route as SuporteRouteImport } from './routes/suporte'
 import { Route as TermsRouteImport } from './routes/terms'
+import { Route as VipRouteImport } from './routes/vip'
 import { Route as AccountIndexRouteImport } from './routes/account.index'
 import { Route as AccountHistoryRouteImport } from './routes/account.history'
 import { Route as AccountLimitsRouteImport } from './routes/account.limits'
@@ -42,13 +54,18 @@ import { Route as CarteiraSaqueRouteImport } from './routes/carteira.saque'
 import { Route as CarteiraTransacoesRouteImport } from './routes/carteira.transacoes'
 import { Route as CassinoIndexRouteImport } from './routes/cassino.index'
 import { Route as CassinoAoVivoRouteImport } from './routes/cassino.ao-vivo'
+import { Route as CassinoCrashRouteImport } from './routes/cassino.crash'
 import { Route as CassinoOriginaisRouteImport } from './routes/cassino.originais'
 import { Route as CassinoSlotsRouteImport } from './routes/cassino.slots'
 import { Route as EsportesIndexRouteImport } from './routes/esportes.index'
 import { Route as EsportesAoVivoRouteImport } from './routes/esportes.ao-vivo'
 import { Route as EsportesProximosRouteImport } from './routes/esportes.proximos'
+import { Route as PromocoesIndexRouteImport } from './routes/promocoes.index'
+import { Route as PromocoesIdRouteImport } from './routes/promocoes.$id'
 import { Route as AdminReviewsIndexRouteImport } from './routes/admin.reviews.index'
 import { Route as AdminReviewsIdRouteImport } from './routes/admin.reviews.$id'
+import { Route as CassinoJogoIdRouteImport } from './routes/cassino.jogo.$id'
+import { Route as EsportesEventoIdRouteImport } from './routes/esportes.evento.$id'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -65,6 +82,21 @@ const AdminRoute = AdminRouteImport.update({
   path: '/admin',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AmlRoute = AmlRouteImport.update({
+  id: '/aml',
+  path: '/aml',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ApostasRoute = ApostasRouteImport.update({
+  id: '/apostas',
+  path: '/apostas',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const BonusRoute = BonusRouteImport.update({
+  id: '/bonus',
+  path: '/bonus',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const CarteiraRoute = CarteiraRouteImport.update({
   id: '/carteira',
   path: '/carteira',
@@ -73,6 +105,16 @@ const CarteiraRoute = CarteiraRouteImport.update({
 const CassinoRoute = CassinoRouteImport.update({
   id: '/cassino',
   path: '/cassino',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ContatoRoute = ContatoRouteImport.update({
+  id: '/contato',
+  path: '/contato',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CookiesRoute = CookiesRouteImport.update({
+  id: '/cookies',
+  path: '/cookies',
   getParentRoute: () => rootRouteImport,
 } as any)
 const DesafiosRoute = DesafiosRouteImport.update({
@@ -85,9 +127,24 @@ const EsportesRoute = EsportesRouteImport.update({
   path: '/esportes',
   getParentRoute: () => rootRouteImport,
 } as any)
+const FaqRoute = FaqRouteImport.update({
+  id: '/faq',
+  path: '/faq',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const FavoritosRoute = FavoritosRouteImport.update({
+  id: '/favoritos',
+  path: '/favoritos',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const LoginRoute = LoginRouteImport.update({
   id: '/login',
   path: '/login',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const NotificacoesRoute = NotificacoesRouteImport.update({
+  id: '/notificacoes',
+  path: '/notificacoes',
   getParentRoute: () => rootRouteImport,
 } as any)
 const OnboardingRoute = OnboardingRouteImport.update({
@@ -120,6 +177,11 @@ const RegisterRoute = RegisterRouteImport.update({
   path: '/register',
   getParentRoute: () => rootRouteImport,
 } as any)
+const RegrasApostasRoute = RegrasApostasRouteImport.update({
+  id: '/regras-apostas',
+  path: '/regras-apostas',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ResponsibleGamblingRoute = ResponsibleGamblingRouteImport.update({
   id: '/responsible-gambling',
   path: '/responsible-gambling',
@@ -130,9 +192,24 @@ const RoletaRoute = RoletaRouteImport.update({
   path: '/roleta',
   getParentRoute: () => rootRouteImport,
 } as any)
+const SobreRoute = SobreRouteImport.update({
+  id: '/sobre',
+  path: '/sobre',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SuporteRoute = SuporteRouteImport.update({
+  id: '/suporte',
+  path: '/suporte',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const TermsRoute = TermsRouteImport.update({
   id: '/terms',
   path: '/terms',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const VipRoute = VipRouteImport.update({
+  id: '/vip',
+  path: '/vip',
   getParentRoute: () => rootRouteImport,
 } as any)
 const AccountIndexRoute = AccountIndexRouteImport.update({
@@ -215,6 +292,11 @@ const CassinoAoVivoRoute = CassinoAoVivoRouteImport.update({
   path: '/ao-vivo',
   getParentRoute: () => CassinoRoute,
 } as any)
+const CassinoCrashRoute = CassinoCrashRouteImport.update({
+  id: '/crash',
+  path: '/crash',
+  getParentRoute: () => CassinoRoute,
+} as any)
 const CassinoOriginaisRoute = CassinoOriginaisRouteImport.update({
   id: '/originais',
   path: '/originais',
@@ -240,6 +322,16 @@ const EsportesProximosRoute = EsportesProximosRouteImport.update({
   path: '/proximos',
   getParentRoute: () => EsportesRoute,
 } as any)
+const PromocoesIndexRoute = PromocoesIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => PromocoesRoute,
+} as any)
+const PromocoesIdRoute = PromocoesIdRouteImport.update({
+  id: '/$id',
+  path: '/$id',
+  getParentRoute: () => PromocoesRoute,
+} as any)
 const AdminReviewsIndexRoute = AdminReviewsIndexRouteImport.update({
   id: '/reviews/',
   path: '/reviews/',
@@ -250,25 +342,47 @@ const AdminReviewsIdRoute = AdminReviewsIdRouteImport.update({
   path: '/reviews/$id',
   getParentRoute: () => AdminRoute,
 } as any)
+const CassinoJogoIdRoute = CassinoJogoIdRouteImport.update({
+  id: '/jogo/$id',
+  path: '/jogo/$id',
+  getParentRoute: () => CassinoRoute,
+} as any)
+const EsportesEventoIdRoute = EsportesEventoIdRouteImport.update({
+  id: '/evento/$id',
+  path: '/evento/$id',
+  getParentRoute: () => EsportesRoute,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/account': typeof AccountRouteWithChildren
   '/admin': typeof AdminRouteWithChildren
+  '/aml': typeof AmlRoute
+  '/apostas': typeof ApostasRoute
+  '/bonus': typeof BonusRoute
   '/carteira': typeof CarteiraRouteWithChildren
   '/cassino': typeof CassinoRouteWithChildren
+  '/contato': typeof ContatoRoute
+  '/cookies': typeof CookiesRoute
   '/desafios': typeof DesafiosRoute
   '/esportes': typeof EsportesRouteWithChildren
+  '/faq': typeof FaqRoute
+  '/favoritos': typeof FavoritosRoute
   '/login': typeof LoginRoute
+  '/notificacoes': typeof NotificacoesRoute
   '/onboarding': typeof OnboardingRoute
   '/pesquisa': typeof PesquisaRoute
   '/privacy': typeof PrivacyRoute
-  '/promocoes': typeof PromocoesRoute
+  '/promocoes': typeof PromocoesRouteWithChildren
   '/recompensas': typeof RecompensasRoute
   '/register': typeof RegisterRoute
+  '/regras-apostas': typeof RegrasApostasRoute
   '/responsible-gambling': typeof ResponsibleGamblingRoute
   '/roleta': typeof RoletaRoute
+  '/sobre': typeof SobreRoute
+  '/suporte': typeof SuporteRoute
   '/terms': typeof TermsRoute
+  '/vip': typeof VipRoute
   '/account/history': typeof AccountHistoryRoute
   '/account/limits': typeof AccountLimitsRoute
   '/account/profile': typeof AccountProfileRoute
@@ -281,31 +395,47 @@ export interface FileRoutesByFullPath {
   '/carteira/saque': typeof CarteiraSaqueRoute
   '/carteira/transacoes': typeof CarteiraTransacoesRoute
   '/cassino/ao-vivo': typeof CassinoAoVivoRoute
+  '/cassino/crash': typeof CassinoCrashRoute
   '/cassino/originais': typeof CassinoOriginaisRoute
   '/cassino/slots': typeof CassinoSlotsRoute
   '/esportes/ao-vivo': typeof EsportesAoVivoRoute
   '/esportes/proximos': typeof EsportesProximosRoute
+  '/promocoes/$id': typeof PromocoesIdRoute
   '/account/': typeof AccountIndexRoute
   '/admin/': typeof AdminIndexRoute
   '/carteira/': typeof CarteiraIndexRoute
   '/cassino/': typeof CassinoIndexRoute
   '/esportes/': typeof EsportesIndexRoute
+  '/promocoes/': typeof PromocoesIndexRoute
   '/admin/reviews/$id': typeof AdminReviewsIdRoute
+  '/cassino/jogo/$id': typeof CassinoJogoIdRoute
+  '/esportes/evento/$id': typeof EsportesEventoIdRoute
   '/admin/reviews/': typeof AdminReviewsIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/aml': typeof AmlRoute
+  '/apostas': typeof ApostasRoute
+  '/bonus': typeof BonusRoute
+  '/contato': typeof ContatoRoute
+  '/cookies': typeof CookiesRoute
   '/desafios': typeof DesafiosRoute
+  '/faq': typeof FaqRoute
+  '/favoritos': typeof FavoritosRoute
   '/login': typeof LoginRoute
+  '/notificacoes': typeof NotificacoesRoute
   '/onboarding': typeof OnboardingRoute
   '/pesquisa': typeof PesquisaRoute
   '/privacy': typeof PrivacyRoute
-  '/promocoes': typeof PromocoesRoute
   '/recompensas': typeof RecompensasRoute
   '/register': typeof RegisterRoute
+  '/regras-apostas': typeof RegrasApostasRoute
   '/responsible-gambling': typeof ResponsibleGamblingRoute
   '/roleta': typeof RoletaRoute
+  '/sobre': typeof SobreRoute
+  '/suporte': typeof SuporteRoute
   '/terms': typeof TermsRoute
+  '/vip': typeof VipRoute
   '/account/history': typeof AccountHistoryRoute
   '/account/limits': typeof AccountLimitsRoute
   '/account/profile': typeof AccountProfileRoute
@@ -318,16 +448,21 @@ export interface FileRoutesByTo {
   '/carteira/saque': typeof CarteiraSaqueRoute
   '/carteira/transacoes': typeof CarteiraTransacoesRoute
   '/cassino/ao-vivo': typeof CassinoAoVivoRoute
+  '/cassino/crash': typeof CassinoCrashRoute
   '/cassino/originais': typeof CassinoOriginaisRoute
   '/cassino/slots': typeof CassinoSlotsRoute
   '/esportes/ao-vivo': typeof EsportesAoVivoRoute
   '/esportes/proximos': typeof EsportesProximosRoute
+  '/promocoes/$id': typeof PromocoesIdRoute
   '/account': typeof AccountIndexRoute
   '/admin': typeof AdminIndexRoute
   '/carteira': typeof CarteiraIndexRoute
   '/cassino': typeof CassinoIndexRoute
   '/esportes': typeof EsportesIndexRoute
+  '/promocoes': typeof PromocoesIndexRoute
   '/admin/reviews/$id': typeof AdminReviewsIdRoute
+  '/cassino/jogo/$id': typeof CassinoJogoIdRoute
+  '/esportes/evento/$id': typeof EsportesEventoIdRoute
   '/admin/reviews': typeof AdminReviewsIndexRoute
 }
 export interface FileRoutesById {
@@ -335,20 +470,32 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/account': typeof AccountRouteWithChildren
   '/admin': typeof AdminRouteWithChildren
+  '/aml': typeof AmlRoute
+  '/apostas': typeof ApostasRoute
+  '/bonus': typeof BonusRoute
   '/carteira': typeof CarteiraRouteWithChildren
   '/cassino': typeof CassinoRouteWithChildren
+  '/contato': typeof ContatoRoute
+  '/cookies': typeof CookiesRoute
   '/desafios': typeof DesafiosRoute
   '/esportes': typeof EsportesRouteWithChildren
+  '/faq': typeof FaqRoute
+  '/favoritos': typeof FavoritosRoute
   '/login': typeof LoginRoute
+  '/notificacoes': typeof NotificacoesRoute
   '/onboarding': typeof OnboardingRoute
   '/pesquisa': typeof PesquisaRoute
   '/privacy': typeof PrivacyRoute
-  '/promocoes': typeof PromocoesRoute
+  '/promocoes': typeof PromocoesRouteWithChildren
   '/recompensas': typeof RecompensasRoute
   '/register': typeof RegisterRoute
+  '/regras-apostas': typeof RegrasApostasRoute
   '/responsible-gambling': typeof ResponsibleGamblingRoute
   '/roleta': typeof RoletaRoute
+  '/sobre': typeof SobreRoute
+  '/suporte': typeof SuporteRoute
   '/terms': typeof TermsRoute
+  '/vip': typeof VipRoute
   '/account/history': typeof AccountHistoryRoute
   '/account/limits': typeof AccountLimitsRoute
   '/account/profile': typeof AccountProfileRoute
@@ -361,16 +508,21 @@ export interface FileRoutesById {
   '/carteira/saque': typeof CarteiraSaqueRoute
   '/carteira/transacoes': typeof CarteiraTransacoesRoute
   '/cassino/ao-vivo': typeof CassinoAoVivoRoute
+  '/cassino/crash': typeof CassinoCrashRoute
   '/cassino/originais': typeof CassinoOriginaisRoute
   '/cassino/slots': typeof CassinoSlotsRoute
   '/esportes/ao-vivo': typeof EsportesAoVivoRoute
   '/esportes/proximos': typeof EsportesProximosRoute
+  '/promocoes/$id': typeof PromocoesIdRoute
   '/account/': typeof AccountIndexRoute
   '/admin/': typeof AdminIndexRoute
   '/carteira/': typeof CarteiraIndexRoute
   '/cassino/': typeof CassinoIndexRoute
   '/esportes/': typeof EsportesIndexRoute
+  '/promocoes/': typeof PromocoesIndexRoute
   '/admin/reviews/$id': typeof AdminReviewsIdRoute
+  '/cassino/jogo/$id': typeof CassinoJogoIdRoute
+  '/esportes/evento/$id': typeof EsportesEventoIdRoute
   '/admin/reviews/': typeof AdminReviewsIndexRoute
 }
 export interface FileRouteTypes {
@@ -379,20 +531,32 @@ export interface FileRouteTypes {
     | '/'
     | '/account'
     | '/admin'
+    | '/aml'
+    | '/apostas'
+    | '/bonus'
     | '/carteira'
     | '/cassino'
+    | '/contato'
+    | '/cookies'
     | '/desafios'
     | '/esportes'
+    | '/faq'
+    | '/favoritos'
     | '/login'
+    | '/notificacoes'
     | '/onboarding'
     | '/pesquisa'
     | '/privacy'
     | '/promocoes'
     | '/recompensas'
     | '/register'
+    | '/regras-apostas'
     | '/responsible-gambling'
     | '/roleta'
+    | '/sobre'
+    | '/suporte'
     | '/terms'
+    | '/vip'
     | '/account/history'
     | '/account/limits'
     | '/account/profile'
@@ -405,31 +569,47 @@ export interface FileRouteTypes {
     | '/carteira/saque'
     | '/carteira/transacoes'
     | '/cassino/ao-vivo'
+    | '/cassino/crash'
     | '/cassino/originais'
     | '/cassino/slots'
     | '/esportes/ao-vivo'
     | '/esportes/proximos'
+    | '/promocoes/$id'
     | '/account/'
     | '/admin/'
     | '/carteira/'
     | '/cassino/'
     | '/esportes/'
+    | '/promocoes/'
     | '/admin/reviews/$id'
+    | '/cassino/jogo/$id'
+    | '/esportes/evento/$id'
     | '/admin/reviews/'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
+    | '/aml'
+    | '/apostas'
+    | '/bonus'
+    | '/contato'
+    | '/cookies'
     | '/desafios'
+    | '/faq'
+    | '/favoritos'
     | '/login'
+    | '/notificacoes'
     | '/onboarding'
     | '/pesquisa'
     | '/privacy'
-    | '/promocoes'
     | '/recompensas'
     | '/register'
+    | '/regras-apostas'
     | '/responsible-gambling'
     | '/roleta'
+    | '/sobre'
+    | '/suporte'
     | '/terms'
+    | '/vip'
     | '/account/history'
     | '/account/limits'
     | '/account/profile'
@@ -442,36 +622,53 @@ export interface FileRouteTypes {
     | '/carteira/saque'
     | '/carteira/transacoes'
     | '/cassino/ao-vivo'
+    | '/cassino/crash'
     | '/cassino/originais'
     | '/cassino/slots'
     | '/esportes/ao-vivo'
     | '/esportes/proximos'
+    | '/promocoes/$id'
     | '/account'
     | '/admin'
     | '/carteira'
     | '/cassino'
     | '/esportes'
+    | '/promocoes'
     | '/admin/reviews/$id'
+    | '/cassino/jogo/$id'
+    | '/esportes/evento/$id'
     | '/admin/reviews'
   id:
     | '__root__'
     | '/'
     | '/account'
     | '/admin'
+    | '/aml'
+    | '/apostas'
+    | '/bonus'
     | '/carteira'
     | '/cassino'
+    | '/contato'
+    | '/cookies'
     | '/desafios'
     | '/esportes'
+    | '/faq'
+    | '/favoritos'
     | '/login'
+    | '/notificacoes'
     | '/onboarding'
     | '/pesquisa'
     | '/privacy'
     | '/promocoes'
     | '/recompensas'
     | '/register'
+    | '/regras-apostas'
     | '/responsible-gambling'
     | '/roleta'
+    | '/sobre'
+    | '/suporte'
     | '/terms'
+    | '/vip'
     | '/account/history'
     | '/account/limits'
     | '/account/profile'
@@ -484,16 +681,21 @@ export interface FileRouteTypes {
     | '/carteira/saque'
     | '/carteira/transacoes'
     | '/cassino/ao-vivo'
+    | '/cassino/crash'
     | '/cassino/originais'
     | '/cassino/slots'
     | '/esportes/ao-vivo'
     | '/esportes/proximos'
+    | '/promocoes/$id'
     | '/account/'
     | '/admin/'
     | '/carteira/'
     | '/cassino/'
     | '/esportes/'
+    | '/promocoes/'
     | '/admin/reviews/$id'
+    | '/cassino/jogo/$id'
+    | '/esportes/evento/$id'
     | '/admin/reviews/'
   fileRoutesById: FileRoutesById
 }
@@ -501,20 +703,32 @@ export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AccountRoute: typeof AccountRouteWithChildren
   AdminRoute: typeof AdminRouteWithChildren
+  AmlRoute: typeof AmlRoute
+  ApostasRoute: typeof ApostasRoute
+  BonusRoute: typeof BonusRoute
   CarteiraRoute: typeof CarteiraRouteWithChildren
   CassinoRoute: typeof CassinoRouteWithChildren
+  ContatoRoute: typeof ContatoRoute
+  CookiesRoute: typeof CookiesRoute
   DesafiosRoute: typeof DesafiosRoute
   EsportesRoute: typeof EsportesRouteWithChildren
+  FaqRoute: typeof FaqRoute
+  FavoritosRoute: typeof FavoritosRoute
   LoginRoute: typeof LoginRoute
+  NotificacoesRoute: typeof NotificacoesRoute
   OnboardingRoute: typeof OnboardingRoute
   PesquisaRoute: typeof PesquisaRoute
   PrivacyRoute: typeof PrivacyRoute
-  PromocoesRoute: typeof PromocoesRoute
+  PromocoesRoute: typeof PromocoesRouteWithChildren
   RecompensasRoute: typeof RecompensasRoute
   RegisterRoute: typeof RegisterRoute
+  RegrasApostasRoute: typeof RegrasApostasRoute
   ResponsibleGamblingRoute: typeof ResponsibleGamblingRoute
   RoletaRoute: typeof RoletaRoute
+  SobreRoute: typeof SobreRoute
+  SuporteRoute: typeof SuporteRoute
   TermsRoute: typeof TermsRoute
+  VipRoute: typeof VipRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -540,6 +754,27 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AdminRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/aml': {
+      id: '/aml'
+      path: '/aml'
+      fullPath: '/aml'
+      preLoaderRoute: typeof AmlRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/apostas': {
+      id: '/apostas'
+      path: '/apostas'
+      fullPath: '/apostas'
+      preLoaderRoute: typeof ApostasRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/bonus': {
+      id: '/bonus'
+      path: '/bonus'
+      fullPath: '/bonus'
+      preLoaderRoute: typeof BonusRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/carteira': {
       id: '/carteira'
       path: '/carteira'
@@ -552,6 +787,20 @@ declare module '@tanstack/react-router' {
       path: '/cassino'
       fullPath: '/cassino'
       preLoaderRoute: typeof CassinoRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/contato': {
+      id: '/contato'
+      path: '/contato'
+      fullPath: '/contato'
+      preLoaderRoute: typeof ContatoRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/cookies': {
+      id: '/cookies'
+      path: '/cookies'
+      fullPath: '/cookies'
+      preLoaderRoute: typeof CookiesRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/desafios': {
@@ -568,11 +817,32 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof EsportesRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/faq': {
+      id: '/faq'
+      path: '/faq'
+      fullPath: '/faq'
+      preLoaderRoute: typeof FaqRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/favoritos': {
+      id: '/favoritos'
+      path: '/favoritos'
+      fullPath: '/favoritos'
+      preLoaderRoute: typeof FavoritosRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/login': {
       id: '/login'
       path: '/login'
       fullPath: '/login'
       preLoaderRoute: typeof LoginRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/notificacoes': {
+      id: '/notificacoes'
+      path: '/notificacoes'
+      fullPath: '/notificacoes'
+      preLoaderRoute: typeof NotificacoesRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/onboarding': {
@@ -617,6 +887,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof RegisterRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/regras-apostas': {
+      id: '/regras-apostas'
+      path: '/regras-apostas'
+      fullPath: '/regras-apostas'
+      preLoaderRoute: typeof RegrasApostasRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/responsible-gambling': {
       id: '/responsible-gambling'
       path: '/responsible-gambling'
@@ -631,11 +908,32 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof RoletaRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/sobre': {
+      id: '/sobre'
+      path: '/sobre'
+      fullPath: '/sobre'
+      preLoaderRoute: typeof SobreRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/suporte': {
+      id: '/suporte'
+      path: '/suporte'
+      fullPath: '/suporte'
+      preLoaderRoute: typeof SuporteRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/terms': {
       id: '/terms'
       path: '/terms'
       fullPath: '/terms'
       preLoaderRoute: typeof TermsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/vip': {
+      id: '/vip'
+      path: '/vip'
+      fullPath: '/vip'
+      preLoaderRoute: typeof VipRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/account/': {
@@ -750,6 +1048,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof CassinoAoVivoRouteImport
       parentRoute: typeof CassinoRoute
     }
+    '/cassino/crash': {
+      id: '/cassino/crash'
+      path: '/crash'
+      fullPath: '/cassino/crash'
+      preLoaderRoute: typeof CassinoCrashRouteImport
+      parentRoute: typeof CassinoRoute
+    }
     '/cassino/originais': {
       id: '/cassino/originais'
       path: '/originais'
@@ -785,6 +1090,20 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof EsportesProximosRouteImport
       parentRoute: typeof EsportesRoute
     }
+    '/promocoes/': {
+      id: '/promocoes/'
+      path: '/'
+      fullPath: '/promocoes/'
+      preLoaderRoute: typeof PromocoesIndexRouteImport
+      parentRoute: typeof PromocoesRoute
+    }
+    '/promocoes/$id': {
+      id: '/promocoes/$id'
+      path: '/$id'
+      fullPath: '/promocoes/$id'
+      preLoaderRoute: typeof PromocoesIdRouteImport
+      parentRoute: typeof PromocoesRoute
+    }
     '/admin/reviews/': {
       id: '/admin/reviews/'
       path: '/reviews'
@@ -798,6 +1117,20 @@ declare module '@tanstack/react-router' {
       fullPath: '/admin/reviews/$id'
       preLoaderRoute: typeof AdminReviewsIdRouteImport
       parentRoute: typeof AdminRoute
+    }
+    '/cassino/jogo/$id': {
+      id: '/cassino/jogo/$id'
+      path: '/jogo/$id'
+      fullPath: '/cassino/jogo/$id'
+      preLoaderRoute: typeof CassinoJogoIdRouteImport
+      parentRoute: typeof CassinoRoute
+    }
+    '/esportes/evento/$id': {
+      id: '/esportes/evento/$id'
+      path: '/evento/$id'
+      fullPath: '/esportes/evento/$id'
+      preLoaderRoute: typeof EsportesEventoIdRouteImport
+      parentRoute: typeof EsportesRoute
     }
   }
 }
@@ -863,16 +1196,20 @@ const CarteiraRouteWithChildren = CarteiraRoute._addFileChildren(
 
 interface CassinoRouteChildren {
   CassinoAoVivoRoute: typeof CassinoAoVivoRoute
+  CassinoCrashRoute: typeof CassinoCrashRoute
   CassinoOriginaisRoute: typeof CassinoOriginaisRoute
   CassinoSlotsRoute: typeof CassinoSlotsRoute
   CassinoIndexRoute: typeof CassinoIndexRoute
+  CassinoJogoIdRoute: typeof CassinoJogoIdRoute
 }
 
 const CassinoRouteChildren: CassinoRouteChildren = {
   CassinoAoVivoRoute: CassinoAoVivoRoute,
+  CassinoCrashRoute: CassinoCrashRoute,
   CassinoOriginaisRoute: CassinoOriginaisRoute,
   CassinoSlotsRoute: CassinoSlotsRoute,
   CassinoIndexRoute: CassinoIndexRoute,
+  CassinoJogoIdRoute: CassinoJogoIdRoute,
 }
 
 const CassinoRouteWithChildren =
@@ -882,36 +1219,64 @@ interface EsportesRouteChildren {
   EsportesAoVivoRoute: typeof EsportesAoVivoRoute
   EsportesProximosRoute: typeof EsportesProximosRoute
   EsportesIndexRoute: typeof EsportesIndexRoute
+  EsportesEventoIdRoute: typeof EsportesEventoIdRoute
 }
 
 const EsportesRouteChildren: EsportesRouteChildren = {
   EsportesAoVivoRoute: EsportesAoVivoRoute,
   EsportesProximosRoute: EsportesProximosRoute,
   EsportesIndexRoute: EsportesIndexRoute,
+  EsportesEventoIdRoute: EsportesEventoIdRoute,
 }
 
 const EsportesRouteWithChildren = EsportesRoute._addFileChildren(
   EsportesRouteChildren,
 )
 
+interface PromocoesRouteChildren {
+  PromocoesIdRoute: typeof PromocoesIdRoute
+  PromocoesIndexRoute: typeof PromocoesIndexRoute
+}
+
+const PromocoesRouteChildren: PromocoesRouteChildren = {
+  PromocoesIdRoute: PromocoesIdRoute,
+  PromocoesIndexRoute: PromocoesIndexRoute,
+}
+
+const PromocoesRouteWithChildren = PromocoesRoute._addFileChildren(
+  PromocoesRouteChildren,
+)
+
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AccountRoute: AccountRouteWithChildren,
   AdminRoute: AdminRouteWithChildren,
+  AmlRoute: AmlRoute,
+  ApostasRoute: ApostasRoute,
+  BonusRoute: BonusRoute,
   CarteiraRoute: CarteiraRouteWithChildren,
   CassinoRoute: CassinoRouteWithChildren,
+  ContatoRoute: ContatoRoute,
+  CookiesRoute: CookiesRoute,
   DesafiosRoute: DesafiosRoute,
   EsportesRoute: EsportesRouteWithChildren,
+  FaqRoute: FaqRoute,
+  FavoritosRoute: FavoritosRoute,
   LoginRoute: LoginRoute,
+  NotificacoesRoute: NotificacoesRoute,
   OnboardingRoute: OnboardingRoute,
   PesquisaRoute: PesquisaRoute,
   PrivacyRoute: PrivacyRoute,
-  PromocoesRoute: PromocoesRoute,
+  PromocoesRoute: PromocoesRouteWithChildren,
   RecompensasRoute: RecompensasRoute,
   RegisterRoute: RegisterRoute,
+  RegrasApostasRoute: RegrasApostasRoute,
   ResponsibleGamblingRoute: ResponsibleGamblingRoute,
   RoletaRoute: RoletaRoute,
+  SobreRoute: SobreRoute,
+  SuporteRoute: SuporteRoute,
   TermsRoute: TermsRoute,
+  VipRoute: VipRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

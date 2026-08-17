@@ -1,4 +1,5 @@
-import { Radio } from "lucide-react";
+import { Link } from "@tanstack/react-router";
+import { ChevronRight, Radio } from "lucide-react";
 
 import type { EventoEsportivo } from "@/data/bet-mock";
 import { useBetslip } from "@/lib/betslip";
@@ -21,6 +22,14 @@ export function CardEvento({ ev }: { ev: EventoEsportivo }) {
         )}
       </p>
       <p className="mt-1 text-xs text-muted-foreground">{ev.aoVivo ? "Ao vivo" : ev.inicio}</p>
+
+      <Link
+        to="/esportes/evento/$id"
+        params={{ id: ev.id }}
+        className="mt-2 inline-flex items-center gap-1 rounded-sm text-xs text-primary outline-none hover:underline focus-visible:ring-2 focus-visible:ring-ring"
+      >
+        Ver todos os mercados <ChevronRight className="h-3.5 w-3.5" />
+      </Link>
 
       <div className="mt-3 space-y-1.5">
         {[0, 1].map((i) => (
