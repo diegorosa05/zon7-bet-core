@@ -3,7 +3,8 @@ import { createFileRoute } from "@tanstack/react-router";
 import { LegalPage } from "@/components/shared/legal-page";
 
 const TITULO = "Termos de Uso — Zon7 BET";
-const DESCRICAO = "Condições de uso da plataforma Zon7 BET, incluindo elegibilidade, verificação e encerramento de conta.";
+const DESCRICAO =
+  "Condições de uso da plataforma Zon7 BET, incluindo elegibilidade, verificação e encerramento de conta.";
 
 export const Route = createFileRoute("/terms")({
   head: () => ({

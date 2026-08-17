@@ -203,7 +203,9 @@ export function BetLayout({ children, aside }: { children: ReactNode; aside?: Re
         </aside>
 
         <div className="flex min-w-0 flex-1 flex-col">
-          <main className="mx-auto w-full max-w-[105rem] min-w-0 flex-1 px-3 py-5 sm:px-6">{children}</main>
+          <main className="mx-auto w-full max-w-[105rem] min-w-0 flex-1 px-3 py-5 sm:px-6">
+            {children}
+          </main>
           <SiteFooter />
         </div>
 

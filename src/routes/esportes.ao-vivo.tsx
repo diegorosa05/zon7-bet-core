@@ -26,7 +26,11 @@ function EsportesAoVivo() {
   const lista = eventos.filter((e) => e.aoVivo);
   return (
     <section className="space-y-4">
-      <CabecalhoSecao nivel="h1" titulo="Jogos ao vivo" descricao={`${lista.length} partidas em andamento agora`} />
+      <CabecalhoSecao
+        nivel="h1"
+        titulo="Jogos ao vivo"
+        descricao={`${lista.length} partidas em andamento agora`}
+      />
       <GradeEventos lista={lista} vazio="Nenhuma partida ao vivo no momento." />
     </section>
   );

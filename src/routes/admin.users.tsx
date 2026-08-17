@@ -7,7 +7,13 @@ import { PageHeader } from "@/components/shared/page-header";
 import { ErrorState, TableSkeleton } from "@/components/shared/states";
 import { StatusBadge } from "@/components/shared/status-badge";
 import { Button } from "@/components/ui/button";
-import { Sheet, SheetContent, SheetDescription, SheetHeader, SheetTitle } from "@/components/ui/sheet";
+import {
+  Sheet,
+  SheetContent,
+  SheetDescription,
+  SheetHeader,
+  SheetTitle,
+} from "@/components/ui/sheet";
 import { usuariosQuery } from "@/data/queries";
 import type { Usuario } from "@/data/types";
 import { formatarData } from "@/lib/format";
@@ -50,13 +56,18 @@ function AdminUsersPage() {
       chave: "criado",
       titulo: "Cadastro",
       ocultarNoMobile: true,
-      render: (u) => <span className="tabular text-sm whitespace-nowrap">{formatarData(u.criadoEm, false)}</span>,
+      render: (u) => (
+        <span className="tabular text-sm whitespace-nowrap">{formatarData(u.criadoEm, false)}</span>
+      ),
     },
   ];
 
   return (
     <>
-      <PageHeader titulo="Usuários" descricao="Consulte contas e abra o detalhe para ver o contexto de compliance." />
+      <PageHeader
+        titulo="Usuários"
+        descricao="Consulte contas e abra o detalhe para ver o contexto de compliance."
+      />
 
       {isError ? (
         <ErrorState onRetry={() => refetch()} />

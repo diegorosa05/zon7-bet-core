@@ -21,7 +21,9 @@ export function LegalPage({
     <PublicLayout>
       <div className="mx-auto w-full max-w-6xl px-4 py-14 sm:px-6">
         <header className="max-w-2xl">
-          <p className="text-xs tracking-wide text-muted-foreground uppercase">Documento institucional</p>
+          <p className="text-xs tracking-wide text-muted-foreground uppercase">
+            Documento institucional
+          </p>
           <h1 className="mt-3 text-3xl font-semibold sm:text-4xl">{titulo}</h1>
           <p className="mt-3 text-sm text-muted-foreground">Última atualização: {atualizacao}</p>
           <p className="mt-5 text-muted-foreground">{resumo}</p>
@@ -33,7 +35,10 @@ export function LegalPage({
             <ul className="mt-3 space-y-2 text-sm">
               {secoes.map((s) => (
                 <li key={s.id}>
-                  <a href={`#${s.id}`} className="text-muted-foreground transition-colors hover:text-foreground">
+                  <a
+                    href={`#${s.id}`}
+                    className="text-muted-foreground transition-colors hover:text-foreground"
+                  >
                     {s.titulo}
                   </a>
                 </li>

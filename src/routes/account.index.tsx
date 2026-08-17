@@ -97,7 +97,10 @@ function AccountDashboard() {
               <Progress value={progresso} className="mt-5" />
               <ul className="mt-6 space-y-3">
                 {kyc.data!.map((etapa) => (
-                  <li key={etapa.id} className="flex items-center justify-between gap-3 border-b border-border pb-3 last:border-0 last:pb-0">
+                  <li
+                    key={etapa.id}
+                    className="flex items-center justify-between gap-3 border-b border-border pb-3 last:border-0 last:pb-0"
+                  >
                     <span className="min-w-0 truncate text-sm">{etapa.titulo}</span>
                     <StatusBadge valor={etapa.status} />
                   </li>
@@ -116,22 +119,37 @@ function AccountDashboard() {
               <ul className="mt-5 space-y-4 text-sm">
                 <li>
                   <p className="font-medium">Revisar limites</p>
-                  <p className="mt-1 text-muted-foreground">Ajuste depósito, perda e tempo de sessão.</p>
-                  <Link to="/account/limits" className="mt-1 inline-block text-primary hover:underline">
+                  <p className="mt-1 text-muted-foreground">
+                    Ajuste depósito, perda e tempo de sessão.
+                  </p>
+                  <Link
+                    to="/account/limits"
+                    className="mt-1 inline-block text-primary hover:underline"
+                  >
                     Abrir limites
                   </Link>
                 </li>
                 <li>
                   <p className="font-medium">Reforçar segurança</p>
-                  <p className="mt-1 text-muted-foreground">Confira dispositivos e sessões ativas.</p>
-                  <Link to="/account/security" className="mt-1 inline-block text-primary hover:underline">
+                  <p className="mt-1 text-muted-foreground">
+                    Confira dispositivos e sessões ativas.
+                  </p>
+                  <Link
+                    to="/account/security"
+                    className="mt-1 inline-block text-primary hover:underline"
+                  >
                     Abrir segurança
                   </Link>
                 </li>
                 <li>
                   <p className="font-medium">Conferir histórico</p>
-                  <p className="mt-1 text-muted-foreground">Todos os eventos registrados na sua conta.</p>
-                  <Link to="/account/history" className="mt-1 inline-block text-primary hover:underline">
+                  <p className="mt-1 text-muted-foreground">
+                    Todos os eventos registrados na sua conta.
+                  </p>
+                  <Link
+                    to="/account/history"
+                    className="mt-1 inline-block text-primary hover:underline"
+                  >
                     Abrir histórico
                   </Link>
                 </li>

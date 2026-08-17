@@ -12,7 +12,9 @@ export function Logo({ className, compacto = false }: { className?: string; comp
         className={cn("w-auto object-contain", compacto ? "h-6" : "h-7")}
       />
       {!compacto && (
-        <span className="font-display text-sm font-semibold tracking-[0.2em] text-primary uppercase">bet</span>
+        <span className="font-display text-sm font-semibold tracking-[0.2em] text-primary uppercase">
+          bet
+        </span>
       )}
     </span>
   );

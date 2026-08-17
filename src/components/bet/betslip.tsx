@@ -17,7 +17,11 @@ export function Betslip() {
           {selecoes.length}
         </span>
         {selecoes.length > 0 && (
-          <button type="button" onClick={limpar} className="text-xs text-muted-foreground hover:text-destructive">
+          <button
+            type="button"
+            onClick={limpar}
+            className="text-xs text-muted-foreground hover:text-destructive"
+          >
             Limpar
           </button>
         )}
@@ -37,7 +41,9 @@ export function Betslip() {
                     <p className="truncate text-sm font-medium">{s.evento}</p>
                     <p className="text-xs text-muted-foreground">Resultado final · {s.mercado}</p>
                   </div>
-                  <span className="tabular ml-auto text-sm font-semibold text-primary">{s.odd.toFixed(2)}</span>
+                  <span className="tabular ml-auto text-sm font-semibold text-primary">
+                    {s.odd.toFixed(2)}
+                  </span>
                   <button
                     type="button"
                     aria-label="Remover seleção"
@@ -68,12 +74,16 @@ export function Betslip() {
             </div>
             <div className="flex items-center justify-between text-sm">
               <span className="text-muted-foreground">Retorno estimado</span>
-              <span className="tabular font-semibold text-primary">R$ {retorno.toFixed(2).replace(".", ",")}</span>
+              <span className="tabular font-semibold text-primary">
+                R$ {retorno.toFixed(2).replace(".", ",")}
+              </span>
             </div>
             <Button asChild className="w-full rounded-full font-semibold">
               <Link to="/login">Apostar</Link>
             </Button>
-            <p className="text-[11px] text-muted-foreground">Demonstração: nenhuma aposta real é registrada.</p>
+            <p className="text-[11px] text-muted-foreground">
+              Demonstração: nenhuma aposta real é registrada.
+            </p>
           </div>
         </>
       )}

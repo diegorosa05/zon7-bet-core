@@ -43,7 +43,8 @@ function EsportesPopulares() {
             aria-pressed={esporte === e}
             className={cn(
               chipBase,
-              esporte === e && "bg-primary text-primary-foreground hover:bg-primary hover:text-primary-foreground",
+              esporte === e &&
+                "bg-primary text-primary-foreground hover:bg-primary hover:text-primary-foreground",
             )}
           >
             {e}

@@ -6,7 +6,13 @@ import { DataTable, type Coluna } from "@/components/shared/data-table";
 import { PageHeader } from "@/components/shared/page-header";
 import { ErrorState, TableSkeleton } from "@/components/shared/states";
 import { StatusBadge } from "@/components/shared/status-badge";
-import { Sheet, SheetContent, SheetDescription, SheetHeader, SheetTitle } from "@/components/ui/sheet";
+import {
+  Sheet,
+  SheetContent,
+  SheetDescription,
+  SheetHeader,
+  SheetTitle,
+} from "@/components/ui/sheet";
 import { historicoQuery } from "@/data/queries";
 import type { EventoConta } from "@/data/types";
 import { formatarData } from "@/lib/format";
@@ -43,14 +49,20 @@ function HistoryPage() {
     {
       chave: "em",
       titulo: "Data",
-      render: (e) => <span className="tabular text-sm whitespace-nowrap">{formatarData(e.em)}</span>,
+      render: (e) => (
+        <span className="tabular text-sm whitespace-nowrap">{formatarData(e.em)}</span>
+      ),
     },
     {
       chave: "categoria",
       titulo: "Categoria",
       render: (e) => <StatusBadge valor={e.categoria} rotulo={rotuloCategoria[e.categoria]} />,
     },
-    { chave: "titulo", titulo: "Evento", render: (e) => <span className="text-sm">{e.titulo}</span> },
+    {
+      chave: "titulo",
+      titulo: "Evento",
+      render: (e) => <span className="text-sm">{e.titulo}</span>,
+    },
     {
       chave: "origem",
       titulo: "Origem",
@@ -61,7 +73,10 @@ function HistoryPage() {
 
   return (
     <>
-      <PageHeader titulo="Histórico" descricao="Todo evento relevante da conta fica registrado e disponível para consulta." />
+      <PageHeader
+        titulo="Histórico"
+        descricao="Todo evento relevante da conta fica registrado e disponível para consulta."
+      />
 
       {isError ? (
         <ErrorState onRetry={() => refetch()} />
@@ -95,7 +110,10 @@ function HistoryPage() {
           </SheetHeader>
           {selecionado ? (
             <div className="space-y-5 px-4 pb-6">
-              <StatusBadge valor={selecionado.categoria} rotulo={rotuloCategoria[selecionado.categoria]} />
+              <StatusBadge
+                valor={selecionado.categoria}
+                rotulo={rotuloCategoria[selecionado.categoria]}
+              />
               <p className="text-sm text-muted-foreground">{selecionado.detalhe}</p>
               <dl className="space-y-3 border-t border-border pt-4 text-sm">
                 <div className="flex justify-between gap-4">

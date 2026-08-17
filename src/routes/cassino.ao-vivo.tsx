@@ -5,7 +5,8 @@ import { CabecalhoSecao } from "@/components/bet/section";
 import { jogos } from "@/data/bet-mock";
 
 const TITULO = "Cassino ao vivo — roleta e blackjack com dealer real";
-const DESCRICAO = "Mesas ao vivo da Zon7 BET: roleta brasileira, roleta relâmpago e blackjack VIP com dealers reais.";
+const DESCRICAO =
+  "Mesas ao vivo da Zon7 BET: roleta brasileira, roleta relâmpago e blackjack VIP com dealers reais.";
 
 export const Route = createFileRoute("/cassino/ao-vivo")({
   head: () => ({
@@ -24,7 +25,11 @@ export const Route = createFileRoute("/cassino/ao-vivo")({
 function AoVivo() {
   return (
     <section className="space-y-4">
-      <CabecalhoSecao nivel="h1" titulo="Cassino ao vivo" descricao="Mesas com dealer real transmitidas em tempo real" />
+      <CabecalhoSecao
+        nivel="h1"
+        titulo="Cassino ao vivo"
+        descricao="Mesas com dealer real transmitidas em tempo real"
+      />
       <GradeJogos lista={jogos.filter((j) => j.categoria === "Ao vivo")} />
     </section>
   );

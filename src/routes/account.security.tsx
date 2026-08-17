@@ -88,7 +88,11 @@ function SecurityPage() {
                 Notificação por e-mail sempre que um acesso vier de um dispositivo desconhecido.
               </p>
             </div>
-            <Switch checked={alertas} onCheckedChange={setAlertas} aria-label="Alertas de novo dispositivo" />
+            <Switch
+              checked={alertas}
+              onCheckedChange={setAlertas}
+              aria-label="Alertas de novo dispositivo"
+            />
           </div>
         </div>
       </section>
@@ -143,7 +147,9 @@ function SecurityPage() {
         <DialogContent>
           <DialogHeader>
             <DialogTitle>Alterar senha</DialogTitle>
-            <DialogDescription>Você será desconectado das demais sessões após a alteração.</DialogDescription>
+            <DialogDescription>
+              Você será desconectado das demais sessões após a alteração.
+            </DialogDescription>
           </DialogHeader>
           <div className="space-y-4">
             <div className="space-y-2">

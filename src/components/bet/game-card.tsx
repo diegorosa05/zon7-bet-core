@@ -27,7 +27,9 @@ export function CardJogo({ jogo, largo = false }: { jogo: JogoCassino; largo?: b
         </span>
       </span>
       <span className="block truncate px-2.5 pt-2 text-xs font-semibold">{jogo.nome}</span>
-      <span className="block truncate px-2.5 pb-2.5 text-[11px] text-muted-foreground">{jogo.provedor}</span>
+      <span className="block truncate px-2.5 pb-2.5 text-[11px] text-muted-foreground">
+        {jogo.provedor}
+      </span>
     </Link>
   );
 }

@@ -10,7 +10,8 @@ import { Input } from "@/components/ui/input";
 import { eventos, jogos } from "@/data/bet-mock";
 
 const TITULO = "Pesquisa — encontre jogos e partidas na Zon7 BET";
-const DESCRICAO = "Busque por jogos de cassino, provedores, times e competições em toda a plataforma Zon7 BET.";
+const DESCRICAO =
+  "Busque por jogos de cassino, provedores, times e competições em toda a plataforma Zon7 BET.";
 
 export const Route = createFileRoute("/pesquisa")({
   head: () => ({
@@ -31,13 +32,22 @@ function Pesquisa() {
   const termo = q.trim().toLowerCase();
 
   const jogosFiltrados = useMemo(
-    () => (termo ? jogos.filter((j) => `${j.nome} ${j.provedor} ${j.categoria}`.toLowerCase().includes(termo)) : []),
+    () =>
+      termo
+        ? jogos.filter((j) =>
+            `${j.nome} ${j.provedor} ${j.categoria}`.toLowerCase().includes(termo),
+          )
+        : [],
     [termo],
   );
   const eventosFiltrados = useMemo(
     () =>
       termo
-        ? eventos.filter((e) => `${e.casa} ${e.fora} ${e.competicao} ${e.esporte} ${e.pais}`.toLowerCase().includes(termo))
+        ? eventos.filter((e) =>
+            `${e.casa} ${e.fora} ${e.competicao} ${e.esporte} ${e.pais}`
+              .toLowerCase()
+              .includes(termo),
+          )
         : [],
     [termo],
   );
@@ -85,7 +95,10 @@ function Pesquisa() {
             </div>
             <div className="space-y-3">
               <h2 className="text-[15px] font-semibold">Partidas ({eventosFiltrados.length})</h2>
-              <GradeEventos lista={eventosFiltrados} vazio="Nenhuma partida encontrada para essa busca." />
+              <GradeEventos
+                lista={eventosFiltrados}
+                vazio="Nenhuma partida encontrada para essa busca."
+              />
             </div>
           </div>
         )}

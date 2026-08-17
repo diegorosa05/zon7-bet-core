@@ -57,10 +57,19 @@ function LoginPage() {
           Ambiente de demonstração: a autenticação é simulada no navegador.
         </p>
 
-        <form onSubmit={onSubmit} className="mt-8 space-y-5 rounded-2xl border border-border bg-card p-6">
+        <form
+          onSubmit={onSubmit}
+          className="mt-8 space-y-5 rounded-2xl border border-border bg-card p-6"
+        >
           <div className="space-y-2">
             <Label htmlFor="email">E-mail</Label>
-            <Input id="email" type="email" value={email} onChange={(e) => setEmail(e.target.value)} autoComplete="email" />
+            <Input
+              id="email"
+              type="email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              autoComplete="email"
+            />
           </div>
           <div className="space-y-2">
             <Label htmlFor="senha">Senha</Label>

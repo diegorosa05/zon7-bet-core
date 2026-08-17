@@ -8,7 +8,8 @@ import { cn } from "@/lib/utils";
 export const chipBase =
   "inline-flex h-9 shrink-0 items-center gap-2 rounded-full bg-card px-4 text-[13px] font-medium text-muted-foreground transition-colors outline-none hover:bg-accent hover:text-foreground focus-visible:ring-2 focus-visible:ring-ring";
 
-export const chipAtivo = "bg-primary text-primary-foreground hover:bg-primary hover:text-primary-foreground";
+export const chipAtivo =
+  "bg-primary text-primary-foreground hover:bg-primary hover:text-primary-foreground";
 
 export function FaixaChips({ children }: { children: ReactNode }) {
   return <div className="-mx-1 flex gap-2 overflow-x-auto px-1 pb-1">{children}</div>;
@@ -26,7 +27,10 @@ export function NavChips({
           key={`${i.to}-${i.rotulo}`}
           to={i.to}
           activeOptions={{ exact: i.exact ?? false }}
-          className={cn(chipBase, "data-[status=active]:bg-primary data-[status=active]:text-primary-foreground")}
+          className={cn(
+            chipBase,
+            "data-[status=active]:bg-primary data-[status=active]:text-primary-foreground",
+          )}
         >
           {i.rotulo}
         </Link>
@@ -53,7 +57,12 @@ export function CabecalhoSecao({
   return (
     <div className="grid grid-cols-[minmax(0,1fr)_auto] items-center gap-3">
       <div className="min-w-0">
-        <Tag className={cn("truncate font-semibold", nivel === "h1" ? "text-lg sm:text-xl" : "text-[15px]")}>
+        <Tag
+          className={cn(
+            "truncate font-semibold",
+            nivel === "h1" ? "text-lg sm:text-xl" : "text-[15px]",
+          )}
+        >
           {titulo}
         </Tag>
         {descricao && <p className="mt-0.5 truncate text-xs text-muted-foreground">{descricao}</p>}

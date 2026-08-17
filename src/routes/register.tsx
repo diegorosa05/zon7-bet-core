@@ -39,8 +39,15 @@ function RegisterPage() {
   function onSubmit(e: React.FormEvent) {
     e.preventDefault();
     setErro(null);
-    if (!form.nome.trim() || !form.email.includes("@") || form.documento.length < 11 || form.senha.length < 8) {
-      setErro("Preencha nome, e-mail válido, CPF com 11 dígitos e senha com no mínimo 8 caracteres.");
+    if (
+      !form.nome.trim() ||
+      !form.email.includes("@") ||
+      form.documento.length < 11 ||
+      form.senha.length < 8
+    ) {
+      setErro(
+        "Preencha nome, e-mail válido, CPF com 11 dígitos e senha com no mínimo 8 caracteres.",
+      );
       return;
     }
     if (!aceites.termos || !aceites.idade) {
@@ -63,14 +70,26 @@ function RegisterPage() {
           Após o cadastro você passa pela verificação de identidade antes de qualquer operação.
         </p>
 
-        <form onSubmit={onSubmit} className="mt-8 space-y-5 rounded-2xl border border-border bg-card p-6">
+        <form
+          onSubmit={onSubmit}
+          className="mt-8 space-y-5 rounded-2xl border border-border bg-card p-6"
+        >
           <div className="space-y-2">
             <Label htmlFor="nome">Nome completo</Label>
-            <Input id="nome" value={form.nome} onChange={(e) => atualizar("nome", e.target.value)} />
+            <Input
+              id="nome"
+              value={form.nome}
+              onChange={(e) => atualizar("nome", e.target.value)}
+            />
           </div>
           <div className="space-y-2">
             <Label htmlFor="email-cad">E-mail</Label>
-            <Input id="email-cad" type="email" value={form.email} onChange={(e) => atualizar("email", e.target.value)} />
+            <Input
+              id="email-cad"
+              type="email"
+              value={form.email}
+              onChange={(e) => atualizar("email", e.target.value)}
+            />
           </div>
           <div className="space-y-2">
             <Label htmlFor="cpf">CPF</Label>
@@ -79,7 +98,9 @@ function RegisterPage() {
               inputMode="numeric"
               placeholder="Somente números"
               value={form.documento}
-              onChange={(e) => atualizar("documento", e.target.value.replace(/\D/g, "").slice(0, 11))}
+              onChange={(e) =>
+                atualizar("documento", e.target.value.replace(/\D/g, "").slice(0, 11))
+              }
             />
           </div>
           <div className="space-y-2">

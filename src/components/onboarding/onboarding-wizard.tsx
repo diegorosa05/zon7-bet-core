@@ -22,7 +22,13 @@ import { Checkbox } from "@/components/ui/checkbox";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Progress } from "@/components/ui/progress";
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
 import { Skeleton } from "@/components/ui/skeleton";
 import {
   CONSENT_VERSIONS,
@@ -134,8 +140,14 @@ export function OnboardingWizard() {
 
   function confirmarMaioridade(valor: boolean) {
     if (!valor) {
-      atualizar({ maioridade: false, status: "blocked", motivo: "Idade mínima de 18 anos não confirmada." });
-      toast.error("Acesso bloqueado", { description: "Apostas são proibidas para menores de 18 anos." });
+      atualizar({
+        maioridade: false,
+        status: "blocked",
+        motivo: "Idade mínima de 18 anos não confirmada.",
+      });
+      toast.error("Acesso bloqueado", {
+        description: "Apostas são proibidas para menores de 18 anos.",
+      });
       return;
     }
     atualizar({ maioridade: true, status: "pending", motivo: null, passo: 2 });
@@ -219,7 +231,10 @@ export function OnboardingWizard() {
         <div className="flex items-center justify-between gap-3 text-sm">
           <p className="font-medium">
             Etapa {passo} de {PASSOS.length}
-            <span className="hidden text-muted-foreground sm:inline"> · {PASSOS[passo - 1]?.titulo}</span>
+            <span className="hidden text-muted-foreground sm:inline">
+              {" "}
+              · {PASSOS[passo - 1]?.titulo}
+            </span>
           </p>
           <span className="tabular text-muted-foreground">{progresso}%</span>
         </div>
@@ -271,8 +286,8 @@ export function OnboardingWizard() {
               <div>
                 <h2 className="text-lg font-semibold">Cadastro não permitido</h2>
                 <p className="mx-auto mt-2 max-w-md text-sm text-muted-foreground">
-                  Apostas são proibidas para menores de 18 anos. Não é possível continuar o cadastro nem
-                  acessar as funcionalidades da plataforma.
+                  Apostas são proibidas para menores de 18 anos. Não é possível continuar o cadastro
+                  nem acessar as funcionalidades da plataforma.
                 </p>
               </div>
               <div className="flex flex-col justify-center gap-2 sm:flex-row">
@@ -289,8 +304,8 @@ export function OnboardingWizard() {
               <div>
                 <h2 className="text-lg font-semibold">Você confirma que possui 18 anos ou mais?</h2>
                 <p className="mt-2 text-sm text-muted-foreground">
-                  A legislação brasileira proíbe apostas por menores de 18 anos. A informação é registrada e
-                  conferida na verificação de identidade.
+                  A legislação brasileira proíbe apostas por menores de 18 anos. A informação é
+                  registrada e conferida na verificação de identidade.
                 </p>
               </div>
               <div className="grid gap-3 sm:grid-cols-2">
@@ -362,8 +377,12 @@ export function OnboardingWizard() {
                   aria-invalid={!!errosCampos["nascimento"]}
                   onChange={(e) => setPessoais((p) => ({ ...p, nascimento: e.target.value }))}
                 />
-                {pessoais.nascimento && idadeEm(pessoais.nascimento) >= 0 && !errosCampos["nascimento"] ? (
-                  <p className="text-xs text-muted-foreground">{idadeEm(pessoais.nascimento)} anos</p>
+                {pessoais.nascimento &&
+                idadeEm(pessoais.nascimento) >= 0 &&
+                !errosCampos["nascimento"] ? (
+                  <p className="text-xs text-muted-foreground">
+                    {idadeEm(pessoais.nascimento)} anos
+                  </p>
                 ) : null}
                 <CampoErro mensagem={errosCampos["nascimento"]} />
               </div>
@@ -386,7 +405,9 @@ export function OnboardingWizard() {
                   placeholder="(11) 90000-0000"
                   value={pessoais.telefone}
                   aria-invalid={!!errosCampos["telefone"]}
-                  onChange={(e) => setPessoais((p) => ({ ...p, telefone: formatarTelefone(e.target.value) }))}
+                  onChange={(e) =>
+                    setPessoais((p) => ({ ...p, telefone: formatarTelefone(e.target.value) }))
+                  }
                 />
                 <CampoErro mensagem={errosCampos["telefone"]} />
               </div>
@@ -478,7 +499,10 @@ export function OnboardingWizard() {
               </div>
               <div className="space-y-2 sm:col-span-1">
                 <Label htmlFor="ob-uf">UF</Label>
-                <Select value={endereco.uf} onValueChange={(v) => setEndereco((p) => ({ ...p, uf: v }))}>
+                <Select
+                  value={endereco.uf}
+                  onValueChange={(v) => setEndereco((p) => ({ ...p, uf: v }))}
+                >
                   <SelectTrigger id="ob-uf" aria-invalid={!!errosCampos["uf"]}>
                     <SelectValue placeholder="UF" />
                   </SelectTrigger>
@@ -508,7 +532,8 @@ export function OnboardingWizard() {
             <div>
               <h2 className="text-lg font-semibold">Consentimentos obrigatórios</h2>
               <p className="mt-1 text-sm text-muted-foreground">
-                Registramos a versão de cada política aceita, com data e hora, para fins de auditoria.
+                Registramos a versão de cada política aceita, com data e hora, para fins de
+                auditoria.
               </p>
             </div>
             <div className="space-y-3">
@@ -519,7 +544,9 @@ export function OnboardingWizard() {
                     key={c.chave}
                     className={cn(
                       "flex cursor-pointer items-start gap-3 rounded-xl border p-4 transition-colors",
-                      registro?.aceito ? "border-primary/45 bg-primary/8" : "border-border bg-background/40",
+                      registro?.aceito
+                        ? "border-primary/45 bg-primary/8"
+                        : "border-border bg-background/40",
                     )}
                   >
                     <Checkbox
@@ -538,7 +565,9 @@ export function OnboardingWizard() {
                           abrir documento
                         </Link>
                       </span>
-                      <span className="mt-1 block text-sm text-muted-foreground">{c.descricao}</span>
+                      <span className="mt-1 block text-sm text-muted-foreground">
+                        {c.descricao}
+                      </span>
                       <span className="mt-2 block font-mono text-[11px] text-muted-foreground">
                         versão {CONSENT_VERSIONS[c.chave]}
                         {registro?.aceitoEm
@@ -583,7 +612,11 @@ export function OnboardingWizard() {
                         enviado ? "bg-success/15 text-success" : "bg-muted text-muted-foreground",
                       )}
                     >
-                      {enviado ? <Check className="h-4 w-4" /> : <CloudUpload className="h-4 w-4" />}
+                      {enviado ? (
+                        <Check className="h-4 w-4" />
+                      ) : (
+                        <CloudUpload className="h-4 w-4" />
+                      )}
                     </span>
                     <div className="min-w-0">
                       <p className="truncate text-sm font-medium">{doc.titulo}</p>
@@ -676,10 +709,18 @@ export function OnboardingWizard() {
                 Simulação de decisão de compliance (ambiente de demonstração)
               </p>
               <div className="mt-3 flex flex-wrap gap-2">
-                <Button size="sm" variant="outline" onClick={() => simularDecisao("under_review", null)}>
+                <Button
+                  size="sm"
+                  variant="outline"
+                  onClick={() => simularDecisao("under_review", null)}
+                >
                   Em análise
                 </Button>
-                <Button size="sm" variant="outline" onClick={() => simularDecisao("approved", null)}>
+                <Button
+                  size="sm"
+                  variant="outline"
+                  onClick={() => simularDecisao("approved", null)}
+                >
                   Aprovar
                 </Button>
                 <Button
@@ -692,7 +733,9 @@ export function OnboardingWizard() {
                 <Button
                   size="sm"
                   variant="outline"
-                  onClick={() => simularDecisao("blocked", "Bloqueio preventivo por alerta de AML.")}
+                  onClick={() =>
+                    simularDecisao("blocked", "Bloqueio preventivo por alerta de AML.")
+                  }
                 >
                   Bloquear
                 </Button>

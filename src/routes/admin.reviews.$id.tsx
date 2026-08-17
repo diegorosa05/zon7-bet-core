@@ -31,9 +31,15 @@ export const Route = createFileRoute("/admin/reviews/$id")({
     return {
       meta: [
         { title: titulo },
-        { name: "description", content: "Análise de caso de compliance com evidências, histórico e decisão." },
+        {
+          name: "description",
+          content: "Análise de caso de compliance com evidências, histórico e decisão.",
+        },
         { property: "og:title", content: titulo },
-        { property: "og:description", content: "Análise de caso de compliance com evidências, histórico e decisão." },
+        {
+          property: "og:description",
+          content: "Análise de caso de compliance com evidências, histórico e decisão.",
+        },
         { name: "robots", content: "noindex" },
       ],
     };
@@ -57,7 +63,9 @@ function CasePage() {
 
   function confirmar() {
     if (!decisao) return;
-    toast.success(`${rotuloDecisao[decisao]} registrada`, { description: "Evento gravado na trilha de auditoria." });
+    toast.success(`${rotuloDecisao[decisao]} registrada`, {
+      description: "Evento gravado na trilha de auditoria.",
+    });
     setDecisao(null);
     setNota("");
   }
@@ -116,7 +124,10 @@ function CasePage() {
               <h2 className="text-base font-semibold">Evidências</h2>
               <ul className="mt-5 space-y-4">
                 {data.evidencias.map((ev) => (
-                  <li key={ev.rotulo} className="border-b border-border pb-4 last:border-0 last:pb-0">
+                  <li
+                    key={ev.rotulo}
+                    className="border-b border-border pb-4 last:border-0 last:pb-0"
+                  >
                     <p className="text-sm font-medium">{ev.rotulo}</p>
                     <p className="mt-1 text-sm text-muted-foreground">{ev.valor}</p>
                     <p className="mt-1 text-xs text-muted-foreground">Fonte: {ev.fonte}</p>
@@ -149,7 +160,11 @@ function CasePage() {
               />
             </div>
             <div className="mt-5 space-y-2">
-              <Button className="w-full" disabled={!nota.trim()} onClick={() => setDecisao("aprovar")}>
+              <Button
+                className="w-full"
+                disabled={!nota.trim()}
+                onClick={() => setDecisao("aprovar")}
+              >
                 Aprovar
               </Button>
               <Button
@@ -170,7 +185,9 @@ function CasePage() {
               </Button>
             </div>
             {!nota.trim() ? (
-              <p className="mt-3 text-xs text-muted-foreground">A justificativa é obrigatória para registrar a decisão.</p>
+              <p className="mt-3 text-xs text-muted-foreground">
+                A justificativa é obrigatória para registrar a decisão.
+              </p>
             ) : null}
           </section>
         </div>
@@ -181,7 +198,8 @@ function CasePage() {
           <AlertDialogHeader>
             <AlertDialogTitle>{decisao ? rotuloDecisao[decisao] : ""}</AlertDialogTitle>
             <AlertDialogDescription>
-              A decisão é definitiva e ficará registrada na trilha de auditoria com seu usuário e horário.
+              A decisão é definitiva e ficará registrada na trilha de auditoria com seu usuário e
+              horário.
             </AlertDialogDescription>
           </AlertDialogHeader>
           <AlertDialogFooter>
