@@ -7,12 +7,22 @@ import bannerEsportes from "@/assets/banner-esportes.jpg";
 import { Betslip } from "@/components/bet/betslip";
 import { GradeEventos } from "@/components/bet/event-card";
 import { Carrossel } from "@/components/bet/game-card";
+import { CabecalhoSecao, NavChips } from "@/components/bet/section";
 import { BetLayout } from "@/components/layouts/bet-layout";
 import { Button } from "@/components/ui/button";
 import { eventos, jogos } from "@/data/bet-mock";
 
 const categorias = [
   { rotulo: "Salão", to: "/" as const },
+  { rotulo: "Todos os jogos", to: "/cassino" as const },
+  { rotulo: "Slots em destaque", to: "/cassino/slots" as const },
+  { rotulo: "Cassino ao vivo", to: "/cassino/ao-vivo" as const },
+  { rotulo: "Originais da Zon7", to: "/cassino/originais" as const },
+  { rotulo: "Jogos ao vivo", to: "/esportes/ao-vivo" as const },
+  { rotulo: "Pesquisa", to: "/pesquisa" as const },
+];
+
+const categoriasAntigas = [
   { rotulo: "Todos os jogos", to: "/cassino" as const },
   { rotulo: "Slots em destaque", to: "/cassino/slots" as const },
   { rotulo: "Cassino ao vivo", to: "/cassino/ao-vivo" as const },
