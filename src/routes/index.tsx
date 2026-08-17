@@ -22,15 +22,6 @@ const categorias = [
   { rotulo: "Pesquisa", to: "/pesquisa" as const },
 ];
 
-const categoriasAntigas = [
-  { rotulo: "Todos os jogos", to: "/cassino" as const },
-  { rotulo: "Slots em destaque", to: "/cassino/slots" as const },
-  { rotulo: "Cassino ao vivo", to: "/cassino/ao-vivo" as const },
-  { rotulo: "Originais da Zon7", to: "/cassino/originais" as const },
-  { rotulo: "Jogos ao vivo", to: "/esportes/ao-vivo" as const },
-  { rotulo: "Pesquisa", to: "/pesquisa" as const },
-];
-
 const TITULO = "Zon7 BET — cassino online, jogos originais e apostas esportivas";
 const DESCRICAO =
   "Jogue Crash, Mines, Double e slots em destaque, aposte em futebol, basquete e eSports ao vivo e acompanhe seu cupom em tempo real na Zon7 BET.";
@@ -52,6 +43,7 @@ export const Route = createFileRoute("/")({
 function Index() {
   return (
     <BetLayout aside={<Betslip />}>
+      <div className="space-y-6">
       {/* Hero */}
       <section className="relative overflow-hidden rounded-xl">
         <img
@@ -84,7 +76,7 @@ function Index() {
       </section>
 
       {/* Promos */}
-      <div className="mt-4 grid gap-4 md:grid-cols-2">
+      <div className="grid gap-4 md:grid-cols-2">
         {[
           {
             titulo: "Recompensas únicas",
@@ -100,7 +92,7 @@ function Index() {
           <Link
             key={p.titulo}
             to="/register"
-            className="group relative overflow-hidden rounded-xl border border-border"
+            className="group relative overflow-hidden rounded-xl border border-border outline-none transition-colors hover:border-primary/40 focus-visible:ring-2 focus-visible:ring-ring"
           >
             <img src={p.img} alt="" width={1200} height={600} loading="lazy" className="h-56 w-full object-cover" />
             <div className="absolute inset-0 bg-gradient-to-r from-background via-background/80 to-transparent" />
@@ -118,18 +110,7 @@ function Index() {
       </div>
 
       {/* Categorias */}
-      <div className="-mx-1 mt-8 flex gap-2 overflow-x-auto px-1 pb-1">
-        {categorias.map((c) => (
-          <Link
-            key={c.rotulo}
-            to={c.to}
-            activeOptions={{ exact: true }}
-            className="shrink-0 rounded-lg bg-card px-4 py-2.5 text-sm font-medium text-muted-foreground transition-colors hover:text-foreground data-[status=active]:bg-[var(--brand-blue)] data-[status=active]:text-primary-foreground"
-          >
-            {c.rotulo}
-          </Link>
-        ))}
-      </div>
+      <NavChips itens={categorias.map((c) => ({ ...c, exact: true }))} />
 
       <Carrossel titulo="Populares agora" lista={jogos.slice(0, 8)} verTodos="/cassino" />
       <Carrossel
@@ -141,15 +122,11 @@ function Index() {
       <Carrossel titulo="Cassino ao vivo" lista={jogos.filter((j) => j.categoria === "Ao vivo")} verTodos="/cassino/ao-vivo" />
 
       {/* Esportes */}
-      <section className="mt-10 mb-6">
-        <div className="flex items-center justify-between gap-3">
-          <h2 className="text-base font-semibold">Jogos ao vivo</h2>
-          <Link to="/esportes" className="flex items-center text-xs text-muted-foreground hover:text-foreground">
-            Ver todos <ChevronRight className="h-4 w-4" />
-          </Link>
-        </div>
+      <section className="space-y-3">
+        <CabecalhoSecao titulo="Jogos ao vivo" verTodos="/esportes" />
         <GradeEventos lista={eventos.slice(0, 6)} vazio="Nenhuma partida disponível agora." />
       </section>
+      </div>
     </BetLayout>
   );
 }
