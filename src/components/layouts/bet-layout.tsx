@@ -21,6 +21,7 @@ import {
 import type { ReactNode } from "react";
 
 import { Logo } from "@/components/brand/logo";
+import { SiteFooter } from "@/components/layouts/site-footer";
 import { Button } from "@/components/ui/button";
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/components/ui/collapsible";
 import { ScrollArea } from "@/components/ui/scroll-area";
@@ -29,9 +30,9 @@ import { useAuth } from "@/lib/auth";
 import { cn } from "@/lib/utils";
 
 const topo = [
-  { rotulo: "Cassino", href: "#cassino", icone: Spade, ativo: true },
-  { rotulo: "Esportes", href: "#esportes", icone: Trophy },
-  { rotulo: "Pesquisa", href: "#cassino", icone: Search },
+  { rotulo: "Cassino", to: "/cassino" as const, icone: Spade },
+  { rotulo: "Esportes", to: "/esportes" as const, icone: Trophy },
+  { rotulo: "Pesquisa", to: "/pesquisa" as const, icone: Search },
 ];
 
 const atalhosRapidos = [
@@ -43,43 +44,39 @@ const atalhosRapidos = [
 const grupos = [
   {
     titulo: "Originais da Zon7",
-    ancora: "#originais",
     itens: [
-      { rotulo: "Jogado recentemente", icone: Clock3 },
-      { rotulo: "Crash", icone: Rocket },
-      { rotulo: "Double", icone: Dice5 },
-      { rotulo: "Mines", icone: Bomb },
-      { rotulo: "Plinko", icone: Star },
-      { rotulo: "Limbo", icone: Flame },
+      { rotulo: "Jogado recentemente", icone: Clock3, to: "/cassino" as const },
+      { rotulo: "Crash", icone: Rocket, to: "/cassino/originais" as const },
+      { rotulo: "Double", icone: Dice5, to: "/cassino/originais" as const },
+      { rotulo: "Mines", icone: Bomb, to: "/cassino/originais" as const },
+      { rotulo: "Plinko", icone: Star, to: "/cassino/originais" as const },
+      { rotulo: "Limbo", icone: Flame, to: "/cassino/originais" as const },
     ],
   },
   {
     titulo: "Cassino",
-    ancora: "#cassino",
     itens: [
-      { rotulo: "Todos os jogos", icone: Spade },
-      { rotulo: "Slots em destaque", icone: Gift },
-      { rotulo: "Cassino ao vivo", icone: Radio },
+      { rotulo: "Todos os jogos", icone: Spade, to: "/cassino" as const },
+      { rotulo: "Slots em destaque", icone: Gift, to: "/cassino/slots" as const },
+      { rotulo: "Cassino ao vivo", icone: Radio, to: "/cassino/ao-vivo" as const },
     ],
   },
   {
     titulo: "Esportes",
-    ancora: "#esportes",
     itens: [
-      { rotulo: "As minhas apostas", icone: Ticket },
-      { rotulo: "Jogos ao vivo", icone: Radio },
-      { rotulo: "Brevemente", icone: CalendarClock },
+      { rotulo: "As minhas apostas", icone: Ticket, to: "/account/history" as const },
+      { rotulo: "Jogos ao vivo", icone: Radio, to: "/esportes/ao-vivo" as const },
+      { rotulo: "Brevemente", icone: CalendarClock, to: "/esportes/proximos" as const },
     ],
   },
   {
     titulo: "Popular",
-    ancora: "#esportes",
     itens: [
-      { rotulo: "Brasileirão Série A", icone: Trophy },
-      { rotulo: "Premier League", icone: Trophy },
-      { rotulo: "Liga dos Campeões", icone: Trophy },
-      { rotulo: "Itália Serie A", icone: Trophy },
-      { rotulo: "Futebol", icone: Users },
+      { rotulo: "Brasileirão Série A", icone: Trophy, to: "/esportes" as const },
+      { rotulo: "Premier League", icone: Trophy, to: "/esportes" as const },
+      { rotulo: "Liga dos Campeões", icone: Trophy, to: "/esportes" as const },
+      { rotulo: "Itália Serie A", icone: Trophy, to: "/esportes" as const },
+      { rotulo: "Futebol", icone: Users, to: "/esportes" as const },
     ],
   },
 ];
@@ -110,14 +107,14 @@ function NavLateral() {
             <CollapsibleContent>
               <ul className="pb-3">
                 {g.itens.map((i) => (
-                  <li key={i.rotulo}>
-                    <a
-                      href={g.ancora}
+                  <li key={`${g.titulo}-${i.rotulo}`}>
+                    <Link
+                      to={i.to}
                       className="flex items-center gap-3 px-4 py-2 text-sm text-foreground/80 transition-colors hover:bg-sidebar-accent hover:text-foreground"
                     >
                       <i.icone className="h-4 w-4 shrink-0 text-muted-foreground" />
                       <span className="truncate">{i.rotulo}</span>
-                    </a>
+                    </Link>
                   </li>
                 ))}
               </ul>
@@ -162,19 +159,17 @@ export function BetLayout({ children, aside }: { children: ReactNode; aside?: Re
 
           <nav className="absolute left-1/2 hidden -translate-x-1/2 items-center gap-8 md:flex">
             {topo.map((t) => (
-              <a
+              <Link
                 key={t.rotulo}
-                href={t.href}
+                to={t.to}
                 className={cn(
-                  "flex items-center gap-2 border-b-2 py-[1.35rem] text-[13px] font-medium tracking-wide uppercase transition-colors",
-                  t.ativo
-                    ? "border-primary text-foreground"
-                    : "border-transparent text-muted-foreground hover:text-foreground",
+                  "flex items-center gap-2 border-b-2 border-transparent py-[1.35rem] text-[13px] font-medium tracking-wide text-muted-foreground uppercase transition-colors hover:text-foreground",
+                  "data-[status=active]:border-primary data-[status=active]:text-foreground",
                 )}
               >
                 <t.icone className="h-4 w-4 text-primary" />
                 {t.rotulo}
-              </a>
+              </Link>
             ))}
           </nav>
 
@@ -218,20 +213,7 @@ export function BetLayout({ children, aside }: { children: ReactNode; aside?: Re
         ) : null}
       </div>
 
-      <footer className="border-t border-border bg-sidebar px-4 py-6 text-center text-xs text-muted-foreground">
-        Zon7 BET · Demonstração sem apostas reais · 18+ ·{" "}
-        <Link to="/responsible-gambling" className="hover:text-foreground">
-          Jogo responsável
-        </Link>{" "}
-        ·{" "}
-        <Link to="/terms" className="hover:text-foreground">
-          Termos
-        </Link>{" "}
-        ·{" "}
-        <Link to="/privacy" className="hover:text-foreground">
-          Privacidade
-        </Link>
-      </footer>
+      <SiteFooter />
     </div>
   );
 }

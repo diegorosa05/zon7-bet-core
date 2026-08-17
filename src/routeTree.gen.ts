@@ -12,8 +12,11 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as AccountRouteImport } from './routes/account'
 import { Route as AdminRouteImport } from './routes/admin'
+import { Route as CassinoRouteImport } from './routes/cassino'
+import { Route as EsportesRouteImport } from './routes/esportes'
 import { Route as LoginRouteImport } from './routes/login'
 import { Route as OnboardingRouteImport } from './routes/onboarding'
+import { Route as PesquisaRouteImport } from './routes/pesquisa'
 import { Route as PrivacyRouteImport } from './routes/privacy'
 import { Route as RegisterRouteImport } from './routes/register'
 import { Route as ResponsibleGamblingRouteImport } from './routes/responsible-gambling'
@@ -28,6 +31,13 @@ import { Route as AdminIndexRouteImport } from './routes/admin.index'
 import { Route as AdminAuditRouteImport } from './routes/admin.audit'
 import { Route as AdminSettingsRouteImport } from './routes/admin.settings'
 import { Route as AdminUsersRouteImport } from './routes/admin.users'
+import { Route as CassinoIndexRouteImport } from './routes/cassino.index'
+import { Route as CassinoAoVivoRouteImport } from './routes/cassino.ao-vivo'
+import { Route as CassinoOriginaisRouteImport } from './routes/cassino.originais'
+import { Route as CassinoSlotsRouteImport } from './routes/cassino.slots'
+import { Route as EsportesIndexRouteImport } from './routes/esportes.index'
+import { Route as EsportesAoVivoRouteImport } from './routes/esportes.ao-vivo'
+import { Route as EsportesProximosRouteImport } from './routes/esportes.proximos'
 import { Route as AdminReviewsIndexRouteImport } from './routes/admin.reviews.index'
 import { Route as AdminReviewsIdRouteImport } from './routes/admin.reviews.$id'
 
@@ -46,6 +56,16 @@ const AdminRoute = AdminRouteImport.update({
   path: '/admin',
   getParentRoute: () => rootRouteImport,
 } as any)
+const CassinoRoute = CassinoRouteImport.update({
+  id: '/cassino',
+  path: '/cassino',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const EsportesRoute = EsportesRouteImport.update({
+  id: '/esportes',
+  path: '/esportes',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const LoginRoute = LoginRouteImport.update({
   id: '/login',
   path: '/login',
@@ -54,6 +74,11 @@ const LoginRoute = LoginRouteImport.update({
 const OnboardingRoute = OnboardingRouteImport.update({
   id: '/onboarding',
   path: '/onboarding',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PesquisaRoute = PesquisaRouteImport.update({
+  id: '/pesquisa',
+  path: '/pesquisa',
   getParentRoute: () => rootRouteImport,
 } as any)
 const PrivacyRoute = PrivacyRouteImport.update({
@@ -126,6 +151,41 @@ const AdminUsersRoute = AdminUsersRouteImport.update({
   path: '/users',
   getParentRoute: () => AdminRoute,
 } as any)
+const CassinoIndexRoute = CassinoIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => CassinoRoute,
+} as any)
+const CassinoAoVivoRoute = CassinoAoVivoRouteImport.update({
+  id: '/ao-vivo',
+  path: '/ao-vivo',
+  getParentRoute: () => CassinoRoute,
+} as any)
+const CassinoOriginaisRoute = CassinoOriginaisRouteImport.update({
+  id: '/originais',
+  path: '/originais',
+  getParentRoute: () => CassinoRoute,
+} as any)
+const CassinoSlotsRoute = CassinoSlotsRouteImport.update({
+  id: '/slots',
+  path: '/slots',
+  getParentRoute: () => CassinoRoute,
+} as any)
+const EsportesIndexRoute = EsportesIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => EsportesRoute,
+} as any)
+const EsportesAoVivoRoute = EsportesAoVivoRouteImport.update({
+  id: '/ao-vivo',
+  path: '/ao-vivo',
+  getParentRoute: () => EsportesRoute,
+} as any)
+const EsportesProximosRoute = EsportesProximosRouteImport.update({
+  id: '/proximos',
+  path: '/proximos',
+  getParentRoute: () => EsportesRoute,
+} as any)
 const AdminReviewsIndexRoute = AdminReviewsIndexRouteImport.update({
   id: '/reviews/',
   path: '/reviews/',
@@ -141,8 +201,11 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/account': typeof AccountRouteWithChildren
   '/admin': typeof AdminRouteWithChildren
+  '/cassino': typeof CassinoRouteWithChildren
+  '/esportes': typeof EsportesRouteWithChildren
   '/login': typeof LoginRoute
   '/onboarding': typeof OnboardingRoute
+  '/pesquisa': typeof PesquisaRoute
   '/privacy': typeof PrivacyRoute
   '/register': typeof RegisterRoute
   '/responsible-gambling': typeof ResponsibleGamblingRoute
@@ -155,8 +218,15 @@ export interface FileRoutesByFullPath {
   '/admin/audit': typeof AdminAuditRoute
   '/admin/settings': typeof AdminSettingsRoute
   '/admin/users': typeof AdminUsersRoute
+  '/cassino/ao-vivo': typeof CassinoAoVivoRoute
+  '/cassino/originais': typeof CassinoOriginaisRoute
+  '/cassino/slots': typeof CassinoSlotsRoute
+  '/esportes/ao-vivo': typeof EsportesAoVivoRoute
+  '/esportes/proximos': typeof EsportesProximosRoute
   '/account/': typeof AccountIndexRoute
   '/admin/': typeof AdminIndexRoute
+  '/cassino/': typeof CassinoIndexRoute
+  '/esportes/': typeof EsportesIndexRoute
   '/admin/reviews/$id': typeof AdminReviewsIdRoute
   '/admin/reviews/': typeof AdminReviewsIndexRoute
 }
@@ -164,6 +234,7 @@ export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/login': typeof LoginRoute
   '/onboarding': typeof OnboardingRoute
+  '/pesquisa': typeof PesquisaRoute
   '/privacy': typeof PrivacyRoute
   '/register': typeof RegisterRoute
   '/responsible-gambling': typeof ResponsibleGamblingRoute
@@ -176,8 +247,15 @@ export interface FileRoutesByTo {
   '/admin/audit': typeof AdminAuditRoute
   '/admin/settings': typeof AdminSettingsRoute
   '/admin/users': typeof AdminUsersRoute
+  '/cassino/ao-vivo': typeof CassinoAoVivoRoute
+  '/cassino/originais': typeof CassinoOriginaisRoute
+  '/cassino/slots': typeof CassinoSlotsRoute
+  '/esportes/ao-vivo': typeof EsportesAoVivoRoute
+  '/esportes/proximos': typeof EsportesProximosRoute
   '/account': typeof AccountIndexRoute
   '/admin': typeof AdminIndexRoute
+  '/cassino': typeof CassinoIndexRoute
+  '/esportes': typeof EsportesIndexRoute
   '/admin/reviews/$id': typeof AdminReviewsIdRoute
   '/admin/reviews': typeof AdminReviewsIndexRoute
 }
@@ -186,8 +264,11 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/account': typeof AccountRouteWithChildren
   '/admin': typeof AdminRouteWithChildren
+  '/cassino': typeof CassinoRouteWithChildren
+  '/esportes': typeof EsportesRouteWithChildren
   '/login': typeof LoginRoute
   '/onboarding': typeof OnboardingRoute
+  '/pesquisa': typeof PesquisaRoute
   '/privacy': typeof PrivacyRoute
   '/register': typeof RegisterRoute
   '/responsible-gambling': typeof ResponsibleGamblingRoute
@@ -200,8 +281,15 @@ export interface FileRoutesById {
   '/admin/audit': typeof AdminAuditRoute
   '/admin/settings': typeof AdminSettingsRoute
   '/admin/users': typeof AdminUsersRoute
+  '/cassino/ao-vivo': typeof CassinoAoVivoRoute
+  '/cassino/originais': typeof CassinoOriginaisRoute
+  '/cassino/slots': typeof CassinoSlotsRoute
+  '/esportes/ao-vivo': typeof EsportesAoVivoRoute
+  '/esportes/proximos': typeof EsportesProximosRoute
   '/account/': typeof AccountIndexRoute
   '/admin/': typeof AdminIndexRoute
+  '/cassino/': typeof CassinoIndexRoute
+  '/esportes/': typeof EsportesIndexRoute
   '/admin/reviews/$id': typeof AdminReviewsIdRoute
   '/admin/reviews/': typeof AdminReviewsIndexRoute
 }
@@ -211,8 +299,11 @@ export interface FileRouteTypes {
     | '/'
     | '/account'
     | '/admin'
+    | '/cassino'
+    | '/esportes'
     | '/login'
     | '/onboarding'
+    | '/pesquisa'
     | '/privacy'
     | '/register'
     | '/responsible-gambling'
@@ -225,8 +316,15 @@ export interface FileRouteTypes {
     | '/admin/audit'
     | '/admin/settings'
     | '/admin/users'
+    | '/cassino/ao-vivo'
+    | '/cassino/originais'
+    | '/cassino/slots'
+    | '/esportes/ao-vivo'
+    | '/esportes/proximos'
     | '/account/'
     | '/admin/'
+    | '/cassino/'
+    | '/esportes/'
     | '/admin/reviews/$id'
     | '/admin/reviews/'
   fileRoutesByTo: FileRoutesByTo
@@ -234,6 +332,7 @@ export interface FileRouteTypes {
     | '/'
     | '/login'
     | '/onboarding'
+    | '/pesquisa'
     | '/privacy'
     | '/register'
     | '/responsible-gambling'
@@ -246,8 +345,15 @@ export interface FileRouteTypes {
     | '/admin/audit'
     | '/admin/settings'
     | '/admin/users'
+    | '/cassino/ao-vivo'
+    | '/cassino/originais'
+    | '/cassino/slots'
+    | '/esportes/ao-vivo'
+    | '/esportes/proximos'
     | '/account'
     | '/admin'
+    | '/cassino'
+    | '/esportes'
     | '/admin/reviews/$id'
     | '/admin/reviews'
   id:
@@ -255,8 +361,11 @@ export interface FileRouteTypes {
     | '/'
     | '/account'
     | '/admin'
+    | '/cassino'
+    | '/esportes'
     | '/login'
     | '/onboarding'
+    | '/pesquisa'
     | '/privacy'
     | '/register'
     | '/responsible-gambling'
@@ -269,8 +378,15 @@ export interface FileRouteTypes {
     | '/admin/audit'
     | '/admin/settings'
     | '/admin/users'
+    | '/cassino/ao-vivo'
+    | '/cassino/originais'
+    | '/cassino/slots'
+    | '/esportes/ao-vivo'
+    | '/esportes/proximos'
     | '/account/'
     | '/admin/'
+    | '/cassino/'
+    | '/esportes/'
     | '/admin/reviews/$id'
     | '/admin/reviews/'
   fileRoutesById: FileRoutesById
@@ -279,8 +395,11 @@ export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AccountRoute: typeof AccountRouteWithChildren
   AdminRoute: typeof AdminRouteWithChildren
+  CassinoRoute: typeof CassinoRouteWithChildren
+  EsportesRoute: typeof EsportesRouteWithChildren
   LoginRoute: typeof LoginRoute
   OnboardingRoute: typeof OnboardingRoute
+  PesquisaRoute: typeof PesquisaRoute
   PrivacyRoute: typeof PrivacyRoute
   RegisterRoute: typeof RegisterRoute
   ResponsibleGamblingRoute: typeof ResponsibleGamblingRoute
@@ -310,6 +429,20 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AdminRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/cassino': {
+      id: '/cassino'
+      path: '/cassino'
+      fullPath: '/cassino'
+      preLoaderRoute: typeof CassinoRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/esportes': {
+      id: '/esportes'
+      path: '/esportes'
+      fullPath: '/esportes'
+      preLoaderRoute: typeof EsportesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/login': {
       id: '/login'
       path: '/login'
@@ -322,6 +455,13 @@ declare module '@tanstack/react-router' {
       path: '/onboarding'
       fullPath: '/onboarding'
       preLoaderRoute: typeof OnboardingRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/pesquisa': {
+      id: '/pesquisa'
+      path: '/pesquisa'
+      fullPath: '/pesquisa'
+      preLoaderRoute: typeof PesquisaRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/privacy': {
@@ -422,6 +562,55 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AdminUsersRouteImport
       parentRoute: typeof AdminRoute
     }
+    '/cassino/': {
+      id: '/cassino/'
+      path: '/'
+      fullPath: '/cassino/'
+      preLoaderRoute: typeof CassinoIndexRouteImport
+      parentRoute: typeof CassinoRoute
+    }
+    '/cassino/ao-vivo': {
+      id: '/cassino/ao-vivo'
+      path: '/ao-vivo'
+      fullPath: '/cassino/ao-vivo'
+      preLoaderRoute: typeof CassinoAoVivoRouteImport
+      parentRoute: typeof CassinoRoute
+    }
+    '/cassino/originais': {
+      id: '/cassino/originais'
+      path: '/originais'
+      fullPath: '/cassino/originais'
+      preLoaderRoute: typeof CassinoOriginaisRouteImport
+      parentRoute: typeof CassinoRoute
+    }
+    '/cassino/slots': {
+      id: '/cassino/slots'
+      path: '/slots'
+      fullPath: '/cassino/slots'
+      preLoaderRoute: typeof CassinoSlotsRouteImport
+      parentRoute: typeof CassinoRoute
+    }
+    '/esportes/': {
+      id: '/esportes/'
+      path: '/'
+      fullPath: '/esportes/'
+      preLoaderRoute: typeof EsportesIndexRouteImport
+      parentRoute: typeof EsportesRoute
+    }
+    '/esportes/ao-vivo': {
+      id: '/esportes/ao-vivo'
+      path: '/ao-vivo'
+      fullPath: '/esportes/ao-vivo'
+      preLoaderRoute: typeof EsportesAoVivoRouteImport
+      parentRoute: typeof EsportesRoute
+    }
+    '/esportes/proximos': {
+      id: '/esportes/proximos'
+      path: '/proximos'
+      fullPath: '/esportes/proximos'
+      preLoaderRoute: typeof EsportesProximosRouteImport
+      parentRoute: typeof EsportesRoute
+    }
     '/admin/reviews/': {
       id: '/admin/reviews/'
       path: '/reviews'
@@ -480,12 +669,48 @@ const AdminRouteChildren: AdminRouteChildren = {
 
 const AdminRouteWithChildren = AdminRoute._addFileChildren(AdminRouteChildren)
 
+interface CassinoRouteChildren {
+  CassinoAoVivoRoute: typeof CassinoAoVivoRoute
+  CassinoOriginaisRoute: typeof CassinoOriginaisRoute
+  CassinoSlotsRoute: typeof CassinoSlotsRoute
+  CassinoIndexRoute: typeof CassinoIndexRoute
+}
+
+const CassinoRouteChildren: CassinoRouteChildren = {
+  CassinoAoVivoRoute: CassinoAoVivoRoute,
+  CassinoOriginaisRoute: CassinoOriginaisRoute,
+  CassinoSlotsRoute: CassinoSlotsRoute,
+  CassinoIndexRoute: CassinoIndexRoute,
+}
+
+const CassinoRouteWithChildren =
+  CassinoRoute._addFileChildren(CassinoRouteChildren)
+
+interface EsportesRouteChildren {
+  EsportesAoVivoRoute: typeof EsportesAoVivoRoute
+  EsportesProximosRoute: typeof EsportesProximosRoute
+  EsportesIndexRoute: typeof EsportesIndexRoute
+}
+
+const EsportesRouteChildren: EsportesRouteChildren = {
+  EsportesAoVivoRoute: EsportesAoVivoRoute,
+  EsportesProximosRoute: EsportesProximosRoute,
+  EsportesIndexRoute: EsportesIndexRoute,
+}
+
+const EsportesRouteWithChildren = EsportesRoute._addFileChildren(
+  EsportesRouteChildren,
+)
+
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AccountRoute: AccountRouteWithChildren,
   AdminRoute: AdminRouteWithChildren,
+  CassinoRoute: CassinoRouteWithChildren,
+  EsportesRoute: EsportesRouteWithChildren,
   LoginRoute: LoginRoute,
   OnboardingRoute: OnboardingRoute,
+  PesquisaRoute: PesquisaRoute,
   PrivacyRoute: PrivacyRoute,
   RegisterRoute: RegisterRoute,
   ResponsibleGamblingRoute: ResponsibleGamblingRoute,
