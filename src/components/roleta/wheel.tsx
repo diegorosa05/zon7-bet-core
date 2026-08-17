@@ -107,8 +107,8 @@ export function Wheel({ setores, angulo, girando, duracaoMs, vencedor }: Props) 
               setor.tipo === "jackpot"
                 ? "var(--color-primary)"
                 : i % 2 === 0
-                  ? "color-mix(in oklab, var(--color-secondary) 85%, black)"
-                  : "color-mix(in oklab, var(--color-secondary) 55%, black)";
+                  ? "var(--color-secondary)"
+                  : "color-mix(in oklab, var(--color-secondary) 45%, black)";
 
             return (
               <g key={setor.id}>
