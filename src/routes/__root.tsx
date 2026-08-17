@@ -13,7 +13,7 @@ import appCss from "../styles.css?url";
 import { reportLovableError } from "../lib/lovable-error-reporting";
 import { AuthProvider } from "../lib/auth";
 import { OnboardingProvider } from "../lib/onboarding";
-import { BetslipProvider } from "../lib/betslip";
+import { BetslipProvider } from "@/lib/betslip";
 import { Toaster } from "../components/ui/sonner";
 
 function NotFoundComponent() {
