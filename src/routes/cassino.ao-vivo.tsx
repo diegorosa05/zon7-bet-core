@@ -1,6 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 
 import { GradeJogos } from "@/components/bet/game-card";
+import { CabecalhoSecao } from "@/components/bet/section";
 import { jogos } from "@/data/bet-mock";
 
 const TITULO = "Cassino ao vivo — roleta e blackjack com dealer real";
@@ -22,9 +23,8 @@ export const Route = createFileRoute("/cassino/ao-vivo")({
 
 function AoVivo() {
   return (
-    <section className="mt-6">
-      <h1 className="text-xl font-semibold">Cassino ao vivo</h1>
-      <p className="mt-1 text-sm text-muted-foreground">Mesas com dealer real transmitidas em tempo real.</p>
+    <section className="space-y-4">
+      <CabecalhoSecao nivel="h1" titulo="Cassino ao vivo" descricao="Mesas com dealer real transmitidas em tempo real" />
       <GradeJogos lista={jogos.filter((j) => j.categoria === "Ao vivo")} />
     </section>
   );
