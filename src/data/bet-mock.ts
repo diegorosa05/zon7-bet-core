@@ -137,22 +137,38 @@ export interface JogoCassino {
   categoria: "Originais" | "Slots" | "Ao vivo" | "Crash";
   rtp: string;
   quente?: boolean;
+  capa: string;
 }
 
+import capaBlackjack from "@/assets/game-blackjack.jpg";
+import capaCrash from "@/assets/game-crash.jpg";
+import capaDouble from "@/assets/game-double.jpg";
+import capaGates from "@/assets/game-gates.jpg";
+import capaMines from "@/assets/game-mines.jpg";
+import capaPlinko from "@/assets/game-plinko.jpg";
+import capaRoleta from "@/assets/game-roleta.jpg";
+import capaTigre from "@/assets/game-tigre.jpg";
+
 export const jogos: JogoCassino[] = [
-  { id: "g-1", nome: "Crash", provedor: "Zon7 Originals", categoria: "Originais", rtp: "99%", quente: true },
-  { id: "g-2", nome: "Double", provedor: "Zon7 Originals", categoria: "Originais", rtp: "97%" },
-  { id: "g-3", nome: "Mines", provedor: "Zon7 Originals", categoria: "Originais", rtp: "98%", quente: true },
-  { id: "g-4", nome: "Dice", provedor: "Zon7 Originals", categoria: "Originais", rtp: "99%" },
-  { id: "g-5", nome: "Plinko", provedor: "Zon7 Originals", categoria: "Originais", rtp: "98%" },
-  { id: "g-6", nome: "Limbo", provedor: "Zon7 Originals", categoria: "Originais", rtp: "99%" },
-  { id: "g-7", nome: "Tower", provedor: "Zon7 Originals", categoria: "Originais", rtp: "97%" },
-  { id: "g-8", nome: "Coin Flip", provedor: "Zon7 Originals", categoria: "Originais", rtp: "98%" },
-  { id: "g-9", nome: "Gates of Zon", provedor: "Pragmatic", categoria: "Slots", rtp: "96%", quente: true },
-  { id: "g-10", nome: "Fortune Tiger", provedor: "PG Soft", categoria: "Slots", rtp: "96%" },
-  { id: "g-11", nome: "Roleta Brasil", provedor: "Evolution", categoria: "Ao vivo", rtp: "97%" },
-  { id: "g-12", nome: "Blackjack VIP", provedor: "Evolution", categoria: "Ao vivo", rtp: "99%" },
+  { id: "g-1", nome: "Crash", provedor: "Zon7 Originals", categoria: "Originais", rtp: "99%", quente: true, capa: capaCrash },
+  { id: "g-2", nome: "Double", provedor: "Zon7 Originals", categoria: "Originais", rtp: "97%", capa: capaDouble },
+  { id: "g-3", nome: "Mines", provedor: "Zon7 Originals", categoria: "Originais", rtp: "98%", quente: true, capa: capaMines },
+  { id: "g-5", nome: "Plinko", provedor: "Zon7 Originals", categoria: "Originais", rtp: "98%", capa: capaPlinko },
+  { id: "g-9", nome: "Gates of Zon", provedor: "Pragmatic", categoria: "Slots", rtp: "96%", quente: true, capa: capaGates },
+  { id: "g-10", nome: "Fortune Tiger", provedor: "PG Soft", categoria: "Slots", rtp: "96%", capa: capaTigre },
+  { id: "g-13", nome: "Gates Bonanza", provedor: "Pragmatic", categoria: "Slots", rtp: "96%", capa: capaGates },
+  { id: "g-14", nome: "Tigre Dourado", provedor: "PG Soft", categoria: "Slots", rtp: "95%", capa: capaTigre },
+  { id: "g-11", nome: "Roleta Brasil", provedor: "Evolution", categoria: "Ao vivo", rtp: "97%", capa: capaRoleta },
+  { id: "g-12", nome: "Blackjack VIP", provedor: "Evolution", categoria: "Ao vivo", rtp: "99%", capa: capaBlackjack },
+  { id: "g-15", nome: "Roleta Relâmpago", provedor: "Evolution", categoria: "Ao vivo", rtp: "97%", capa: capaRoleta },
+  { id: "g-16", nome: "Blackjack Zon7", provedor: "Evolution", categoria: "Ao vivo", rtp: "99%", capa: capaBlackjack },
 ];
+
+export const banners = [
+  { id: "b-1", href: "/register", alt: "Bônus de boas-vindas em apostas esportivas" },
+  { id: "b-2", href: "/register", alt: "Cassino ao vivo Zon7" },
+  { id: "b-3", href: "/register", alt: "Jogos originais Crash" },
+] as const;
 
 export const promocoes = [
   {
