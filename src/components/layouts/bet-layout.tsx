@@ -110,6 +110,7 @@ function NavLateral() {
                   <li key={`${g.titulo}-${i.rotulo}`}>
                     <Link
                       to={i.to}
+                      activeOptions={{ exact: true }}
                       className="flex items-center gap-3 rounded-lg px-2.5 py-2 text-[13px] text-foreground/80 outline-none transition-colors hover:bg-sidebar-accent hover:text-foreground focus-visible:ring-2 focus-visible:ring-ring data-[status=active]:bg-sidebar-accent data-[status=active]:text-primary"
                     >
                       <i.icone className="h-4 w-4 shrink-0 text-muted-foreground" />
