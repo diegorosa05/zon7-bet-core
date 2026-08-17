@@ -103,9 +103,10 @@ export const jogosCatalogo: JogoCassino[] = [
 
 /** Busca a capa oficial pelo slug (fallback: primeira capa do catálogo). */
 export function capaPorSlug(slug: string): string {
-  return (
-    jogosCatalogo.find((j) => j.id.includes(slug) || j.nome.toLowerCase().replace(/[^a-z0-9]+/g, "-") === slug)?.capa ??
-    jogosCatalogo.find((j) => j.nome.toLowerCase().includes(slug.split("-")[0]))?.capa ??
-    jogosCatalogo[0].capa
+  const base = slug.split("-")[0] ?? slug;
+  const exato = jogosCatalogo.find(
+    (j) => j.nome.toLowerCase().replace(/[^a-z0-9]+/g, "-") === slug,
   );
+  const parcial = jogosCatalogo.find((j) => j.nome.toLowerCase().includes(base));
+  return exato?.capa ?? parcial?.capa ?? jogosCatalogo[0]!.capa;
 }
