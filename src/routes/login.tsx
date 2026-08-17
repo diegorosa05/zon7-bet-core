@@ -105,6 +105,23 @@ function LoginPage() {
             {enviando ? "Entrando…" : "Entrar"}
           </Button>
 
+          <Button
+            type="button"
+            variant="outline"
+            className="w-full"
+            onClick={() => {
+              entrar({ email: "diego.rosa@exemplo.com.br", role: "apostador" });
+              toast.success("Sessão de demonstração iniciada");
+              navigate({ to: "/" });
+            }}
+          >
+            Pular login — ver mockup logado
+          </Button>
+          <p className="text-center text-xs text-muted-foreground">
+            Entra como apostador de demonstração e libera carteira, depósito, saque, recompensas e
+            desafios.
+          </p>
+
           <p className="text-center text-sm text-muted-foreground">
             Ainda não tem conta?{" "}
             <Link to="/register" className="text-primary hover:underline">
