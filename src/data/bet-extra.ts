@@ -1,25 +1,30 @@
 import type { JogoCassino } from "@/data/bet-mock";
-import { capaPorSlug, jogosCatalogo } from "@/data/game-catalog";
+import { capaPorNome, jogoPorNome } from "@/data/game-catalog";
 
-/** Crash games (categoria dedicada do lobby). */
-export const jogosCrash: JogoCassino[] = [
-  { id: "cr-1", nome: "Aviator", provedor: "Spribe", categoria: "Crash", rtp: "97%", quente: true, capa: capaPorSlug("aviator-spribe") },
-  { id: "cr-2", nome: "JetX", provedor: "SmartSoft", categoria: "Crash", rtp: "97%", capa: capaPorSlug("jetx") },
-  { id: "cr-3", nome: "Spaceman", provedor: "Pragmatic", categoria: "Crash", rtp: "96%", quente: true, capa: capaPorSlug("spaceman") },
-  { id: "cr-4", nome: "Mines Turbo", provedor: "Zon7 Originals", categoria: "Crash", rtp: "98%", capa: capaPorSlug("mines") },
-  { id: "cr-5", nome: "Rocket Zon", provedor: "Zon7 Originals", categoria: "Crash", rtp: "99%", capa: capaPorSlug("sweet-bonanza") },
-  { id: "cr-6", nome: "Balloon", provedor: "SmartSoft", categoria: "Crash", rtp: "96%", capa: capaPorSlug("gems-bonanza") },
+const crashNomes = [
+  "Mines",
+  "Mines+",
+  "Mystic Mines",
+  "Mines Gold",
+  "Mines Supreme",
+  "4 Bonuses Bonanza - Plinko Spin",
 ];
+
+/** Jogos instantâneos / crash (categoria dedicada do lobby). */
+export const jogosCrash: JogoCassino[] = crashNomes.flatMap((nome, i) => {
+  const jogo = jogoPorNome(nome);
+  return jogo ? [{ ...jogo, id: `cr-${i + 1}`, categoria: "Crash" as const }] : [];
+});
 
 export const provedores = [
   "Pragmatic Play",
-  "Evolution",
-  "PG Soft",
-  "Spribe",
-  "SmartSoft",
-  "Zon7 Originals",
+  "Games Global",
+  "BGaming",
+  "Booming Games",
   "Playtech",
-  "Hacksaw",
+  "Play'n GO",
+  "Yggdrasil",
+  "Evoplay",
 ] as const;
 
 export interface MesaAoVivo {
@@ -32,12 +37,11 @@ export interface MesaAoVivo {
 }
 
 export const mesasAoVivo: MesaAoVivo[] = [
-  { id: "mv-1", nome: "Mega Roleta Brasil", dealer: "Camila", limites: "R$ 5 — R$ 10.000", jogadores: 1284, capa: capaPorSlug("sweet-magic") },
-  { id: "mv-2", nome: "Blackjack VIP", dealer: "Rafael", limites: "R$ 25 — R$ 25.000", jogadores: 312, capa: capaPorSlug("bonanza-billion") },
-  { id: "mv-3", nome: "Roleta Relâmpago", dealer: "Bruna", limites: "R$ 2 — R$ 5.000", jogadores: 897, capa: capaPorSlug("sweet-magic") },
-  { id: "mv-4", nome: "Baccarat Speed", dealer: "Diego", limites: "R$ 10 — R$ 50.000", jogadores: 458, capa: capaPorSlug("bonanza-billion") },
+  { id: "mv-1", nome: "Sweet Bonanza CandyLand", dealer: "Camila", limites: "R$ 5 — R$ 10.000", jogadores: 1284, capa: capaPorNome("Sweet Bonanza CandyLand") },
+  { id: "mv-2", nome: "Vegas Ball Bonanza", dealer: "Rafael", limites: "R$ 25 — R$ 25.000", jogadores: 312, capa: capaPorNome("Vegas Ball Bonanza") },
+  { id: "mv-3", nome: "Crown Bonanza", dealer: "Bruna", limites: "R$ 2 — R$ 5.000", jogadores: 897, capa: capaPorNome("Crown Bonanza") },
+  { id: "mv-4", nome: "Gold Hit: Dragon Bonanza", dealer: "Diego", limites: "R$ 10 — R$ 50.000", jogadores: 458, capa: capaPorNome("Gold Hit: Dragon Bonanza") },
 ];
-
 /** Mercados extras exibidos na página de evento. */
 export const mercadosExtras = [
   { grupo: "Total de gols", opcoes: [{ rotulo: "Mais de 2.5", odd: 1.82 }, { rotulo: "Menos de 2.5", odd: 1.95 }] },
@@ -111,4 +115,3 @@ export const jogosAoVivo: JogoCassino[] = mesasAoVivo.map((m, i) => ({
   capa: m.capa,
 }));
 
-void jogosCatalogo;
