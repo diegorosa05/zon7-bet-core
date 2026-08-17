@@ -202,7 +202,10 @@ export function BetLayout({ children, aside }: { children: ReactNode; aside?: Re
           <NavLateral />
         </aside>
 
-        <main className="min-w-0 flex-1 px-3 py-6 sm:px-8">{children}</main>
+        <div className="flex min-w-0 flex-1 flex-col">
+          <main className="min-w-0 flex-1 px-3 py-6 sm:px-8">{children}</main>
+          <SiteFooter />
+        </div>
 
         {aside ? (
           <aside className="sticky top-16 hidden h-[calc(100vh-4rem)] w-80 shrink-0 border-l border-border bg-sidebar xl:block">
@@ -212,8 +215,6 @@ export function BetLayout({ children, aside }: { children: ReactNode; aside?: Re
           </aside>
         ) : null}
       </div>
-
-      <SiteFooter />
     </div>
   );
 }
