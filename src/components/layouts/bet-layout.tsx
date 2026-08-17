@@ -42,7 +42,7 @@ const topo = [
 
 const atalhosRapidos = [
   { rotulo: "Recompensas", icone: Gift, to: "/recompensas" as const },
-  { rotulo: "Desafios", icone: Trophy, to: "/desafios" as const },
+  { rotulo: "Clube VIP", icone: Star, to: "/vip" as const },
   { rotulo: "Roleta Grátis", icone: CircleDot, to: "/roleta" as const },
 ];
 
@@ -54,7 +54,12 @@ const grupos = [
       { rotulo: "Depositar", icone: ArrowDownToLine, to: "/carteira/deposito" as const },
       { rotulo: "Sacar", icone: ArrowUpFromLine, to: "/carteira/saque" as const },
       { rotulo: "Transações", icone: Receipt, to: "/carteira/transacoes" as const },
+      { rotulo: "Minhas apostas", icone: Ticket, to: "/apostas" as const },
+      { rotulo: "Meus bônus", icone: Gift, to: "/bonus" as const },
+      { rotulo: "Favoritos", icone: Star, to: "/favoritos" as const },
+      { rotulo: "Notificações", icone: Radio, to: "/notificacoes" as const },
       { rotulo: "Promoções", icone: Gift, to: "/promocoes" as const },
+      { rotulo: "Desafios", icone: Trophy, to: "/desafios" as const },
     ],
   },
   {
@@ -73,15 +78,23 @@ const grupos = [
     itens: [
       { rotulo: "Todos os jogos", icone: Spade, to: "/cassino" as const },
       { rotulo: "Slots em destaque", icone: Gift, to: "/cassino/slots" as const },
+      { rotulo: "Crash games", icone: Rocket, to: "/cassino/crash" as const },
       { rotulo: "Cassino ao vivo", icone: Radio, to: "/cassino/ao-vivo" as const },
     ],
   },
   {
     titulo: "Esportes",
     itens: [
-      { rotulo: "As minhas apostas", icone: Ticket, to: "/account/history" as const },
+      { rotulo: "As minhas apostas", icone: Ticket, to: "/apostas" as const },
       { rotulo: "Jogos ao vivo", icone: Radio, to: "/esportes/ao-vivo" as const },
       { rotulo: "Brevemente", icone: CalendarClock, to: "/esportes/proximos" as const },
+    ],
+  },
+  {
+    titulo: "Ajuda",
+    itens: [
+      { rotulo: "Central de ajuda", icone: Users, to: "/suporte" as const },
+      { rotulo: "Perguntas frequentes", icone: Clock3, to: "/faq" as const },
     ],
   },
   {
