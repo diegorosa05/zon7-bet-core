@@ -24,6 +24,8 @@ import { Route as AccountProfileRouteImport } from './routes/account.profile'
 import { Route as AccountSecurityRouteImport } from './routes/account.security'
 import { Route as AccountVerificationRouteImport } from './routes/account.verification'
 import { Route as AdminIndexRouteImport } from './routes/admin.index'
+import { Route as AdminAuditRouteImport } from './routes/admin.audit'
+import { Route as AdminSettingsRouteImport } from './routes/admin.settings'
 import { Route as AdminUsersRouteImport } from './routes/admin.users'
 import { Route as AdminReviewsIndexRouteImport } from './routes/admin.reviews.index'
 import { Route as AdminReviewsIdRouteImport } from './routes/admin.reviews.$id'
@@ -103,6 +105,16 @@ const AdminIndexRoute = AdminIndexRouteImport.update({
   path: '/',
   getParentRoute: () => AdminRoute,
 } as any)
+const AdminAuditRoute = AdminAuditRouteImport.update({
+  id: '/audit',
+  path: '/audit',
+  getParentRoute: () => AdminRoute,
+} as any)
+const AdminSettingsRoute = AdminSettingsRouteImport.update({
+  id: '/settings',
+  path: '/settings',
+  getParentRoute: () => AdminRoute,
+} as any)
 const AdminUsersRoute = AdminUsersRouteImport.update({
   id: '/users',
   path: '/users',
@@ -133,6 +145,8 @@ export interface FileRoutesByFullPath {
   '/account/profile': typeof AccountProfileRoute
   '/account/security': typeof AccountSecurityRoute
   '/account/verification': typeof AccountVerificationRoute
+  '/admin/audit': typeof AdminAuditRoute
+  '/admin/settings': typeof AdminSettingsRoute
   '/admin/users': typeof AdminUsersRoute
   '/account/': typeof AccountIndexRoute
   '/admin/': typeof AdminIndexRoute
@@ -151,6 +165,8 @@ export interface FileRoutesByTo {
   '/account/profile': typeof AccountProfileRoute
   '/account/security': typeof AccountSecurityRoute
   '/account/verification': typeof AccountVerificationRoute
+  '/admin/audit': typeof AdminAuditRoute
+  '/admin/settings': typeof AdminSettingsRoute
   '/admin/users': typeof AdminUsersRoute
   '/account': typeof AccountIndexRoute
   '/admin': typeof AdminIndexRoute
@@ -172,6 +188,8 @@ export interface FileRoutesById {
   '/account/profile': typeof AccountProfileRoute
   '/account/security': typeof AccountSecurityRoute
   '/account/verification': typeof AccountVerificationRoute
+  '/admin/audit': typeof AdminAuditRoute
+  '/admin/settings': typeof AdminSettingsRoute
   '/admin/users': typeof AdminUsersRoute
   '/account/': typeof AccountIndexRoute
   '/admin/': typeof AdminIndexRoute
@@ -194,6 +212,8 @@ export interface FileRouteTypes {
     | '/account/profile'
     | '/account/security'
     | '/account/verification'
+    | '/admin/audit'
+    | '/admin/settings'
     | '/admin/users'
     | '/account/'
     | '/admin/'
@@ -212,6 +232,8 @@ export interface FileRouteTypes {
     | '/account/profile'
     | '/account/security'
     | '/account/verification'
+    | '/admin/audit'
+    | '/admin/settings'
     | '/admin/users'
     | '/account'
     | '/admin'
@@ -232,6 +254,8 @@ export interface FileRouteTypes {
     | '/account/profile'
     | '/account/security'
     | '/account/verification'
+    | '/admin/audit'
+    | '/admin/settings'
     | '/admin/users'
     | '/account/'
     | '/admin/'
@@ -357,6 +381,20 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AdminIndexRouteImport
       parentRoute: typeof AdminRoute
     }
+    '/admin/audit': {
+      id: '/admin/audit'
+      path: '/audit'
+      fullPath: '/admin/audit'
+      preLoaderRoute: typeof AdminAuditRouteImport
+      parentRoute: typeof AdminRoute
+    }
+    '/admin/settings': {
+      id: '/admin/settings'
+      path: '/settings'
+      fullPath: '/admin/settings'
+      preLoaderRoute: typeof AdminSettingsRouteImport
+      parentRoute: typeof AdminRoute
+    }
     '/admin/users': {
       id: '/admin/users'
       path: '/users'
@@ -403,6 +441,8 @@ const AccountRouteWithChildren =
   AccountRoute._addFileChildren(AccountRouteChildren)
 
 interface AdminRouteChildren {
+  AdminAuditRoute: typeof AdminAuditRoute
+  AdminSettingsRoute: typeof AdminSettingsRoute
   AdminUsersRoute: typeof AdminUsersRoute
   AdminIndexRoute: typeof AdminIndexRoute
   AdminReviewsIdRoute: typeof AdminReviewsIdRoute
@@ -410,6 +450,8 @@ interface AdminRouteChildren {
 }
 
 const AdminRouteChildren: AdminRouteChildren = {
+  AdminAuditRoute: AdminAuditRoute,
+  AdminSettingsRoute: AdminSettingsRoute,
   AdminUsersRoute: AdminUsersRoute,
   AdminIndexRoute: AdminIndexRoute,
   AdminReviewsIdRoute: AdminReviewsIdRoute,
