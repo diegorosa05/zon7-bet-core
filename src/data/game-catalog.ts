@@ -101,12 +101,12 @@ export const jogosCatalogo: JogoCassino[] = [
   { id: "pg-53117", nome: "3 Stellar Bonanza", provedor: "Games Global", categoria: "Slots", rtp: "96%", capa: "/__l5e/assets-v1/3d2dcbf4-3c90-476e-9056-6518fdcfa2a5/53117-games-global-3-stellar-bonanza.png" },
 ];
 
-/** Busca a capa oficial pelo slug (fallback: primeira capa do catálogo). */
-export function capaPorSlug(slug: string): string {
-  const base = slug.split("-")[0] ?? slug;
-  const exato = jogosCatalogo.find(
-    (j) => j.nome.toLowerCase().replace(/[^a-z0-9]+/g, "-") === slug,
-  );
-  const parcial = jogosCatalogo.find((j) => j.nome.toLowerCase().includes(base));
-  return exato?.capa ?? parcial?.capa ?? jogosCatalogo[0]!.capa;
+/** Busca um jogo do catálogo pelo nome exato. */
+export function jogoPorNome(nome: string): JogoCassino | undefined {
+  return jogosCatalogo.find((j) => j.nome.toLowerCase() === nome.toLowerCase());
+}
+
+/** Capa oficial pelo nome exato do jogo (fallback: primeira capa). */
+export function capaPorNome(nome: string): string {
+  return jogoPorNome(nome)?.capa ?? jogosCatalogo[0]!.capa;
 }
