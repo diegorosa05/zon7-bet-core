@@ -12,6 +12,7 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as AccountRouteImport } from './routes/account'
 import { Route as AdminRouteImport } from './routes/admin'
+import { Route as CassinoRouteImport } from './routes/cassino'
 import { Route as LoginRouteImport } from './routes/login'
 import { Route as OnboardingRouteImport } from './routes/onboarding'
 import { Route as PrivacyRouteImport } from './routes/privacy'
@@ -28,6 +29,10 @@ import { Route as AdminIndexRouteImport } from './routes/admin.index'
 import { Route as AdminAuditRouteImport } from './routes/admin.audit'
 import { Route as AdminSettingsRouteImport } from './routes/admin.settings'
 import { Route as AdminUsersRouteImport } from './routes/admin.users'
+import { Route as CassinoIndexRouteImport } from './routes/cassino.index'
+import { Route as CassinoAoVivoRouteImport } from './routes/cassino.ao-vivo'
+import { Route as CassinoOriginaisRouteImport } from './routes/cassino.originais'
+import { Route as CassinoSlotsRouteImport } from './routes/cassino.slots'
 import { Route as AdminReviewsIndexRouteImport } from './routes/admin.reviews.index'
 import { Route as AdminReviewsIdRouteImport } from './routes/admin.reviews.$id'
 
@@ -44,6 +49,11 @@ const AccountRoute = AccountRouteImport.update({
 const AdminRoute = AdminRouteImport.update({
   id: '/admin',
   path: '/admin',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CassinoRoute = CassinoRouteImport.update({
+  id: '/cassino',
+  path: '/cassino',
   getParentRoute: () => rootRouteImport,
 } as any)
 const LoginRoute = LoginRouteImport.update({
@@ -126,6 +136,26 @@ const AdminUsersRoute = AdminUsersRouteImport.update({
   path: '/users',
   getParentRoute: () => AdminRoute,
 } as any)
+const CassinoIndexRoute = CassinoIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => CassinoRoute,
+} as any)
+const CassinoAoVivoRoute = CassinoAoVivoRouteImport.update({
+  id: '/ao-vivo',
+  path: '/ao-vivo',
+  getParentRoute: () => CassinoRoute,
+} as any)
+const CassinoOriginaisRoute = CassinoOriginaisRouteImport.update({
+  id: '/originais',
+  path: '/originais',
+  getParentRoute: () => CassinoRoute,
+} as any)
+const CassinoSlotsRoute = CassinoSlotsRouteImport.update({
+  id: '/slots',
+  path: '/slots',
+  getParentRoute: () => CassinoRoute,
+} as any)
 const AdminReviewsIndexRoute = AdminReviewsIndexRouteImport.update({
   id: '/reviews/',
   path: '/reviews/',
@@ -141,6 +171,7 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/account': typeof AccountRouteWithChildren
   '/admin': typeof AdminRouteWithChildren
+  '/cassino': typeof CassinoRouteWithChildren
   '/login': typeof LoginRoute
   '/onboarding': typeof OnboardingRoute
   '/privacy': typeof PrivacyRoute
@@ -155,8 +186,12 @@ export interface FileRoutesByFullPath {
   '/admin/audit': typeof AdminAuditRoute
   '/admin/settings': typeof AdminSettingsRoute
   '/admin/users': typeof AdminUsersRoute
+  '/cassino/ao-vivo': typeof CassinoAoVivoRoute
+  '/cassino/originais': typeof CassinoOriginaisRoute
+  '/cassino/slots': typeof CassinoSlotsRoute
   '/account/': typeof AccountIndexRoute
   '/admin/': typeof AdminIndexRoute
+  '/cassino/': typeof CassinoIndexRoute
   '/admin/reviews/$id': typeof AdminReviewsIdRoute
   '/admin/reviews/': typeof AdminReviewsIndexRoute
 }
@@ -176,8 +211,12 @@ export interface FileRoutesByTo {
   '/admin/audit': typeof AdminAuditRoute
   '/admin/settings': typeof AdminSettingsRoute
   '/admin/users': typeof AdminUsersRoute
+  '/cassino/ao-vivo': typeof CassinoAoVivoRoute
+  '/cassino/originais': typeof CassinoOriginaisRoute
+  '/cassino/slots': typeof CassinoSlotsRoute
   '/account': typeof AccountIndexRoute
   '/admin': typeof AdminIndexRoute
+  '/cassino': typeof CassinoIndexRoute
   '/admin/reviews/$id': typeof AdminReviewsIdRoute
   '/admin/reviews': typeof AdminReviewsIndexRoute
 }
@@ -186,6 +225,7 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/account': typeof AccountRouteWithChildren
   '/admin': typeof AdminRouteWithChildren
+  '/cassino': typeof CassinoRouteWithChildren
   '/login': typeof LoginRoute
   '/onboarding': typeof OnboardingRoute
   '/privacy': typeof PrivacyRoute
@@ -200,8 +240,12 @@ export interface FileRoutesById {
   '/admin/audit': typeof AdminAuditRoute
   '/admin/settings': typeof AdminSettingsRoute
   '/admin/users': typeof AdminUsersRoute
+  '/cassino/ao-vivo': typeof CassinoAoVivoRoute
+  '/cassino/originais': typeof CassinoOriginaisRoute
+  '/cassino/slots': typeof CassinoSlotsRoute
   '/account/': typeof AccountIndexRoute
   '/admin/': typeof AdminIndexRoute
+  '/cassino/': typeof CassinoIndexRoute
   '/admin/reviews/$id': typeof AdminReviewsIdRoute
   '/admin/reviews/': typeof AdminReviewsIndexRoute
 }
@@ -211,6 +255,7 @@ export interface FileRouteTypes {
     | '/'
     | '/account'
     | '/admin'
+    | '/cassino'
     | '/login'
     | '/onboarding'
     | '/privacy'
@@ -225,8 +270,12 @@ export interface FileRouteTypes {
     | '/admin/audit'
     | '/admin/settings'
     | '/admin/users'
+    | '/cassino/ao-vivo'
+    | '/cassino/originais'
+    | '/cassino/slots'
     | '/account/'
     | '/admin/'
+    | '/cassino/'
     | '/admin/reviews/$id'
     | '/admin/reviews/'
   fileRoutesByTo: FileRoutesByTo
@@ -246,8 +295,12 @@ export interface FileRouteTypes {
     | '/admin/audit'
     | '/admin/settings'
     | '/admin/users'
+    | '/cassino/ao-vivo'
+    | '/cassino/originais'
+    | '/cassino/slots'
     | '/account'
     | '/admin'
+    | '/cassino'
     | '/admin/reviews/$id'
     | '/admin/reviews'
   id:
@@ -255,6 +308,7 @@ export interface FileRouteTypes {
     | '/'
     | '/account'
     | '/admin'
+    | '/cassino'
     | '/login'
     | '/onboarding'
     | '/privacy'
@@ -269,8 +323,12 @@ export interface FileRouteTypes {
     | '/admin/audit'
     | '/admin/settings'
     | '/admin/users'
+    | '/cassino/ao-vivo'
+    | '/cassino/originais'
+    | '/cassino/slots'
     | '/account/'
     | '/admin/'
+    | '/cassino/'
     | '/admin/reviews/$id'
     | '/admin/reviews/'
   fileRoutesById: FileRoutesById
@@ -279,6 +337,7 @@ export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AccountRoute: typeof AccountRouteWithChildren
   AdminRoute: typeof AdminRouteWithChildren
+  CassinoRoute: typeof CassinoRouteWithChildren
   LoginRoute: typeof LoginRoute
   OnboardingRoute: typeof OnboardingRoute
   PrivacyRoute: typeof PrivacyRoute
@@ -308,6 +367,13 @@ declare module '@tanstack/react-router' {
       path: '/admin'
       fullPath: '/admin'
       preLoaderRoute: typeof AdminRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/cassino': {
+      id: '/cassino'
+      path: '/cassino'
+      fullPath: '/cassino'
+      preLoaderRoute: typeof CassinoRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/login': {
@@ -422,6 +488,34 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AdminUsersRouteImport
       parentRoute: typeof AdminRoute
     }
+    '/cassino/': {
+      id: '/cassino/'
+      path: '/'
+      fullPath: '/cassino/'
+      preLoaderRoute: typeof CassinoIndexRouteImport
+      parentRoute: typeof CassinoRoute
+    }
+    '/cassino/ao-vivo': {
+      id: '/cassino/ao-vivo'
+      path: '/ao-vivo'
+      fullPath: '/cassino/ao-vivo'
+      preLoaderRoute: typeof CassinoAoVivoRouteImport
+      parentRoute: typeof CassinoRoute
+    }
+    '/cassino/originais': {
+      id: '/cassino/originais'
+      path: '/originais'
+      fullPath: '/cassino/originais'
+      preLoaderRoute: typeof CassinoOriginaisRouteImport
+      parentRoute: typeof CassinoRoute
+    }
+    '/cassino/slots': {
+      id: '/cassino/slots'
+      path: '/slots'
+      fullPath: '/cassino/slots'
+      preLoaderRoute: typeof CassinoSlotsRouteImport
+      parentRoute: typeof CassinoRoute
+    }
     '/admin/reviews/': {
       id: '/admin/reviews/'
       path: '/reviews'
@@ -480,10 +574,28 @@ const AdminRouteChildren: AdminRouteChildren = {
 
 const AdminRouteWithChildren = AdminRoute._addFileChildren(AdminRouteChildren)
 
+interface CassinoRouteChildren {
+  CassinoAoVivoRoute: typeof CassinoAoVivoRoute
+  CassinoOriginaisRoute: typeof CassinoOriginaisRoute
+  CassinoSlotsRoute: typeof CassinoSlotsRoute
+  CassinoIndexRoute: typeof CassinoIndexRoute
+}
+
+const CassinoRouteChildren: CassinoRouteChildren = {
+  CassinoAoVivoRoute: CassinoAoVivoRoute,
+  CassinoOriginaisRoute: CassinoOriginaisRoute,
+  CassinoSlotsRoute: CassinoSlotsRoute,
+  CassinoIndexRoute: CassinoIndexRoute,
+}
+
+const CassinoRouteWithChildren =
+  CassinoRoute._addFileChildren(CassinoRouteChildren)
+
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AccountRoute: AccountRouteWithChildren,
   AdminRoute: AdminRouteWithChildren,
+  CassinoRoute: CassinoRouteWithChildren,
   LoginRoute: LoginRoute,
   OnboardingRoute: OnboardingRoute,
   PrivacyRoute: PrivacyRoute,
