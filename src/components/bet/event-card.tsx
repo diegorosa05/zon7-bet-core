@@ -8,7 +8,7 @@ export function CardEvento({ ev }: { ev: EventoEsportivo }) {
   const { alternar, ativo } = useBetslip();
 
   return (
-    <article className="rounded-xl border border-border bg-card p-4">
+    <article className="rounded-xl border border-border bg-card p-3.5 transition-colors hover:border-primary/30">
       <p className="flex items-center gap-2 text-[11px] text-muted-foreground">
         <span className="truncate">
           {ev.pais} · {ev.competicao}
@@ -35,7 +35,7 @@ export function CardEvento({ ev }: { ev: EventoEsportivo }) {
         ))}
       </div>
 
-      <p className="mt-4 text-[11px] text-muted-foreground">1x2</p>
+      <p className="mt-3.5 text-[11px] text-muted-foreground">1x2</p>
       <div className="mt-1.5 grid grid-cols-3 gap-2">
         {ev.mercados.map((m) => {
           const selecionado = ativo(`${ev.id}:${m.rotulo}`);
@@ -46,7 +46,7 @@ export function CardEvento({ ev }: { ev: EventoEsportivo }) {
               onClick={() => alternar(ev, m.rotulo, m.odd)}
               aria-pressed={selecionado}
               className={cn(
-                "flex items-center justify-between rounded-lg px-3 py-2.5 text-sm transition-colors",
+                "flex h-10 items-center justify-between rounded-lg px-3 text-sm transition-colors outline-none focus-visible:ring-2 focus-visible:ring-ring",
                 selecionado ? "bg-primary text-primary-foreground" : "bg-secondary hover:bg-accent",
               )}
             >
@@ -65,13 +65,13 @@ export function CardEvento({ ev }: { ev: EventoEsportivo }) {
 export function GradeEventos({ lista, vazio }: { lista: EventoEsportivo[]; vazio: string }) {
   if (lista.length === 0) {
     return (
-      <p className="mt-4 rounded-xl border border-border bg-card p-8 text-center text-sm text-muted-foreground">
+      <p className="rounded-xl border border-dashed border-border p-8 text-center text-sm text-muted-foreground">
         {vazio}
       </p>
     );
   }
   return (
-    <div className="mt-4 grid gap-3 lg:grid-cols-2 2xl:grid-cols-3">
+    <div className="grid gap-3 lg:grid-cols-2 2xl:grid-cols-3">
       {lista.map((ev) => (
         <CardEvento key={ev.id} ev={ev} />
       ))}
