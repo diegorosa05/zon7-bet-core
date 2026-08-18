@@ -4,7 +4,6 @@ import { ChevronRight } from "lucide-react";
 import bannerCassino from "@/assets/banner-cassino.jpg";
 import bannerCrash from "@/assets/banner-crash.jpg";
 import bannerEsportes from "@/assets/banner-esportes.jpg";
-import { Betslip } from "@/components/bet/betslip";
 import { GradeEventos } from "@/components/bet/event-card";
 import { Carrossel } from "@/components/bet/game-card";
 import { CabecalhoSecao, NavChips } from "@/components/bet/section";
@@ -66,7 +65,7 @@ export const Route = createFileRoute("/")({
 
 function Index() {
   return (
-    <BetLayout aside={<Betslip />}>
+    <BetLayout>
       <div className="space-y-6">
         {/* Hero */}
         <section className="relative overflow-hidden rounded-xl">
