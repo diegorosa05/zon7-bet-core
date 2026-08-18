@@ -13,6 +13,7 @@ import { Button } from "@/components/ui/button";
 import { eventos, jogos } from "@/data/bet-mock";
 import { jogosCrash, provedores } from "@/data/bet-extra";
 import { promocoes } from "@/data/wallet-mock";
+import { embaralhar, intercalar } from "@/lib/shuffle";
 
 const categorias = [
   { rotulo: "Salão", to: "/" as const },
@@ -26,6 +27,25 @@ const categorias = [
 ];
 
 const TITULO = "Zon7 BET — cassino online, jogos originais e apostas esportivas";
+const slots = jogos.filter((j) => j.categoria === "Slots");
+const originais = jogos.filter((j) => j.categoria === "Originais");
+const aoVivo = jogos.filter((j) => j.categoria === "Ao vivo");
+
+/** Mistura slots, originais e crash para não abrir a home só com Zon7 Originals. */
+const populares = intercalar(
+  embaralhar(slots, 21).slice(0, 10),
+  embaralhar(originais, 33).slice(0, 4),
+  embaralhar(jogosCrash, 12).slice(0, 3),
+).slice(0, 14);
+
+const recomendados = embaralhar(
+  jogos.filter((j) => j.categoria !== "Ao vivo"),
+  91,
+).slice(0, 14);
+
+const slotsEmbaralhados = embaralhar(slots, 55).slice(0, 14);
+const originaisEmbaralhados = embaralhar(originais, 77);
+const crashEmbaralhado = embaralhar(jogosCrash, 8);
 const DESCRICAO =
   "Jogue Crash, Mines, Double e slots em destaque, aposte em futebol, basquete e eSports ao vivo e acompanhe seu cupom em tempo real na Zon7 BET.";
 
@@ -128,29 +148,11 @@ function Index() {
           <GradeEventos lista={eventos.slice(0, 3)} vazio="Nenhuma partida disponível agora." />
         </section>
 
-        <Carrossel titulo="Populares agora" lista={jogos.slice(0, 8)} verTodos="/cassino" />
-        <Carrossel titulo="Crash games" lista={jogosCrash} verTodos="/cassino/crash" />
-        <Carrossel
-          titulo="Originais da Zon7"
-          lista={jogos.filter((j) => j.categoria === "Originais")}
-          verTodos="/cassino/originais"
-        />
-        <Carrossel
-          titulo="Slots em destaque"
-          lista={jogos.filter((j) => j.categoria === "Slots")}
-          verTodos="/cassino/slots"
-        />
-        <Carrossel
-          titulo="Cassino ao vivo"
-          lista={jogos.filter((j) => j.categoria === "Ao vivo")}
-          verTodos="/cassino/ao-vivo"
-        />
-
-        {/* Esportes */}
-        <section className="space-y-3">
-          <CabecalhoSecao titulo="Jogos ao vivo" verTodos="/esportes" />
-          <GradeEventos lista={eventos.slice(0, 6)} vazio="Nenhuma partida disponível agora." />
-        </section>
+        <Carrossel titulo="Populares agora" lista={populares} verTodos="/cassino" />
+        <Carrossel titulo="Slots em destaque" lista={slotsEmbaralhados} verTodos="/cassino/slots" />
+        <Carrossel titulo="Recomendados para você" lista={recomendados} verTodos="/cassino" />
+        <Carrossel titulo="Crash games" lista={crashEmbaralhado} verTodos="/cassino/crash" />
+        <Carrossel titulo="Originais da Zon7" lista={originaisEmbaralhados} verTodos="/cassino/originais" />
 
         {/* Provedores */}
         <section className="space-y-3">
@@ -184,6 +186,21 @@ function Index() {
               </Link>
             ))}
           </div>
+        </section>
+
+        {/* Ao vivo — por último */}
+        <Carrossel titulo="Cassino ao vivo" lista={aoVivo} verTodos="/cassino/ao-vivo" />
+
+        <section className="space-y-3">
+          <CabecalhoSecao
+            titulo="Jogos ao vivo"
+            descricao="Partidas em andamento agora"
+            verTodos="/esportes/ao-vivo"
+          />
+          <GradeEventos
+            lista={eventos.filter((e) => e.aoVivo).slice(0, 6)}
+            vazio="Nenhuma partida ao vivo no momento."
+          />
         </section>
       </div>
     </BetLayout>
