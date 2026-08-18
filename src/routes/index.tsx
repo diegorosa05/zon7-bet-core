@@ -142,12 +142,6 @@ function Index() {
         {/* Categorias */}
         <NavChips itens={categorias.map((c) => ({ ...c, exact: true }))} />
 
-        {/* Em destaque — esportes */}
-        <section className="space-y-3">
-          <CabecalhoSecao titulo="Em destaque" descricao="Principais partidas do dia" verTodos="/esportes" />
-          <GradeEventos lista={eventos.slice(0, 3)} vazio="Nenhuma partida disponível agora." />
-        </section>
-
         <Carrossel titulo="Populares agora" lista={populares} verTodos="/cassino" />
         <Carrossel titulo="Slots em destaque" lista={slotsEmbaralhados} verTodos="/cassino/slots" />
         <Carrossel titulo="Recomendados para você" lista={recomendados} verTodos="/cassino" />
@@ -190,6 +184,12 @@ function Index() {
 
         {/* Ao vivo — por último */}
         <Carrossel titulo="Cassino ao vivo" lista={aoVivo} verTodos="/cassino/ao-vivo" />
+
+        {/* Em destaque — esportes */}
+        <section className="space-y-3">
+          <CabecalhoSecao titulo="Em destaque" descricao="Principais partidas do dia" verTodos="/esportes" />
+          <GradeEventos lista={eventos.slice(0, 3)} vazio="Nenhuma partida disponível agora." />
+        </section>
 
         <section className="space-y-3">
           <CabecalhoSecao
