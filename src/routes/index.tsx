@@ -185,12 +185,6 @@ function Index() {
         {/* Ao vivo — por último */}
         <Carrossel titulo="Cassino ao vivo" lista={aoVivo} verTodos="/cassino/ao-vivo" />
 
-        {/* Em destaque — esportes */}
-        <section className="space-y-3">
-          <CabecalhoSecao titulo="Em destaque" descricao="Principais partidas do dia" verTodos="/esportes" />
-          <GradeEventos lista={eventos.slice(0, 3)} vazio="Nenhuma partida disponível agora." />
-        </section>
-
         <section className="space-y-3">
           <CabecalhoSecao
             titulo="Jogos ao vivo"
