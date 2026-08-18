@@ -2,6 +2,7 @@ import { Link, createFileRoute, notFound } from "@tanstack/react-router";
 import { ArrowLeft, Radio } from "lucide-react";
 
 import { CabecalhoSecao } from "@/components/bet/section";
+import { EscudoTime } from "@/components/bet/team-crest";
 import { meta } from "@/components/shared/page-meta";
 import { Button } from "@/components/ui/button";
 import { mercadosExtras } from "@/data/bet-extra";
