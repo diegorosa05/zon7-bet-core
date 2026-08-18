@@ -2,6 +2,7 @@ import { Link, type LinkProps } from "@tanstack/react-router";
 import { Play } from "lucide-react";
 
 import { CabecalhoSecao } from "@/components/bet/section";
+import { ScrollRow } from "@/components/bet/scroll-row";
 import type { JogoCassino } from "@/data/bet-mock";
 
 export function CardJogo({ jogo, largo = false }: { jogo: JogoCassino; largo?: boolean }) {
@@ -11,7 +12,7 @@ export function CardJogo({ jogo, largo = false }: { jogo: JogoCassino; largo?: b
       params={{ id: jogo.id }}
       aria-label={`Jogar ${jogo.nome}`}
       className={`group relative block overflow-hidden rounded-xl border border-border bg-card outline-none transition-all hover:-translate-y-1 hover:border-primary/40 focus-visible:ring-2 focus-visible:ring-ring ${
-        largo ? "w-full" : "w-[8.75rem] shrink-0 sm:w-[9.5rem]"
+        largo ? "w-full" : "w-[8.75rem] shrink-0 snap-start sm:w-[9.5rem]"
       }`}
     >
       <img
@@ -64,11 +65,11 @@ export function Carrossel({
   return (
     <section className="space-y-3">
       <CabecalhoSecao titulo={titulo} verTodos={verTodos} />
-      <div className="-mx-1 flex gap-3 overflow-x-auto px-1 pb-1">
+      <ScrollRow>
         {lista.map((j) => (
           <CardJogo key={`${titulo}-${j.id}`} jogo={j} />
         ))}
-      </div>
+      </ScrollRow>
     </section>
   );
 }

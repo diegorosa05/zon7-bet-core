@@ -3,6 +3,7 @@ import { ChevronRight } from "lucide-react";
 import type { ReactNode } from "react";
 
 import { cn } from "@/lib/utils";
+import { ScrollRow } from "@/components/bet/scroll-row";
 
 /** Base visual de todos os chips/pílulas de navegação da plataforma. */
 export const chipBase =
@@ -12,7 +13,7 @@ export const chipAtivo =
   "bg-primary text-primary-foreground hover:bg-primary hover:text-primary-foreground";
 
 export function FaixaChips({ children }: { children: ReactNode }) {
-  return <div className="-mx-1 flex gap-2 overflow-x-auto px-1 pb-1">{children}</div>;
+  return <ScrollRow gap="gap-2">{children}</ScrollRow>;
 }
 
 export function NavChips({
