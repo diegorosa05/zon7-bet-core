@@ -255,9 +255,17 @@ function chave(nome: string) {
 
 export function escudoDoTime(nome: string): string | undefined {
   const k = chave(nome);
+  const kAcento = nome.toLowerCase().replace(/[^a-z0-9]/g, "");
   const semPrefixo = k.replace(/^(sc|sl|fc|ca|ac|cr|cd|as)/, "");
   const semSufixo = k.replace(/(fc|ac|sc|cf|ec)$/, "");
-  return escudos[k] ?? escudos[semPrefixo] ?? escudos[semSufixo];
+  return (
+    escudos[k] ??
+    escudos[kAcento] ??
+    escudos[kAcento.replace(/^(sc|sl|fc|ca|ac|cr|cd|as)/, "")] ??
+    escudos[kAcento.replace(/(fc|ac|sc|cf|ec)$/, "")] ??
+    escudos[semPrefixo] ??
+    escudos[semSufixo]
+  );
 }
 
 export const totalEscudos = Object.keys(escudos).length;
