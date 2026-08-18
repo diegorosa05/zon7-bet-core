@@ -163,7 +163,7 @@ function NavLateral() {
   );
 }
 
-export function BetLayout({ children, aside }: { children: ReactNode; aside?: ReactNode }) {
+export function BetLayout({ children }: { children: ReactNode }) {
   const { user, ready } = useAuth();
 
   return (
@@ -248,15 +248,9 @@ export function BetLayout({ children, aside }: { children: ReactNode; aside?: Re
           <div className="h-16 lg:hidden" aria-hidden />
         </div>
 
-        {aside ? (
-          <aside className="sticky top-16 hidden h-[calc(100vh-4rem)] w-80 shrink-0 border-l border-border bg-sidebar xl:block">
-            <ScrollArea className="h-full">
-              <div className="p-4">{aside}</div>
-            </ScrollArea>
-          </aside>
-        ) : null}
       </div>
       <MobileNav />
+      <BetslipDock />
     </div>
   );
 }
