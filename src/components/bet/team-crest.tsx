@@ -1,4 +1,5 @@
 import { cn } from "@/lib/utils";
+import { escudoDoTime } from "@/data/team-crests";
 
 /** Cor determinística por nome do time (tons da marca + neutros). */
 const paleta = [
@@ -43,6 +44,20 @@ export function EscudoTime({
   const cor = paleta[hash(nome) % paleta.length];
   const dim =
     tamanho === "sm" ? "h-7 w-7 text-[9px]" : tamanho === "lg" ? "h-14 w-14 text-sm" : "h-9 w-9 text-[10px]";
+  const escudo = escudoDoTime(nome);
+
+  if (escudo) {
+    return (
+      <img
+        src={escudo}
+        alt=""
+        aria-hidden="true"
+        loading="lazy"
+        title={nome}
+        className={cn("shrink-0 object-contain", dim.replace(/text-\[?[\w.]+\]?/, ""), className)}
+      />
+    );
+  }
 
   return (
     <span
