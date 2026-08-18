@@ -45,19 +45,6 @@ export function ScrollRow({
 
   return (
     <div className="group/scroll relative">
-      {!inicio && (
-        <span
-          aria-hidden
-          className="pointer-events-none absolute inset-y-0 left-0 z-10 w-10 bg-gradient-to-r from-background to-transparent"
-        />
-      )}
-      {!fim && (
-        <span
-          aria-hidden
-          className="pointer-events-none absolute inset-y-0 right-0 z-10 w-10 bg-gradient-to-l from-background to-transparent"
-        />
-      )}
-
       <button
         type="button"
         aria-label="Rolar para a esquerda"
@@ -91,6 +78,10 @@ export function ScrollRow({
         ref={ref}
         onScroll={medir}
         tabIndex={0}
+        style={{
+          WebkitMaskImage: `linear-gradient(to right, transparent 0, #000 ${inicio ? "0px" : "40px"}, #000 calc(100% - ${fim ? "0px" : "40px"}), transparent 100%)`,
+          maskImage: `linear-gradient(to right, transparent 0, #000 ${inicio ? "0px" : "40px"}, #000 calc(100% - ${fim ? "0px" : "40px"}), transparent 100%)`,
+        }}
         className={cn(
           "no-scrollbar -mx-1 flex snap-x snap-mandatory scroll-px-1 overflow-x-auto px-1 pb-1 outline-none focus-visible:ring-2 focus-visible:ring-ring",
           gap,
