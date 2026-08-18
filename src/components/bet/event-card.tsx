@@ -4,6 +4,13 @@ import { ChevronRight, Radio } from "lucide-react";
 import type { EventoEsportivo } from "@/data/bet-mock";
 import { useBetslip } from "@/lib/betslip";
 import { cn } from "@/lib/utils";
+import { EscudoTime } from "@/components/bet/team-crest";
+
+function minutoPercent(minuto?: string) {
+  const n = Number(minuto?.replace(/\D/g, ""));
+  if (!n) return 0;
+  return Math.min(100, Math.round((n / 90) * 100));
+}
 
 export function CardEvento({ ev }: { ev: EventoEsportivo }) {
   const { alternar, ativo } = useBetslip();
@@ -23,6 +30,15 @@ export function CardEvento({ ev }: { ev: EventoEsportivo }) {
       </p>
       <p className="mt-1 text-xs text-muted-foreground">{ev.aoVivo ? "Ao vivo" : ev.inicio}</p>
 
+      {ev.aoVivo && (
+        <div className="mt-2 h-1 overflow-hidden rounded-full bg-secondary">
+          <div
+            className="h-full rounded-full bg-primary transition-all"
+            style={{ width: `${minutoPercent(ev.minuto)}%` }}
+          />
+        </div>
+      )}
+
       <Link
         to="/esportes/evento/$id"
         params={{ id: ev.id }}
@@ -31,10 +47,11 @@ export function CardEvento({ ev }: { ev: EventoEsportivo }) {
         Ver todos os mercados <ChevronRight className="h-3.5 w-3.5" />
       </Link>
 
-      <div className="mt-3 space-y-1.5">
-        {[0, 1].map((i) => (
-          <div key={i} className="flex items-center gap-3">
-            <span className="truncate text-sm">{i === 0 ? ev.casa : ev.fora}</span>
+      <div className="mt-3 space-y-2">
+        {[ev.casa, ev.fora].map((time, i) => (
+          <div key={time} className="flex items-center gap-2.5">
+            <EscudoTime nome={time} tamanho="sm" />
+            <span className="truncate text-sm">{time}</span>
             {ev.placar && (
               <span className="tabular ml-auto grid h-6 w-6 place-items-center rounded bg-secondary text-xs font-semibold">
                 {ev.placar[i]}
