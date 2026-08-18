@@ -55,15 +55,28 @@ function PaginaEvento() {
             </span>
           )}
         </p>
-        <h1 className="mt-2 text-xl font-semibold sm:text-2xl">
-          {ev.casa} <span className="text-muted-foreground">x</span> {ev.fora}
-        </h1>
-        <p className="mt-1 text-sm text-muted-foreground">{ev.aoVivo ? "Em andamento" : ev.inicio}</p>
-        {ev.placar && (
-          <p className="tabular mt-4 text-3xl font-semibold">
-            {ev.placar[0]} <span className="text-muted-foreground">—</span> {ev.placar[1]}
-          </p>
-        )}
+        <div className="mt-4 flex items-center justify-center gap-5 sm:gap-10">
+          <div className="flex flex-1 flex-col items-center gap-2 text-center">
+            <EscudoTime nome={ev.casa} tamanho="lg" />
+            <h1 className="text-sm font-semibold sm:text-base">{ev.casa}</h1>
+          </div>
+          <div className="text-center">
+            {ev.placar ? (
+              <p className="tabular text-3xl font-semibold">
+                {ev.placar[0]} <span className="text-muted-foreground">—</span> {ev.placar[1]}
+              </p>
+            ) : (
+              <p className="text-2xl text-muted-foreground">x</p>
+            )}
+            <p className="mt-1 text-xs text-muted-foreground">
+              {ev.aoVivo ? `Em andamento ${ev.minuto ?? ""}` : ev.inicio}
+            </p>
+          </div>
+          <div className="flex flex-1 flex-col items-center gap-2 text-center">
+            <EscudoTime nome={ev.fora} tamanho="lg" />
+            <p className="text-sm font-semibold sm:text-base">{ev.fora}</p>
+          </div>
+        </div>
       </section>
 
       <section className="space-y-3">
