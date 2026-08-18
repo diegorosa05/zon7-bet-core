@@ -15,6 +15,7 @@ import { Route as AdminRouteImport } from './routes/admin'
 import { Route as AmlRouteImport } from './routes/aml'
 import { Route as ApostasRouteImport } from './routes/apostas'
 import { Route as BonusRouteImport } from './routes/bonus'
+import { Route as BorabetRouteImport } from './routes/borabet'
 import { Route as CarteiraRouteImport } from './routes/carteira'
 import { Route as CassinoRouteImport } from './routes/cassino'
 import { Route as ContatoRouteImport } from './routes/contato'
@@ -95,6 +96,11 @@ const ApostasRoute = ApostasRouteImport.update({
 const BonusRoute = BonusRouteImport.update({
   id: '/bonus',
   path: '/bonus',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const BorabetRoute = BorabetRouteImport.update({
+  id: '/borabet',
+  path: '/borabet',
   getParentRoute: () => rootRouteImport,
 } as any)
 const CarteiraRoute = CarteiraRouteImport.update({
@@ -360,6 +366,7 @@ export interface FileRoutesByFullPath {
   '/aml': typeof AmlRoute
   '/apostas': typeof ApostasRoute
   '/bonus': typeof BonusRoute
+  '/borabet': typeof BorabetRoute
   '/carteira': typeof CarteiraRouteWithChildren
   '/cassino': typeof CassinoRouteWithChildren
   '/contato': typeof ContatoRoute
@@ -417,6 +424,7 @@ export interface FileRoutesByTo {
   '/aml': typeof AmlRoute
   '/apostas': typeof ApostasRoute
   '/bonus': typeof BonusRoute
+  '/borabet': typeof BorabetRoute
   '/contato': typeof ContatoRoute
   '/cookies': typeof CookiesRoute
   '/desafios': typeof DesafiosRoute
@@ -473,6 +481,7 @@ export interface FileRoutesById {
   '/aml': typeof AmlRoute
   '/apostas': typeof ApostasRoute
   '/bonus': typeof BonusRoute
+  '/borabet': typeof BorabetRoute
   '/carteira': typeof CarteiraRouteWithChildren
   '/cassino': typeof CassinoRouteWithChildren
   '/contato': typeof ContatoRoute
@@ -534,6 +543,7 @@ export interface FileRouteTypes {
     | '/aml'
     | '/apostas'
     | '/bonus'
+    | '/borabet'
     | '/carteira'
     | '/cassino'
     | '/contato'
@@ -591,6 +601,7 @@ export interface FileRouteTypes {
     | '/aml'
     | '/apostas'
     | '/bonus'
+    | '/borabet'
     | '/contato'
     | '/cookies'
     | '/desafios'
@@ -646,6 +657,7 @@ export interface FileRouteTypes {
     | '/aml'
     | '/apostas'
     | '/bonus'
+    | '/borabet'
     | '/carteira'
     | '/cassino'
     | '/contato'
@@ -706,6 +718,7 @@ export interface RootRouteChildren {
   AmlRoute: typeof AmlRoute
   ApostasRoute: typeof ApostasRoute
   BonusRoute: typeof BonusRoute
+  BorabetRoute: typeof BorabetRoute
   CarteiraRoute: typeof CarteiraRouteWithChildren
   CassinoRoute: typeof CassinoRouteWithChildren
   ContatoRoute: typeof ContatoRoute
@@ -773,6 +786,13 @@ declare module '@tanstack/react-router' {
       path: '/bonus'
       fullPath: '/bonus'
       preLoaderRoute: typeof BonusRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/borabet': {
+      id: '/borabet'
+      path: '/borabet'
+      fullPath: '/borabet'
+      preLoaderRoute: typeof BorabetRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/carteira': {
@@ -1254,6 +1274,7 @@ const rootRouteChildren: RootRouteChildren = {
   AmlRoute: AmlRoute,
   ApostasRoute: ApostasRoute,
   BonusRoute: BonusRoute,
+  BorabetRoute: BorabetRoute,
   CarteiraRoute: CarteiraRouteWithChildren,
   CassinoRoute: CassinoRouteWithChildren,
   ContatoRoute: ContatoRoute,
