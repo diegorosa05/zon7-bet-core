@@ -148,29 +148,11 @@ function Index() {
           <GradeEventos lista={eventos.slice(0, 3)} vazio="Nenhuma partida disponível agora." />
         </section>
 
-        <Carrossel titulo="Populares agora" lista={jogos.slice(0, 8)} verTodos="/cassino" />
-        <Carrossel titulo="Crash games" lista={jogosCrash} verTodos="/cassino/crash" />
-        <Carrossel
-          titulo="Originais da Zon7"
-          lista={jogos.filter((j) => j.categoria === "Originais")}
-          verTodos="/cassino/originais"
-        />
-        <Carrossel
-          titulo="Slots em destaque"
-          lista={jogos.filter((j) => j.categoria === "Slots")}
-          verTodos="/cassino/slots"
-        />
-        <Carrossel
-          titulo="Cassino ao vivo"
-          lista={jogos.filter((j) => j.categoria === "Ao vivo")}
-          verTodos="/cassino/ao-vivo"
-        />
-
-        {/* Esportes */}
-        <section className="space-y-3">
-          <CabecalhoSecao titulo="Jogos ao vivo" verTodos="/esportes" />
-          <GradeEventos lista={eventos.slice(0, 6)} vazio="Nenhuma partida disponível agora." />
-        </section>
+        <Carrossel titulo="Populares agora" lista={populares} verTodos="/cassino" />
+        <Carrossel titulo="Slots em destaque" lista={slotsEmbaralhados} verTodos="/cassino/slots" />
+        <Carrossel titulo="Recomendados para você" lista={recomendados} verTodos="/cassino" />
+        <Carrossel titulo="Crash games" lista={crashEmbaralhado} verTodos="/cassino/crash" />
+        <Carrossel titulo="Originais da Zon7" lista={originaisEmbaralhados} verTodos="/cassino/originais" />
 
         {/* Provedores */}
         <section className="space-y-3">
