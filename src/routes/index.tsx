@@ -187,6 +187,21 @@ function Index() {
             ))}
           </div>
         </section>
+
+        {/* Ao vivo — por último */}
+        <Carrossel titulo="Cassino ao vivo" lista={aoVivo} verTodos="/cassino/ao-vivo" />
+
+        <section className="space-y-3">
+          <CabecalhoSecao
+            titulo="Jogos ao vivo"
+            descricao="Partidas em andamento agora"
+            verTodos="/esportes/ao-vivo"
+          />
+          <GradeEventos
+            lista={eventos.filter((e) => e.aoVivo).slice(0, 6)}
+            vazio="Nenhuma partida ao vivo no momento."
+          />
+        </section>
       </div>
     </BetLayout>
   );
