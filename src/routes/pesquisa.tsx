@@ -3,7 +3,6 @@ import { Search } from "lucide-react";
 import { useMemo, useState } from "react";
 
 import { GradeEventos } from "@/components/bet/event-card";
-import { Betslip } from "@/components/bet/betslip";
 import { GradeJogos } from "@/components/bet/game-card";
 import { BetLayout } from "@/components/layouts/bet-layout";
 import { Input } from "@/components/ui/input";
@@ -55,7 +54,7 @@ function Pesquisa() {
   const sugestoes = ["Crash", "Mines", "Roleta", "Benfica", "eSports", "Evolution"];
 
   return (
-    <BetLayout aside={<Betslip />}>
+    <BetLayout>
       <section className="space-y-4">
         <h1 className="text-lg font-semibold sm:text-xl">Pesquisa</h1>
         <div className="relative">

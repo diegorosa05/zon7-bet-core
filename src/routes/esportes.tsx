@@ -1,6 +1,5 @@
 import { Outlet, createFileRoute } from "@tanstack/react-router";
 
-import { Betslip } from "@/components/bet/betslip";
 import { NavChips } from "@/components/bet/section";
 import { BetLayout } from "@/components/layouts/bet-layout";
 
@@ -16,7 +15,7 @@ export const Route = createFileRoute("/esportes")({
 
 function EsportesLayout() {
   return (
-    <BetLayout aside={<Betslip />}>
+    <BetLayout>
       <div className="space-y-5">
         <NavChips itens={abas} />
         <Outlet />
