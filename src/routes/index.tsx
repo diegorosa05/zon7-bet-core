@@ -13,6 +13,7 @@ import { Button } from "@/components/ui/button";
 import { eventos, jogos } from "@/data/bet-mock";
 import { jogosCrash, provedores } from "@/data/bet-extra";
 import { promocoes } from "@/data/wallet-mock";
+import { embaralhar, intercalar } from "@/lib/shuffle";
 
 const categorias = [
   { rotulo: "Salão", to: "/" as const },
@@ -26,6 +27,25 @@ const categorias = [
 ];
 
 const TITULO = "Zon7 BET — cassino online, jogos originais e apostas esportivas";
+const slots = jogos.filter((j) => j.categoria === "Slots");
+const originais = jogos.filter((j) => j.categoria === "Originais");
+const aoVivo = jogos.filter((j) => j.categoria === "Ao vivo");
+
+/** Mistura slots, originais e crash para não abrir a home só com Zon7 Originals. */
+const populares = intercalar(
+  embaralhar(slots, 21).slice(0, 10),
+  embaralhar(originais, 33).slice(0, 4),
+  embaralhar(jogosCrash, 12).slice(0, 3),
+).slice(0, 14);
+
+const recomendados = embaralhar(
+  jogos.filter((j) => j.categoria !== "Ao vivo"),
+  91,
+).slice(0, 14);
+
+const slotsEmbaralhados = embaralhar(slots, 55).slice(0, 14);
+const originaisEmbaralhados = embaralhar(originais, 77);
+const crashEmbaralhado = embaralhar(jogosCrash, 8);
 const DESCRICAO =
   "Jogue Crash, Mines, Double e slots em destaque, aposte em futebol, basquete e eSports ao vivo e acompanhe seu cupom em tempo real na Zon7 BET.";
 
