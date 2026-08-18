@@ -8,6 +8,7 @@ import { Betslip } from "@/components/bet/betslip";
 import { GradeEventos } from "@/components/bet/event-card";
 import { Carrossel } from "@/components/bet/game-card";
 import { CabecalhoSecao, NavChips } from "@/components/bet/section";
+import { ScrollRow } from "@/components/bet/scroll-row";
 import { BetLayout } from "@/components/layouts/bet-layout";
 import { Button } from "@/components/ui/button";
 import { eventos, jogos } from "@/data/bet-mock";
@@ -151,17 +152,17 @@ function Index() {
         {/* Provedores */}
         <section className="space-y-3">
           <CabecalhoSecao titulo="Provedores" descricao="Estúdios disponíveis na plataforma" verTodos="/cassino" />
-          <div className="-mx-1 flex gap-2 overflow-x-auto px-1 pb-1">
+          <ScrollRow gap="gap-2">
             {provedores.map((p) => (
               <Link
                 key={p}
                 to="/cassino"
-                className="grid h-16 min-w-[9.5rem] shrink-0 place-items-center rounded-xl border border-border bg-card px-4 text-xs font-semibold text-muted-foreground outline-none transition-colors hover:border-primary/40 hover:text-foreground focus-visible:ring-2 focus-visible:ring-ring"
+                className="grid h-16 min-w-[9.5rem] shrink-0 snap-start place-items-center rounded-xl border border-border bg-card px-4 text-xs font-semibold text-muted-foreground outline-none transition-colors hover:border-primary/40 hover:text-foreground focus-visible:ring-2 focus-visible:ring-ring"
               >
                 {p}
               </Link>
             ))}
-          </div>
+          </ScrollRow>
         </section>
 
         {/* Promoções */}
