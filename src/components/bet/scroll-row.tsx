@@ -78,6 +78,10 @@ export function ScrollRow({
         ref={ref}
         onScroll={medir}
         tabIndex={0}
+        style={{
+          WebkitMaskImage: `linear-gradient(to right, transparent 0, #000 ${inicio ? "0px" : "40px"}, #000 calc(100% - ${fim ? "0px" : "40px"}), transparent 100%)`,
+          maskImage: `linear-gradient(to right, transparent 0, #000 ${inicio ? "0px" : "40px"}, #000 calc(100% - ${fim ? "0px" : "40px"}), transparent 100%)`,
+        }}
         className={cn(
           "no-scrollbar -mx-1 flex snap-x snap-mandatory scroll-px-1 overflow-x-auto px-1 pb-1 outline-none focus-visible:ring-2 focus-visible:ring-ring",
           gap,
