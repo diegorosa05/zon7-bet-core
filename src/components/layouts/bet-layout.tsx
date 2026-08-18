@@ -25,6 +25,7 @@ import {
 import type { ReactNode } from "react";
 
 import { Logo } from "@/components/brand/logo";
+import { BetslipDock } from "@/components/bet/betslip-dock";
 import { SiteFooter } from "@/components/layouts/site-footer";
 import { MobileNav } from "@/components/layouts/mobile-nav";
 import { Button } from "@/components/ui/button";
