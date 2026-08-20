@@ -28,22 +28,30 @@ interface AuthContextValue {
 
 const STORAGE_KEY = "zon7.session";
 
+/** Mockup: sessão sempre ativa — plataforma 100% liberada sem login. */
+export const SESSAO_DEMO: SessionUser = {
+  id: "usr-001",
+  nome: "Diego Rosa",
+  email: "diego.rosa@exemplo.com.br",
+  role: "apostador",
+};
+
 const AuthContext = createContext<AuthContextValue | null>(null);
 
 function lerSessao(): SessionUser | null {
   try {
     const raw = window.localStorage.getItem(STORAGE_KEY);
-    if (!raw) return null;
+    if (!raw) return SESSAO_DEMO;
     const parsed = JSON.parse(raw) as SessionUser;
-    if (!parsed?.email || !parsed?.role) return null;
+    if (!parsed?.email || !parsed?.role) return SESSAO_DEMO;
     return parsed;
   } catch {
-    return null;
+    return SESSAO_DEMO;
   }
 }
 
 export function AuthProvider({ children }: { children: ReactNode }) {
-  const [user, setUser] = useState<SessionUser | null>(null);
+  const [user, setUser] = useState<SessionUser | null>(SESSAO_DEMO);
   const [ready, setReady] = useState(false);
 
   useEffect(() => {
@@ -72,7 +80,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     [persist],
   );
 
-  const sair = useCallback(() => persist(null), [persist]);
+  const sair = useCallback(() => persist(SESSAO_DEMO), [persist]);
 
   const trocarPapel = useCallback((role: Role) => {
     setUser((atual) => {
