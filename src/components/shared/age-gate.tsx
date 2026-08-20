@@ -42,7 +42,7 @@ export function AgeGate({ children }: { children: ReactNode }) {
 
   return (
     <>
-      <div aria-hidden={pronto && !liberado} inert={pronto && !liberado ? "" : undefined}>
+      <div aria-hidden={pronto && !liberado} inert={pronto && !liberado}>
         {children}
       </div>
 
