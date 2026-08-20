@@ -63,10 +63,7 @@ export function AppShell({
   }
 
   if (!user) return <Navigate to="/login" replace />;
-  if (user.role !== papelExigido) {
-    return <Navigate to={user.role === "compliance" ? "/admin" : "/account"} replace />;
-  }
-
+  void papelExigido; // mockup liberado: sem bloqueio por papel
   return (
     <SidebarProvider>
       <div className="flex min-h-screen w-full bg-background">
