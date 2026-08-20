@@ -88,6 +88,15 @@ export const ESTADO_INICIAL: OnboardingState = {
   atualizadoEm: null,
 };
 
+/** Mockup: conta já aprovada por padrão — todas as áreas liberadas. */
+export const ESTADO_LIBERADO: OnboardingState = {
+  ...ESTADO_INICIAL,
+  passo: 6,
+  maioridade: true,
+  kycEnviado: true,
+  status: "approved",
+};
+
 interface OnboardingContextValue {
   estado: OnboardingState;
   ready: boolean;
@@ -102,22 +111,22 @@ const OnboardingContext = createContext<OnboardingContextValue | null>(null);
 function ler(): OnboardingState {
   try {
     const raw = window.localStorage.getItem(STORAGE_KEY);
-    if (!raw) return ESTADO_INICIAL;
+    if (!raw) return ESTADO_LIBERADO;
     const parsed = JSON.parse(raw) as Partial<OnboardingState>;
     return {
-      ...ESTADO_INICIAL,
+      ...ESTADO_LIBERADO,
       ...parsed,
       pessoais: { ...ESTADO_INICIAL.pessoais, ...parsed.pessoais },
       endereco: { ...ESTADO_INICIAL.endereco, ...parsed.endereco },
       consentimentos: { ...consentimentosIniciais(), ...parsed.consentimentos },
     };
   } catch {
-    return ESTADO_INICIAL;
+    return ESTADO_LIBERADO;
   }
 }
 
 export function OnboardingProvider({ children }: { children: ReactNode }) {
-  const [estado, setEstado] = useState<OnboardingState>(ESTADO_INICIAL);
+  const [estado, setEstado] = useState<OnboardingState>(ESTADO_LIBERADO);
   const [ready, setReady] = useState(false);
 
   useEffect(() => {
