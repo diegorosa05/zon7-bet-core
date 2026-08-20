@@ -14,6 +14,7 @@ import { reportLovableError } from "../lib/lovable-error-reporting";
 import { AuthProvider } from "../lib/auth";
 import { OnboardingProvider } from "../lib/onboarding";
 import { BetslipProvider } from "@/lib/betslip";
+import { AgeGate } from "@/components/shared/age-gate";
 import { Toaster } from "../components/ui/sonner";
 
 function NotFoundComponent() {
@@ -138,7 +139,9 @@ function RootComponent() {
         <OnboardingProvider>
           <BetslipProvider>
             {/* Required: nested routes render here. Removing <Outlet /> breaks all child routes. */}
-            <Outlet />
+            <AgeGate>
+              <Outlet />
+            </AgeGate>
             <Toaster />
           </BetslipProvider>
         </OnboardingProvider>
